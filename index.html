@@ -42,6 +42,13 @@ body {
 .nav-link:hover { color: #1f2937; }
 .nav-logo-icon { width: 24px; height: 24px; display: flex; align-items: center; justify-content: center; }
 .nav-logo-icon svg { width: 24px; height: 24px; }
+.plugin-version {
+    display: inline-flex; align-items: center; height: 20px;
+    padding: 0 7px; border: 1px solid rgba(107,114,128,0.22);
+    border-radius: 5px; background: rgba(249,250,251,0.9);
+    color: #6b7280; font-size: 10px; font-weight: 600;
+    line-height: 1; white-space: nowrap;
+}
 .glass-card {
     background: rgba(255,255,255,0.8);
     backdrop-filter: blur(10px);
@@ -269,6 +276,7 @@ footer.border-gray-200 { border-color:rgba(0,0,0,0.08); }
     }
     .sidebar-nav-item { padding: 3px 6px; font-size: 11px; }
     .hero-title { font-size: 2rem; }
+    .nav-product-name { display: none; }
 }
 </style>
 </head>
@@ -407,13 +415,15 @@ footer.border-gray-200 { border-color:rgba(0,0,0,0.08); }
 <path d="M0 0 C4 4.625 4 4.625 4 8 C2 6.812 2 6.812 0 5 C-0.25 2.312 -0.25 2.312 0 0 Z " fill="#F4E9CE" transform="translate(1409,660)"/>
 <path d="M0 0 C0 3 0 3 -1 6 C-2.65 6.33 -4.3 6.66 -6 7 C-4.02 4.69 -2.04 2.38 0 0 Z " fill="#D27D4B" transform="translate(190,648)"/>
 </svg></div>
-                <span class="font-bold text-sm tracking-tight text-gradient">IMS V6 Code Assistant</span>
+                <span class="nav-product-name font-bold text-sm tracking-tight text-gradient">IMS V6 Code Assistant</span>
+                <span class="plugin-version" title="当前插件版本" aria-label="当前插件版本 v1.1.7">v1.1.7</span>
             </div>
             <div class="hidden md:flex items-center space-x-5 text-xs">
                 <a href="#features" class="nav-link">核心功能</a>
                 <a href="#manual" class="nav-link">操作手册</a>
                 <a href="#faq" class="nav-link">常见问题</a>
             </div>
+            <a href="change-notes.html" class="nav-link changelog-link" data-i18n-zh="更新日志" data-i18n-en="Changelog">更新日志</a>
         </div>
             <button class="lang-toggle" id="langToggle" title="Switch to English" onclick="switchLang()"><svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5h12M9 3v2m1.048 9.5A18.022 18.022 0 016.412 9m6.088 9h2M11 21l5-10 5 10M12.751 5C11.783 10.77 8.07 15.61 3 18.129"/></svg><span id="langLabel">EN</span></button>    </div>
 </nav>
@@ -1029,6 +1039,7 @@ footer.border-gray-200 { border-color:rgba(0,0,0,0.08); }
 <script>
 // ===== i18n Language System =====
 const I18N_DICT={
+'更新日志':'Changelog',
 '首页':'Home','功能介绍':'Features','操作手册':'Manual','常见问题':'FAQ',
 '插件手册 - IMS V6 Code Assistant':'Plugin Manual - IMS V6 Code Assistant',
 '一体化智能开发助手，覆盖项目初始化、版本升级、构建打包、代码扫描、代码生成、开发手册知识库问答等全流程功能':'An all-in-one intelligent development assistant covering project initialization, version upgrades, build packaging, code scanning, code generation, and knowledge base Q&A.',

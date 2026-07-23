@@ -1,0 +1,467 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="IMS V6 Code Assistant 插件更新日志">
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='6' fill='%23D55C28'/%3E%3Ctext x='16' y='22' text-anchor='middle' font-family='system-ui,sans-serif' font-weight='bold' font-size='18' fill='%23FDEFD8'%3EV6%3C/text%3E%3C/svg%3E">
+<title>更新日志 - IMS V6 Code Assistant</title>
+<style>
+:root {
+    color-scheme: light;
+    --text: #1f2937;
+    --muted: #6b7280;
+    --line: rgba(15,23,42,0.09);
+    --blue: #2563eb;
+    --blue-soft: #eff6ff;
+    --orange: #d55c28;
+    --surface: rgba(255,255,255,0.88);
+}
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body {
+    margin: 0;
+    min-height: 100vh;
+    color: var(--text);
+    background: linear-gradient(135deg, #f8fafc 0%, #f1f5f9 52%, #faf5ff 100%);
+    font-family: system-ui, -apple-system, "Segoe UI", sans-serif;
+    -webkit-font-smoothing: antialiased;
+}
+a { color: inherit; }
+.site-nav {
+    position: fixed;
+    inset: 0 0 auto;
+    z-index: 50;
+    height: 48px;
+    border-bottom: 1px solid rgba(0,0,0,0.08);
+    background: rgba(255,255,255,0.9);
+    box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+    backdrop-filter: blur(20px);
+}
+.nav-inner {
+    width: min(100% - 48px, 1280px);
+    height: 100%;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+.brand, .nav-actions { display: flex; align-items: center; }
+.brand { gap: 8px; text-decoration: none; }
+.brand-mark {
+    width: 24px;
+    height: 24px;
+    display: grid;
+    place-items: center;
+    flex: 0 0 auto;
+    border-radius: 5px;
+    color: #fdefd8;
+    background: var(--orange);
+    font-size: 10px;
+    font-weight: 800;
+}
+.brand-name { font-size: 14px; font-weight: 700; }
+.version-tag {
+    height: 20px;
+    display: inline-flex;
+    align-items: center;
+    padding: 0 7px;
+    border: 1px solid rgba(107,114,128,0.22);
+    border-radius: 5px;
+    color: var(--muted);
+    background: rgba(249,250,251,0.9);
+    font-size: 10px;
+    font-weight: 600;
+}
+.nav-actions { gap: 8px; }
+.back-link, .lang-toggle {
+    height: 30px;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    border-radius: 6px;
+    font-size: 12px;
+    font-weight: 600;
+    text-decoration: none;
+    white-space: nowrap;
+}
+.back-link { padding: 0 10px; color: var(--muted); }
+.back-link:hover { color: var(--text); background: rgba(15,23,42,0.05); }
+.lang-toggle {
+    padding: 0 11px;
+    border: 1px solid rgba(37,99,235,0.22);
+    color: var(--blue);
+    background: rgba(37,99,235,0.07);
+    cursor: pointer;
+}
+.back-link svg, .lang-toggle svg { width: 14px; height: 14px; }
+.page-shell { width: min(100% - 48px, 1120px); margin: 0 auto; padding: 112px 0 72px; }
+.page-header { max-width: 720px; margin-bottom: 44px; }
+.eyebrow {
+    display: inline-flex;
+    align-items: center;
+    gap: 7px;
+    margin-bottom: 14px;
+    color: var(--blue);
+    font-size: 12px;
+    font-weight: 700;
+}
+.eyebrow-dot { width: 7px; height: 7px; border-radius: 50%; background: #22c55e; box-shadow: 0 0 0 4px rgba(34,197,94,0.11); }
+h1 { margin: 0 0 14px; font-size: 40px; line-height: 1.15; letter-spacing: 0; }
+.page-description { margin: 0; color: var(--muted); font-size: 15px; line-height: 1.75; }
+.notes-layout { display: grid; grid-template-columns: 168px minmax(0,1fr); gap: 36px; align-items: start; }
+.version-nav { position: sticky; top: 72px; }
+.version-nav-label { margin: 0 0 10px; color: var(--muted); font-size: 11px; font-weight: 700; text-transform: uppercase; }
+.version-links { display: grid; gap: 3px; }
+.version-link {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    min-height: 32px;
+    padding: 0 9px;
+    border-radius: 6px;
+    color: var(--muted);
+    font-size: 12px;
+    font-weight: 600;
+    text-decoration: none;
+}
+.version-link:hover, .version-link.active { color: var(--blue); background: rgba(37,99,235,0.08); }
+.version-link:first-child::after {
+    content: attr(data-latest);
+    padding: 2px 5px;
+    border-radius: 4px;
+    color: #15803d;
+    background: #ecfdf3;
+    font-size: 9px;
+}
+.release-list { min-width: 0; display: grid; gap: 16px; }
+.release-card {
+    scroll-margin-top: 72px;
+    padding: 24px 28px;
+    border: 1px solid rgba(0,0,0,0.06);
+    border-radius: 8px;
+    background: var(--surface);
+    box-shadow: 0 8px 25px rgba(0,0,0,0.06);
+}
+.release-card:first-child { border-color: rgba(37,99,235,0.2); box-shadow: 0 12px 32px rgba(37,99,235,0.09); }
+.release-card h3 { margin: 0 0 20px; font-size: 22px; line-height: 1.2; }
+.release-card h4 {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin: 20px 0 8px;
+    font-size: 12px;
+    line-height: 1.3;
+    text-transform: uppercase;
+}
+.release-card h4:first-of-type { margin-top: 0; }
+.release-card h4::before { content: ""; width: 7px; height: 7px; border-radius: 2px; background: #94a3b8; }
+.release-card h4.category-added { color: #15803d; }
+.release-card h4.category-added::before { background: #22c55e; }
+.release-card h4.category-changed { color: #1d4ed8; }
+.release-card h4.category-changed::before { background: #3b82f6; }
+.release-card h4.category-fixed { color: #b45309; }
+.release-card h4.category-fixed::before { background: #f59e0b; }
+.release-card ul { margin: 0; padding: 0; list-style: none; }
+.release-card li { position: relative; padding: 6px 0 6px 18px; color: #4b5563; font-size: 13px; line-height: 1.75; }
+.release-card li::before { content: ""; position: absolute; top: 15px; left: 2px; width: 5px; height: 5px; border-radius: 50%; background: #cbd5e1; }
+code { padding: 2px 5px; border: 1px solid #e5e7eb; border-radius: 4px; color: #334155; background: #f8fafc; font-family: Consolas, monospace; font-size: 0.92em; }
+#rawNotes > hr, .release-card hr { display: none; }
+.language-note { margin: 14px 0 0; color: var(--muted); font-size: 12px; }
+.site-footer { padding: 24px; border-top: 1px solid var(--line); color: var(--muted); text-align: center; font-size: 11px; }
+@media (max-width: 760px) {
+    .nav-inner, .page-shell { width: min(100% - 32px, 1120px); }
+    .brand-name { display: none; }
+    .back-link span { display: none; }
+    .page-shell { padding-top: 88px; }
+    h1 { font-size: 32px; }
+    .page-header { margin-bottom: 28px; }
+    .notes-layout { display: block; }
+    .version-nav { top: 48px; z-index: 20; margin: 0 -16px 14px; padding: 8px 16px; border-bottom: 1px solid var(--line); background: rgba(248,250,252,0.94); backdrop-filter: blur(12px); }
+    .version-nav-label { display: none; }
+    .version-links { display: flex; gap: 4px; overflow-x: auto; scrollbar-width: none; }
+    .version-links::-webkit-scrollbar { display: none; }
+    .version-link { flex: 0 0 auto; }
+    .version-link:first-child::after { display: none; }
+    .release-card { padding: 20px 18px; }
+}
+</style>
+</head>
+<body>
+<nav class="site-nav" aria-label="Primary navigation">
+    <div class="nav-inner">
+        <a class="brand" href="index.html" aria-label="IMS V6 Code Assistant">
+            <span class="brand-mark">V6</span>
+            <span class="brand-name">IMS V6 Code Assistant</span>
+            <span class="version-tag">v1.1.7</span>
+        </a>
+        <div class="nav-actions">
+            <a class="back-link" href="index.html">
+                <svg fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m15 18-6-6 6-6"/></svg>
+                <span data-zh="返回插件手册" data-en="Back to Manual">返回插件手册</span>
+            </a>
+            <button class="lang-toggle" id="langToggle" type="button" title="Switch to English">
+                <svg fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5h12M9 3v2m1.048 9.5A18.022 18.022 0 0 1 6.412 9m6.088 9h2M11 21l5-10 5 10M12.751 5C11.783 10.77 8.07 15.61 3 18.129"/></svg>
+                <span id="langLabel">EN</span>
+            </button>
+        </div>
+    </div>
+</nav>
+
+<main class="page-shell">
+    <header class="page-header">
+        <div class="eyebrow"><span class="eyebrow-dot"></span><span data-zh="当前插件版本 v1.1.7" data-en="Current plugin version v1.1.7">当前插件版本 v1.1.7</span></div>
+        <h1 data-zh="更新日志" data-en="Changelog">更新日志</h1>
+        <p class="page-description" data-zh="查看 IMS V6 Code Assistant 的新增功能、体验改进与问题修复。" data-en="Review new features, improvements, and fixes in IMS V6 Code Assistant.">查看 IMS V6 Code Assistant 的新增功能、体验改进与问题修复。</p>
+        <p class="language-note" data-zh="发布条目保留原始技术描述，页面界面会跟随手册语言设置。" data-en="Release entries retain their original technical wording; page controls follow the manual language setting.">发布条目保留原始技术描述，页面界面会跟随手册语言设置。</p>
+    </header>
+    <div class="notes-layout">
+        <aside class="version-nav" aria-label="Version navigation">
+            <p class="version-nav-label" data-zh="版本记录" data-en="Versions">版本记录</p>
+            <nav class="version-links" id="versionLinks"></nav>
+        </aside>
+        <section class="release-list" id="rawNotes" aria-label="Release notes">
+<h3>Version 1.1.7</h3>
+<h4>Added</h4>
+<ul>
+    <li>Table 类名规范新增 Quick Fix，通过 IDEA Rename 重构同步更新类名、构造方法、文件名和代码引用。</li>
+    <li>Model 类名规范新增 Quick Fix，通过 IDEA Rename 重构同步更新类名、构造方法、文件名和代码引用。</li>
+    <li>CheckDataIntercept、WebDataModelIntercept、WebMasterDaoIntercept 类名规范新增 IDEA Rename Quick Fix。</li>
+    <li>新增 ColumnType 常量注释规则，检查 <code>util/*ColumnType.java</code> 静态内部类中的常量字段是否添加 Javadoc。</li>
+    <li>新增多行 SQL formatter 标记保护检查：SQL 前后 10 行内检查 <code>@formatter:off/on</code> 标识。</li>
+    <li>新增超长单行 SQL 源码行检查：提示按结构拆分。</li>
+</ul>
+<h4>Changed</h4>
+<ul>
+    <li>UK 命名规则支持单个唯一约束使用 <code>uk_表名</code>；同一 Table 存在多个唯一约束时继续使用带后缀的命名。</li>
+    <li>抽象类命名和二开创建者规则的严重级别迁移，已保存配置自动升级为 TYPO。</li>
+</ul>
+
+<hr/>
+<h3>Version 1.1.6</h3>
+<h4>Added</h4>
+<ul>
+    <li>DataRow/Params 字段键小写规范新增 Quick Fix，可一键将字符串字面量中的字母转换为小写，保留原有字符和分隔符。</li>
+</ul>
+<h4>Changed</h4>
+<ul>
+    <li>Model 类命名规则根据 <code>setModelCode(...)</code> 推导类名；ModelCode 缺少项目编码前缀时按插件项目配置自动补齐，已有前缀时不重复添加。</li>
+    <li>CheckDataIntercept 类命名规则与 Model 类保持一致，ModelCode 缺少项目编码前缀时自动补齐。</li>
+    <li>代码扫描规则列表新增默认开启的"项目模式"配置；开启时 Model 与 CheckDataIntercept 类名自动包含项目编码，关闭时仅跟随 ModelCode。</li>
+    <li>右键"编码规约扫描"不再要求预先保存项目配置，可直接执行已启用的扫描规则。</li>
+    <li>变量和方法 lowerCamelCase 规则允许在小驼峰名称内部使用任意全大写缩写词（如 SL、SMT、URL、HTTP）。</li>
+</ul>
+<h4>Fixed</h4>
+<ul>
+    <li>修复 Oracle 子查询别名规则误报正常列别名的问题；仅检查 <code>FROM/JOIN (SELECT ...) AS alias</code> 场景。</li>
+    <li>修复数组中括号位置规则误报 Java 可变参数 <code>Object... args</code> 的问题。</li>
+    <li>完善 DataRow 字段键规则对 <code>CaseSensitiveDataRowImpl</code> 的排除，支持识别父类型变量通过 <code>create()</code> 或构造方法初始化的场景。</li>
+</ul>
+
+<hr/>
+<h3>Version 1.1.5</h3>
+<h4>Added</h4>
+<ul>
+    <li>新增基于 IDEA PSI 的代码扫描：支持当前文件、目录、多选文件和整个项目手动扫描，并可按项目开启或关闭编辑器实时检测</li>
+    <li>内置 59 条通用与IMS V6 开发规范，规则首次安装默认不启用，可按需配置启用状态、严重级别和高亮方式</li>
+    <li>新增多项快捷修复（Quick Fix）：支持键处理</li>
+    <li>代码生成器支持在预览中选择需要写入的代码文件，未勾选内容不会写入项目</li>
+    <li>新增「代码注释模板」设置：创建类时自动生成 Pangus IMS 版权与类注释，一键初始化时可同步更新已有 Java 文件注释</li>
+</ul>
+<h4>Changed</h4>
+<ul>
+    <li>重构配置面板布局</li>
+    <li>一键初始化增加注释内容的替换</li>
+    <li>平台升级前自动检测并提示停止运行中的服务，减少文件占用导致的升级失败</li>
+    <li>更新内置使用手册，补充代码扫描说明、项目多窗口使用建议及最新功能介绍</li>
+</ul>
+<h4>Fixed</h4>
+<ul>
+    <li>修复系统图标库连续复制时界面卡顿的问题</li>
+    <li>修复数据库驱动按需加载、部分国际化显示问题</li>
+</ul>
+
+<hr/>
+<h3>Version 1.1.4</h3>
+<h4>Changed</h4>
+<ul>
+    <li>代码生成器支持主表生成，表名、索引识别，常量命名、预览调整、一键写入</li>
+</ul>
+
+<hr/>
+<h3>Version 1.1.3</h3>
+<h4>Added</h4>
+<ul>
+    <li>数据库配置管理：新增数据库连接配置页面，支持多连接管理、连接测试</li>
+    <li>切换数据库：右键菜单一键切换当前项目使用的数据库连接</li>
+    <li>搭建代码生成器界面</li>
+</ul>
+<h4>Changed</h4>
+<ul>
+    <li>常规设置面板重构：全局设置、项目级配置</li>
+    <li>全局设置跨项目共享：常规设置（编码、Formatter 标记、Maven 路径、项目
+        SDK）一次配置、所有项目自动生效，省去逐项目重复操作的繁琐
+    </li>
+    <li>启动 Web/PDA 服务改为外部 cmd 窗口执行，自动 cd 到目标路径并运行 npm 命令，不再依赖 IDEA 内置终端</li>
+</ul>
+<hr/>
+<h3>Version 1.1.2</h3>
+<h4>Fixed</h4>
+<ul>
+    <li>修复 Server 大版本升级时异常错误bug</li>
+    <li>修复项目初始化后 Run Configuration 显示红色警告：等待 Maven 异步导入真正完成后才创建配置</li>
+    <li>修复构建进度条卡在"make 中"不结束、构建完成产物未打包到输出目录（make.bat 的 pause 阻塞信号文件写入）</li>
+</ul>
+<h4>Changed</h4>
+<ul>
+    <li>优化插件名称及打包名称及描述、增加操作说明</li>
+    <li>构建机制重构：复制 make.bat 注入 SUCCESS/FAILURE 结果标记，不受 pause 和退出码影响；无 || goto
+        结构时回退按产物新鲜度判断
+    </li>
+    <li>版本号强制统一写入三端（含未勾选模块），默认自动 + 1</li>
+    <li>通知增加"打开输出目录"可点击链接（输出目录非空且有产物时显示）</li>
+</ul>
+<hr/>
+<h3>Version 1.1.1</h3>
+<h4>Added</h4>
+<ul>
+    <li>右键系统内置图标库：主题自适应，支持中文关键词搜索、空格分词多条件 AND 匹配</li>
+    <li>图标库点击复制：点击图标自动复制代码到剪贴</li>
+</ul>
+<hr/>
+<h3>Version 1.1.0</h3>
+<h4>Added</h4>
+<ul>
+    <li>平台版本升级引擎：支持大版本升级（全量替换 + 保留目录还原）和修订版本升级（lib 替换 + package.json
+        更新），自动备份、事务化暂存/回滚、取消恢复
+    </li>
+    <li>升级对话框：自动检测升级类型（大版本/修订版本），防自爆路径校验，大版本前端模块可勾选保留目录，操作预览</li>
+    <li>构建项目对话框：选择模块、统一输出目录、支持一键修改项目版本号</li>
+    <li>RAG 检索增强：HyDE 假设文档扩展、TOC 标题树加权、倒排索引、查询路由、搜索结果元数据，5 项无向量检索优化</li>
+    <li>配置面板新增端口设置、支持一键修改端口</li>
+</ul>
+<h4>Changed</h4>
+<ul>
+    <li>升级弹窗布局优化：新版本路径标签+输入框+升级类型同行，去掉 TitledBorder 和分割线，紧凑无空白</li>
+    <li>降级拦截：目标版本 ≤ 当前版本时禁用确定按钮，分情况提示（相同无须升级 / 低于暂不支持）</li>
+    <li>知识库问答面板 UI 优化：发送/停止/清空按钮图标化，输入框自适应高度</li>
+    <li>npm 启动服务重构：通用 runNpmCommand 方法，npm 可用性探测</li>
+</ul>
+<hr/>
+<h3>Version 1.0.3</h3>
+<h4>Added</h4>
+<ul>
+    <li>知识库问答面板：侧边栏新增 V6 开发知识问答聊天窗口，支持基于文档目录的 RAG 智能问答</li>
+    <li>文档索引与混合检索：自动索引知识库目录（Markdown / Java / JS / SQL / XML 等），支持 bigram + 关键词 +
+        标题加权混合搜索，上下文自动扩展
+    </li>
+    <li>流式 AI 对话：集成 OpenAI / Claude / DeepSeek / Custom 兼容 API，SSE 流式输出，Token 防抖合并刷新</li>
+    <li>AI 回复语言跟随插件语言设置，切换中英文后 AI 自动适配回复语言</li>
+    <li>API Key 加密存储：使用操作系统原生密钥链（Windows Credential Manager / macOS Keychain）</li>
+</ul>
+<hr/>
+<h3>Version 1.0.2</h3>
+<h4>Added</h4>
+<ul>
+    <li>版本信息展示：配置面板显示各端平台版本和项目版本，三端版本不一致时弹窗警告</li>
+    <li>启动服务 Action：右键菜单一键启动 Web/PDA 开发服务器，自动安装依赖并打开浏览器</li>
+    <li>项目初始化成功后自动创建运行服务和数据库升级两个Run Configuration，支持按模块路径智能匹配</li>
+    <li>Action 国际化：所有右键菜单项支持中英文切换</li>
+</ul>
+<h4>Changed</h4>
+<ul>
+    <li>项目初始化确认对话框：展示详细初始化说明</li>
+    <li>配置面板布局优化：统一宽度，版本标签紧贴输入框右侧</li>
+</ul>
+<hr/>
+<h3>Version 1.0.1</h3>
+<h4>Added</h4>
+<ul>
+    <li>项目路径校验：同步/初始化前自动检查 Server、Web、PDA 模块路径是否配置且存在</li>
+    <li>项目初始化：一键将模板项目中的 Demo/demo/DEMO
+        占位符替换为实际项目编码（自动重命名包、类、文件、目录及文件内容中的占位符）
+    </li>
+    <li>栏位值常量同步（ColumnType）：支持全量同步、选中文本增量同步、自定义字段同步至前端 JS 文件</li>
+    <li>检查标识同步（CheckType）：支持全量同步、选中文本增量同步至前端 JS 文件</li>
+</ul>
+<h4>Changed</h4>
+<ul>
+    <li>优化国际化（i18n）支持</li>
+</ul>
+</section>
+</main>
+<footer class="site-footer">
+    <span data-zh="© 2026 IMS V6 Code Assistant" data-en="© 2026 IMS V6 Code Assistant">© 2026 IMS V6 Code Assistant</span>
+</footer>
+<script>
+(function () {
+    const STORAGE_KEY = 'ims-manual-lang';
+    const dictionary = {
+        'Version': 'Version',
+        'Added': 'Added',
+        'Changed': 'Changed',
+        'Fixed': 'Fixed'
+    };
+    const root = document.getElementById('rawNotes');
+    const cards = [];
+    let currentCard = null;
+    Array.from(root.children).forEach(function (node) {
+        if (node.tagName === 'H3') {
+            currentCard = document.createElement('article');
+            currentCard.className = 'release-card';
+            currentCard.id = 'release-' + node.textContent.replace(/[^0-9.]/g, '').replace(/\./g, '-');
+            root.replaceChild(currentCard, node);
+            currentCard.appendChild(node);
+            cards.push(currentCard);
+        } else if (node.tagName === 'HR') {
+            node.remove();
+        } else if (currentCard) {
+            currentCard.appendChild(node);
+        }
+    });
+
+    cards.forEach(function (card) {
+        const versionHeading = card.querySelector('h3');
+        const version = versionHeading.textContent.replace(/^Version\s+/, '');
+        versionHeading.dataset.zh = '版本 ' + version;
+        versionHeading.dataset.en = 'Version ' + version;
+        card.querySelectorAll('h4').forEach(function (heading) {
+            const key = heading.textContent.trim();
+            heading.classList.add('category-' + key.toLowerCase());
+            heading.dataset.zh = key === 'Added' ? '新增' : key === 'Changed' ? '变更' : key === 'Fixed' ? '修复' : key;
+            heading.dataset.en = dictionary[key] || key;
+        });
+    });
+
+    const links = document.getElementById('versionLinks');
+    cards.forEach(function (card, index) {
+        const link = document.createElement('a');
+        link.className = 'version-link';
+        link.href = '#' + card.id;
+        link.textContent = card.querySelector('h3').textContent.replace(/^Version\s+/, 'v');
+        if (index === 0) link.dataset.latest = 'Latest';
+        links.appendChild(link);
+    });
+
+    function applyLanguage(lang) {
+        document.documentElement.lang = lang === 'zh' ? 'zh-CN' : 'en';
+        document.querySelectorAll('[data-zh][data-en]').forEach(function (node) {
+            node.textContent = lang === 'zh' ? node.dataset.zh : node.dataset.en;
+        });
+        const latestLink = links.querySelector('.version-link');
+        if (latestLink) latestLink.dataset.latest = lang === 'zh' ? '最新' : 'Latest';
+        document.getElementById('langLabel').textContent = lang === 'zh' ? 'EN' : '中';
+        document.getElementById('langToggle').title = lang === 'zh' ? 'Switch to English' : '切换到中文';
+    }
+
+    let lang = localStorage.getItem(STORAGE_KEY) || 'zh';
+    applyLanguage(lang);
+    document.getElementById('langToggle').addEventListener('click', function () {
+        lang = lang === 'zh' ? 'en' : 'zh';
+        localStorage.setItem(STORAGE_KEY, lang);
+        applyLanguage(lang);
+    });
+})();
+</script>
+</body>
+</html>
