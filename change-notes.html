@@ -51,18 +51,29 @@ a { color: inherit; }
 .brand, .nav-actions { display: flex; align-items: center; }
 .brand { gap: 8px; text-decoration: none; }
 .brand-mark {
-    width: 24px;
+    width: 28px;
     height: 24px;
-    display: grid;
-    place-items: center;
+    display: block;
     flex: 0 0 auto;
-    border-radius: 5px;
-    color: #fdefd8;
-    background: var(--orange);
-    font-size: 10px;
-    font-weight: 800;
+    overflow: hidden;
+    border-radius: 3px;
 }
-.brand-name { font-size: 14px; font-weight: 700; }
+.brand-mark svg { display: block; width: 100%; height: 100%; }
+.brand-name {
+    color: #3b82f6;
+    background: linear-gradient(45deg, #3b82f6, #8b5cf6, #ec4899);
+    background-size: 200% 200%;
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    font-size: 14px;
+    font-weight: 700;
+    animation: brand-gradient 3s ease infinite;
+}
+@keyframes brand-gradient {
+    0%, 100% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+}
 .version-tag {
     height: 20px;
     display: inline-flex;
@@ -109,18 +120,30 @@ a { color: inherit; }
     font-weight: 700;
 }
 .eyebrow-dot { width: 7px; height: 7px; border-radius: 50%; background: #22c55e; box-shadow: 0 0 0 4px rgba(34,197,94,0.11); }
-h1 { margin: 0 0 14px; font-size: 40px; line-height: 1.15; letter-spacing: 0; }
-.page-description { margin: 0; color: var(--muted); font-size: 15px; line-height: 1.75; }
+h1 { margin: 0; font-size: 40px; line-height: 1.15; letter-spacing: 0; }
 .notes-layout { display: grid; grid-template-columns: 168px minmax(0,1fr); gap: 36px; align-items: start; }
 .version-nav { position: sticky; top: 72px; }
 .version-nav-label { margin: 0 0 10px; color: var(--muted); font-size: 11px; font-weight: 700; text-transform: uppercase; }
-.version-links { display: grid; gap: 3px; }
+.version-links { position: relative; display: grid; gap: 0; }
+.version-links::before {
+    content: "";
+    position: absolute;
+    z-index: 0;
+    top: 14px;
+    bottom: 14px;
+    left: 11px;
+    width: 1px;
+    background: linear-gradient(to bottom, transparent, #cbd5e1 8%, #cbd5e1 92%, transparent);
+}
 .version-link {
-    display: flex;
+    position: relative;
+    z-index: 1;
+    display: grid;
+    grid-template-columns: 22px minmax(0, 1fr) auto;
     align-items: center;
-    justify-content: space-between;
-    min-height: 32px;
-    padding: 0 9px;
+    gap: 8px;
+    min-height: 34px;
+    padding: 0 8px 0 0;
     border-radius: 6px;
     color: var(--muted);
     font-size: 12px;
@@ -128,6 +151,31 @@ h1 { margin: 0 0 14px; font-size: 40px; line-height: 1.15; letter-spacing: 0; }
     text-decoration: none;
 }
 .version-link:hover, .version-link.active { color: var(--blue); background: rgba(37,99,235,0.08); }
+.version-marker {
+    position: relative;
+    width: 22px;
+    height: 22px;
+    display: grid;
+    place-items: center;
+}
+.version-marker::before {
+    content: "";
+    width: 7px;
+    height: 7px;
+    border: 2px solid #fff;
+    border-radius: 50%;
+    background: #94a3b8;
+    box-shadow: 0 0 0 1px #cbd5e1;
+    transition: width 180ms ease, height 180ms ease, background 180ms ease, box-shadow 180ms ease;
+}
+.version-text { min-width: 0; }
+.version-link:hover .version-marker::before { background: #64748b; }
+.version-link.active .version-marker::before {
+    width: 10px;
+    height: 10px;
+    background: var(--blue);
+    box-shadow: 0 0 0 3px #dbeafe, 0 1px 4px rgba(37,99,235,0.28);
+}
 .version-link:first-child::after {
     content: attr(data-latest);
     padding: 2px 5px;
@@ -169,7 +217,6 @@ h1 { margin: 0 0 14px; font-size: 40px; line-height: 1.15; letter-spacing: 0; }
 .release-card li::before { content: ""; position: absolute; top: 15px; left: 2px; width: 5px; height: 5px; border-radius: 50%; background: #cbd5e1; }
 code { padding: 2px 5px; border: 1px solid #e5e7eb; border-radius: 4px; color: #334155; background: #f8fafc; font-family: Consolas, monospace; font-size: 0.92em; }
 #rawNotes > hr, .release-card hr { display: none; }
-.language-note { margin: 14px 0 0; color: var(--muted); font-size: 12px; }
 .site-footer { padding: 24px; border-top: 1px solid var(--line); color: var(--muted); text-align: center; font-size: 11px; }
 @media (max-width: 760px) {
     .nav-inner, .page-shell { width: min(100% - 32px, 1120px); }
@@ -182,6 +229,7 @@ code { padding: 2px 5px; border: 1px solid #e5e7eb; border-radius: 4px; color: #
     .version-nav { top: 48px; z-index: 20; margin: 0 -16px 14px; padding: 8px 16px; border-bottom: 1px solid var(--line); background: rgba(248,250,252,0.94); backdrop-filter: blur(12px); }
     .version-nav-label { display: none; }
     .version-links { display: flex; gap: 4px; overflow-x: auto; scrollbar-width: none; }
+    .version-links::before { display: none; }
     .version-links::-webkit-scrollbar { display: none; }
     .version-link { flex: 0 0 auto; }
     .version-link:first-child::after { display: none; }
@@ -193,7 +241,12 @@ code { padding: 2px 5px; border: 1px solid #e5e7eb; border-radius: 4px; color: #
 <nav class="site-nav" aria-label="Primary navigation">
     <div class="nav-inner">
         <a class="brand" href="index.html" aria-label="IMS V6 Code Assistant">
-            <span class="brand-mark">V6</span>
+            <span class="brand-mark" aria-hidden="true">
+                <svg viewBox="0 0 28 24" xmlns="http://www.w3.org/2000/svg">
+                    <rect width="28" height="24" rx="3" fill="#D55C28"/>
+                    <text x="14" y="16.8" text-anchor="middle" font-family="Arial, sans-serif" font-size="12" font-weight="700" fill="#FDEFD8">V6</text>
+                </svg>
+            </span>
             <span class="brand-name">IMS V6 Code Assistant</span>
             <span class="version-tag">v1.1.7</span>
         </a>
@@ -214,8 +267,6 @@ code { padding: 2px 5px; border: 1px solid #e5e7eb; border-radius: 4px; color: #
     <header class="page-header">
         <div class="eyebrow"><span class="eyebrow-dot"></span><span data-zh="当前插件版本 v1.1.7" data-en="Current plugin version v1.1.7">当前插件版本 v1.1.7</span></div>
         <h1 data-zh="更新日志" data-en="Changelog">更新日志</h1>
-        <p class="page-description" data-zh="查看 IMS V6 Code Assistant 的新增功能、体验改进与问题修复。" data-en="Review new features, improvements, and fixes in IMS V6 Code Assistant.">查看 IMS V6 Code Assistant 的新增功能、体验改进与问题修复。</p>
-        <p class="language-note" data-zh="发布条目保留原始技术描述，页面界面会跟随手册语言设置。" data-en="Release entries retain their original technical wording; page controls follow the manual language setting.">发布条目保留原始技术描述，页面界面会跟随手册语言设置。</p>
     </header>
     <div class="notes-layout">
         <aside class="version-nav" aria-label="Version navigation">
@@ -404,6 +455,99 @@ code { padding: 2px 5px; border: 1px solid #e5e7eb; border-radius: 4px; color: #
         'Changed': 'Changed',
         'Fixed': 'Fixed'
     };
+    const releaseTranslations = {
+        '1.1.7': [
+            'Adds a Quick Fix for the Table class naming rule. IDEA Rename refactoring updates the class name, constructors, file name, and code references together.',
+            'Adds a Quick Fix for the Model class naming rule. IDEA Rename refactoring updates the class name, constructors, file name, and code references together.',
+            'Adds IDEA Rename Quick Fixes for the CheckDataIntercept, WebDataModelIntercept, and WebMasterDaoIntercept class naming rules.',
+            'Adds a ColumnType constant documentation rule that checks whether constant fields in static inner classes under <code>util/*ColumnType.java</code> have Javadoc.',
+            'Adds formatter marker validation for multiline SQL by checking for <code>@formatter:off/on</code> within 10 lines before and after the SQL.',
+            'Adds a source-line check for overly long single-line SQL and recommends splitting it by structure.',
+            'The UK naming rule now allows a single unique constraint to use <code>uk_table_name</code>. When a Table has multiple unique constraints, suffixed names are still required.',
+            'Migrates the severity of the abstract class naming and secondary-development creator rules. Saved settings are automatically upgraded to TYPO.'
+        ],
+        '1.1.6': [
+            'Adds a Quick Fix for lowercase DataRow/Params field keys. It converts letters in string literals to lowercase while preserving other characters and separators.',
+            'The Model class naming rule now derives the class name from <code>setModelCode(...)</code>. If ModelCode lacks the project-code prefix, it is added from the plugin project settings; existing prefixes are not duplicated.',
+            'The CheckDataIntercept class naming rule now matches the Model class rule and automatically adds the project-code prefix when ModelCode lacks it.',
+            'Adds a default-enabled Project Mode setting to the inspection rule list. When enabled, Model and CheckDataIntercept class names include the project code; when disabled, they follow ModelCode only.',
+            'The context-menu Code Convention Scan no longer requires project settings to be saved first and can run enabled inspection rules directly.',
+            'The variable and method lowerCamelCase rule now allows arbitrary all-uppercase abbreviations inside camel-case names, such as SL, SMT, URL, and HTTP.',
+            'Fixes false positives from the Oracle subquery alias rule on valid column aliases. It now checks only <code>FROM/JOIN (SELECT ...) AS alias</code> cases.',
+            'Fixes the array bracket placement rule incorrectly reporting Java varargs such as <code>Object... args</code>.',
+            'Improves the DataRow field-key rule exclusion for <code>CaseSensitiveDataRowImpl</code>, including parent-type variables initialized through <code>create()</code> or constructors.'
+        ],
+        '1.1.5': [
+            'Adds IDEA PSI-based code inspection for the current file, directories, multiple selected files, or the entire project, with per-project editor real-time inspection controls.',
+            'Includes 59 general and IMS V6 development rules. Rules are disabled by default on first installation and can be configured by enabled state, severity, and highlighting style.',
+            'Adds multiple Quick Fixes, including key-processing support.',
+            'The code generator preview now lets you select which code files to write; unchecked content is not written to the project.',
+            'Adds Code Comment Template settings to generate Pangus IMS copyright and class comments for new classes and update comments in existing Java files during one-click initialization.',
+            'Refactors the settings panel layout.',
+            'One-click initialization now replaces comment content.',
+            'Automatically detects running services before a platform upgrade and prompts the user to stop them, reducing upgrade failures caused by locked files.',
+            'Updates the built-in manual with code inspection guidance, recommendations for multi-window projects, and introductions to the latest features.',
+            'Fixes UI freezes when repeatedly copying from the built-in system icon library.',
+            'Fixes on-demand database driver loading and several internationalization display issues.'
+        ],
+        '1.1.4': [
+            'The code generator now supports primary-table generation, table-name and index recognition, constant naming, preview adjustments, and one-click writing.'
+        ],
+        '1.1.3': [
+            'Adds database configuration management with a connection settings page, multiple-connection management, and connection testing.',
+            'Adds a context-menu action to switch the database connection used by the current project.',
+            'Introduces the code generator interface.',
+            'Refactors the general settings panel into global and project-level settings.',
+            'Global settings are shared across projects. Encoding, Formatter markers, Maven path, and project SDK are configured once and applied to every project.',
+            'Web/PDA services now start in an external cmd window, automatically change to the target path, and run npm commands without relying on the IDEA terminal.'
+        ],
+        '1.1.2': [
+            'Fixes errors during major Server version upgrades.',
+            'Fixes the red warning shown in Run Configuration after project initialization by waiting for Maven asynchronous import to complete before creating the configuration.',
+            'Fixes the build progress remaining at make and completed artifacts not being packaged to the output directory because pause in make.bat blocked result-file creation.',
+            'Improves the plugin name, package name, description, and usage instructions.',
+            'Refactors the build mechanism by copying make.bat and injecting SUCCESS/FAILURE result markers, independent of pause and exit codes. If no <code>|| goto</code> structure exists, it falls back to artifact freshness.',
+            'Enforces one version number across all three clients, including unselected modules, and increments it by 1 by default.',
+            'Adds a clickable Open Output Directory link to notifications when the output directory is set and contains artifacts.'
+        ],
+        '1.1.1': [
+            'Adds a context-menu system icon library with theme adaptation, Chinese keyword search, and space-separated multi-keyword AND matching.',
+            'Clicking an icon now copies its code to the clipboard.'
+        ],
+        '1.1.0': [
+            'Adds a platform upgrade engine supporting major upgrades with full replacement and preserved-directory restoration, plus patch upgrades with lib replacement and package.json updates. It includes automatic backup, transactional staging and rollback, and cancellation recovery.',
+            'Adds an upgrade dialog that detects upgrade type automatically, validates paths to prevent self-overwrite, allows preserved directories to be selected for frontend modules during major upgrades, and previews operations.',
+            'Adds a project build dialog for module selection, a unified output directory, and one-click project version updates.',
+            'Enhances RAG retrieval with HyDE hypothetical-document expansion, TOC heading-tree weighting, an inverted index, query routing, and search-result metadata, providing five vector-free retrieval improvements.',
+            'Adds port settings and one-click port updates to the settings panel.',
+            'Optimizes the upgrade dialog layout by placing the new-version path label, input, and upgrade type on one row and removing TitledBorder and separators.',
+            'Prevents downgrades by disabling confirmation when the target version is less than or equal to the current version, with separate messages for equal and lower versions.',
+            'Improves the knowledge-base Q&A panel with icon buttons for send, stop, and clear, plus an auto-sizing input field.',
+            'Refactors npm service startup with a shared runNpmCommand method and npm availability detection.'
+        ],
+        '1.0.3': [
+            'Adds a V6 development knowledge Q&A chat panel in the sidebar with RAG-based answers from the documentation directory.',
+            'Adds document indexing and hybrid retrieval for knowledge-base directories, including Markdown, Java, JS, SQL, and XML. It combines bigrams, keywords, heading weighting, and automatic context expansion.',
+            'Adds streaming AI chat with OpenAI, Claude, DeepSeek, and Custom-compatible APIs, SSE output, and debounced Token rendering.',
+            'AI response language now follows the plugin language and automatically adapts after switching between Chinese and English.',
+            'Encrypts API keys with the native operating-system keychain: Windows Credential Manager or macOS Keychain.'
+        ],
+        '1.0.2': [
+            'Displays platform and project versions for all clients in the settings panel and warns when the three client versions differ.',
+            'Adds a context-menu action that starts Web/PDA development servers, installs dependencies automatically, and opens the browser.',
+            'Automatically creates Run Configurations for service startup and database upgrades after project initialization, with intelligent module-path matching.',
+            'Adds Chinese and English localization for all context-menu actions.',
+            'The project initialization confirmation dialog now shows detailed initialization instructions.',
+            'Optimizes the settings panel layout with consistent widths and version labels placed next to their input fields.'
+        ],
+        '1.0.1': [
+            'Validates Server, Web, and PDA module paths before synchronization or initialization to ensure they are configured and exist.',
+            'Adds one-click project initialization that replaces Demo/demo/DEMO placeholders in a template project with the actual project code, including package, class, file, directory, and file-content names.',
+            'Adds ColumnType field-value constant synchronization with full, selected-text incremental, and custom-field synchronization to frontend JS files.',
+            'Adds CheckType identifier synchronization with full and selected-text incremental synchronization to frontend JS files.',
+            'Improves internationalization (i18n) support.'
+        ]
+    };
     const root = document.getElementById('rawNotes');
     const cards = [];
     let currentCard = null;
@@ -425,6 +569,7 @@ code { padding: 2px 5px; border: 1px solid #e5e7eb; border-radius: 4px; color: #
     cards.forEach(function (card) {
         const versionHeading = card.querySelector('h3');
         const version = versionHeading.textContent.replace(/^Version\s+/, '');
+        const translations = releaseTranslations[version] || [];
         versionHeading.dataset.zh = '版本 ' + version;
         versionHeading.dataset.en = 'Version ' + version;
         card.querySelectorAll('h4').forEach(function (heading) {
@@ -433,23 +578,77 @@ code { padding: 2px 5px; border: 1px solid #e5e7eb; border-radius: 4px; color: #
             heading.dataset.zh = key === 'Added' ? '新增' : key === 'Changed' ? '变更' : key === 'Fixed' ? '修复' : key;
             heading.dataset.en = dictionary[key] || key;
         });
+        card.querySelectorAll('li').forEach(function (item, index) {
+            item.dataset.zhHtml = item.innerHTML;
+            item.dataset.enHtml = translations[index] || item.innerHTML;
+        });
     });
 
     const links = document.getElementById('versionLinks');
     cards.forEach(function (card, index) {
         const link = document.createElement('a');
+        const marker = document.createElement('span');
+        const label = document.createElement('span');
         link.className = 'version-link';
         link.href = '#' + card.id;
-        link.textContent = card.querySelector('h3').textContent.replace(/^Version\s+/, 'v');
+        marker.className = 'version-marker';
+        marker.setAttribute('aria-hidden', 'true');
+        label.className = 'version-text';
+        label.textContent = card.querySelector('h3').textContent.replace(/^Version\s+/, 'v');
+        link.appendChild(marker);
+        link.appendChild(label);
         if (index === 0) link.dataset.latest = 'Latest';
         links.appendChild(link);
     });
+
+    let activeCard = null;
+    function updateActiveVersion() {
+        const activationLine = 96;
+        let nextCard = cards[0];
+        cards.forEach(function (card) {
+            if (card.getBoundingClientRect().top <= activationLine) nextCard = card;
+        });
+        if (window.scrollY + window.innerHeight >= document.documentElement.scrollHeight - 2) {
+            nextCard = cards[cards.length - 1];
+        }
+        if (nextCard === activeCard) return;
+        activeCard = nextCard;
+        const allLinks = Array.from(links.querySelectorAll('.version-link'));
+        const activeIndex = cards.indexOf(activeCard);
+        allLinks.forEach(function (link, index) {
+            const isActive = index === activeIndex;
+            link.classList.toggle('active', isActive);
+            if (isActive) link.setAttribute('aria-current', 'true');
+            else link.removeAttribute('aria-current');
+        });
+        const activeLink = allLinks[activeIndex];
+        if (activeLink && links.scrollWidth > links.clientWidth) {
+            const targetLeft = activeLink.offsetLeft - (links.clientWidth - activeLink.offsetWidth) / 2;
+            const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+            links.scrollTo({ left: targetLeft, behavior: reduceMotion ? 'auto' : 'smooth' });
+        }
+    }
+
+    let scrollTicking = false;
+    window.addEventListener('scroll', function () {
+        if (scrollTicking) return;
+        scrollTicking = true;
+        window.requestAnimationFrame(function () {
+            updateActiveVersion();
+            scrollTicking = false;
+        });
+    }, { passive: true });
+    updateActiveVersion();
 
     function applyLanguage(lang) {
         document.documentElement.lang = lang === 'zh' ? 'zh-CN' : 'en';
         document.querySelectorAll('[data-zh][data-en]').forEach(function (node) {
             node.textContent = lang === 'zh' ? node.dataset.zh : node.dataset.en;
         });
+        document.querySelectorAll('[data-zh-html][data-en-html]').forEach(function (node) {
+            node.innerHTML = lang === 'zh' ? node.dataset.zhHtml : node.dataset.enHtml;
+        });
+        document.title = lang === 'zh' ? '更新日志 - IMS V6 Code Assistant' : 'Changelog - IMS V6 Code Assistant';
         const latestLink = links.querySelector('.version-link');
         if (latestLink) latestLink.dataset.latest = lang === 'zh' ? '最新' : 'Latest';
         document.getElementById('langLabel').textContent = lang === 'zh' ? 'EN' : '中';

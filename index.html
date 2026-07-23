@@ -206,7 +206,7 @@ details summary { list-style: none; }
 .back-to-top.visible { opacity: 1; visibility: visible; transform: translateY(0); }
 .back-to-top:hover { transform: translateY(-4px) scale(1.05); box-shadow: 0 12px 32px rgba(59, 130, 246, 0.4); }
 .lang-toggle{display:inline-flex;align-items:center;gap:4px;background:rgba(59,130,246,0.08);border:1px solid rgba(59,130,246,0.2);color:#3b82f6;font-size:12px;font-weight:600;padding:4px 12px;border-radius:6px;cursor:pointer;transition:all 0.2s ease;white-space:nowrap;}.lang-toggle:hover{background:rgba(59,130,246,0.15);border-color:rgba(59,130,246,0.35);}.lang-toggle svg{width:14px;height:14px;}
-.manual-sidebar { position: sticky; top: 48px; }
+.manual-sidebar { position: sticky; top: 72px; }
 .max-w-7xl { max-width:1280px; } .max-w-6xl { max-width:1152px; }
 .max-w-3xl { max-width:768px; } .max-w-2xl { max-width:672px; }
 .mx-auto { margin-left:auto; margin-right:auto; }
@@ -283,25 +283,69 @@ details[open] summary .group-open\:rotate-180 { transform:rotate(180deg); }
 .transition-colors { transition-property:color,background-color,border-color; transition-duration:.15s; }
 .transition-transform { transition-property:transform; transition-duration:.15s; }
 footer.border-gray-200 { border-color:rgba(0,0,0,0.08); }
+.manual-layout {
+    display: grid;
+    grid-template-columns: 216px minmax(0, 1fr);
+    gap: 32px;
+    align-items: start;
+}
+.manual-sidebar {
+    width: auto;
+    max-height: calc(100vh - 96px);
+    padding-right: 4px;
+}
+.manual-sidebar-list { display: grid; gap: 3px; }
+.sidebar-nav-item {
+    position: relative;
+    width: 100%;
+    min-height: 38px;
+    padding: 7px 9px;
+    border: 0;
+    border-radius: 6px;
+    color: #6b7280;
+    background: transparent;
+    font: inherit;
+    text-align: left;
+    cursor: pointer;
+}
+.sidebar-nav-item::before {
+    content: "";
+    position: absolute;
+    inset: 7px auto 7px 0;
+    width: 2px;
+    border-radius: 2px;
+    background: transparent;
+}
+.sidebar-nav-item.active::before { background: #3b82f6; }
+.manual-content { min-width: 0; }
+.manual-section { display: none; margin-bottom: 0; }
+.manual-section.is-active { display: block; }
+.manual-section.glass-card:hover { transform: none; }
 @media (max-width: 700px) {
-    .manual-layout { flex-direction: column; gap: 12px; }
+    .manual-layout { display: block; }
     .manual-sidebar {
-        position: static !important; max-height: none !important;
-        width: 100% !important; display: block !important;
-        flex-shrink: 1; overflow: visible; padding-bottom: 8px;
-        border-bottom: 1px solid rgba(0,0,0,0.08); margin-bottom: 0;
+        position: sticky !important; top: 48px; z-index: 30;
+        width: auto !important; max-height: none !important;
+        margin: 0 -16px 14px; padding: 8px 16px;
+        overflow: hidden;
+        border-bottom: 1px solid rgba(0,0,0,0.08);
+        background: rgba(248,250,252,0.94);
+        backdrop-filter: blur(12px);
     }
+    .manual-sidebar > .text-2xs { display: none; }
     .manual-sidebar-list {
         display: flex; gap: 4px; overflow-x: auto;
-        padding: 0 0 4px; scrollbar-width: none;
+        padding: 0; scrollbar-width: none;
         overscroll-behavior-x: contain;
     }
     .manual-sidebar-list::-webkit-scrollbar { display: none; }
     .manual-sidebar-list > * + * { margin-top: 0; }
     .manual-sidebar-list .sidebar-nav-item {
-        flex: 0 0 auto; padding: 5px 8px;
+        flex: 0 0 auto; width: auto; min-height: 32px; padding: 5px 8px;
         font-size: 11px; white-space: nowrap;
     }
+    .sidebar-nav-item::before { display: none; }
+    .manual-content { min-width: 0; }
     .manual-section { padding: 16px; border-radius: 8px; }
     .hero-title { font-size: 2rem; }
     .nav-product-name { display: none; }
@@ -616,12 +660,21 @@ footer.border-gray-200 { border-color:rgba(0,0,0,0.08); }
 <section id="manual" class="py-12 scroll-mt-16">
     <h2 class="text-2xl font-bold mb-3 text-center" style="color:#1f2937">操作手册</h2>
     <p class="text-center mb-10 max-w-2xl mx-auto" style="color:#6b7280">每个功能的详细操作步骤，帮助你快速上手</p>
-    <div class="manual-layout flex gap-5">
+    <div class="manual-layout">
         <div class="manual-sidebar w-48 flex-shrink-0 sticky top-14 max-h-[calc(100vh-4rem)] overflow-y-auto">
             <div class="text-2xs font-semibold uppercase tracking-wider mb-2 px-2" style="color:#6b7280">功能目录</div>
-            <div class="manual-sidebar-list space-y-0.5"><div class="sidebar-nav-item flex items-center gap-2 px-2 py-1.5 rounded-lg cursor-pointer text-sm active" data-section="settings" style="color:#6b7280"><span class="nav-num">1</span><span>可视化配置</span></div><div class="sidebar-nav-item flex items-center gap-2 px-2 py-1.5 rounded-lg cursor-pointer text-sm" data-section="upgrade" style="color:#6b7280"><span class="nav-num">2</span><span>平台版本升级</span></div><div class="sidebar-nav-item flex items-center gap-2 px-2 py-1.5 rounded-lg cursor-pointer text-sm" data-section="build" style="color:#6b7280"><span class="nav-num">3</span><span>项目构建打包</span></div><div class="sidebar-nav-item flex items-center gap-2 px-2 py-1.5 rounded-lg cursor-pointer text-sm" data-section="scan" style="color:#6b7280"><span class="nav-num">4</span><span>代码扫描</span></div><div class="sidebar-nav-item flex items-center gap-2 px-2 py-1.5 rounded-lg cursor-pointer text-sm" data-section="codegen" style="color:#6b7280"><span class="nav-num">5</span><span>代码生成器</span></div><div class="sidebar-nav-item flex items-center gap-2 px-2 py-1.5 rounded-lg cursor-pointer text-sm" data-section="sync" style="color:#6b7280"><span class="nav-num">6</span><span>常量同步 & 图标库</span></div><div class="sidebar-nav-item flex items-center gap-2 px-2 py-1.5 rounded-lg cursor-pointer text-sm" data-section="server" style="color:#6b7280"><span class="nav-num">7</span><span>启动前端 & 切换数据库</span></div><div class="sidebar-nav-item flex items-center gap-2 px-2 py-1.5 rounded-lg cursor-pointer text-sm" data-section="ai" style="color:#6b7280"><span class="nav-num">8</span><span>开发手册问答</span></div></div>
+            <div class="manual-sidebar-list" role="tablist" aria-label="功能目录">
+                <button class="sidebar-nav-item flex items-center gap-2 text-sm active" id="manual-tab-settings" type="button" role="tab" aria-selected="true" aria-controls="section-settings" data-section="settings"><span class="nav-num">1</span><span>可视化配置</span></button>
+                <button class="sidebar-nav-item flex items-center gap-2 text-sm" id="manual-tab-upgrade" type="button" role="tab" aria-selected="false" aria-controls="section-upgrade" data-section="upgrade"><span class="nav-num">2</span><span>平台版本升级</span></button>
+                <button class="sidebar-nav-item flex items-center gap-2 text-sm" id="manual-tab-build" type="button" role="tab" aria-selected="false" aria-controls="section-build" data-section="build"><span class="nav-num">3</span><span>项目构建打包</span></button>
+                <button class="sidebar-nav-item flex items-center gap-2 text-sm" id="manual-tab-scan" type="button" role="tab" aria-selected="false" aria-controls="section-scan" data-section="scan"><span class="nav-num">4</span><span>代码扫描</span></button>
+                <button class="sidebar-nav-item flex items-center gap-2 text-sm" id="manual-tab-codegen" type="button" role="tab" aria-selected="false" aria-controls="section-codegen" data-section="codegen"><span class="nav-num">5</span><span>代码生成器</span></button>
+                <button class="sidebar-nav-item flex items-center gap-2 text-sm" id="manual-tab-sync" type="button" role="tab" aria-selected="false" aria-controls="section-sync" data-section="sync"><span class="nav-num">6</span><span>常量同步 & 图标库</span></button>
+                <button class="sidebar-nav-item flex items-center gap-2 text-sm" id="manual-tab-server" type="button" role="tab" aria-selected="false" aria-controls="section-server" data-section="server"><span class="nav-num">7</span><span>启动前端 & 切换数据库</span></button>
+                <button class="sidebar-nav-item flex items-center gap-2 text-sm" id="manual-tab-ai" type="button" role="tab" aria-selected="false" aria-controls="section-ai" data-section="ai"><span class="nav-num">8</span><span>开发手册问答</span></button>
+            </div>
         </div>
-        <div class="flex-1 min-w-0"><div class="manual-section glass-card rounded-xl p-5 mb-5 scroll-mt-16" id="section-settings">
+        <div class="manual-content"><div class="manual-section glass-card rounded-xl p-5 scroll-mt-16 is-active" id="section-settings" role="tabpanel" aria-labelledby="manual-tab-settings">
             <div class="flex items-center gap-2.5 mb-4">
                 <div class="feature-icon-wrap"><svg class="icon-inline" height="13px" width="13px" version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 511.986 511.986" xml:space="preserve" fill="#000000">
 <g id="SVGRepo_bgCarrier" stroke-width="0"/>
@@ -1266,41 +1319,63 @@ if(CURRENT_LANG==='en')setTimeout(function(){applyLang('en');},150);
     tick();
 })();
 
-// Scroll spy
-(function() {
-    var sections = document.querySelectorAll('.manual-section');
-    if (!sections.length) return;
-    var observer = new IntersectionObserver(function(entries) {
-        entries.forEach(function(entry) {
-            if (entry.isIntersecting) {
-                var id = entry.target.id.replace('section-', '');
-                document.querySelectorAll('.sidebar-nav-item').forEach(function(n) {
-                    n.classList.toggle('active', n.dataset.section === id);
-                });
-            }
+// Manual feature tabs
+var manualItems = Array.from(document.querySelectorAll('.sidebar-nav-item'));
+var manualSections = Array.from(document.querySelectorAll('.manual-section'));
+function showManualSection(id, shouldScroll) {
+    var target = document.getElementById('section-' + id);
+    if (!target) return;
+    manualItems.forEach(function(item) {
+        var active = item.dataset.section === id;
+        item.classList.toggle('active', active);
+        item.setAttribute('aria-selected', active ? 'true' : 'false');
+        item.tabIndex = active ? 0 : -1;
+    });
+    manualSections.forEach(function(section) {
+        var active = section === target;
+        var sectionId = section.id.replace('section-', '');
+        section.setAttribute('role', 'tabpanel');
+        section.setAttribute('aria-labelledby', 'manual-tab-' + sectionId);
+        section.classList.toggle('is-active', active);
+        section.setAttribute('aria-hidden', active ? 'false' : 'true');
+    });
+    var activeItem = manualItems.find(function(item) { return item.dataset.section === id; });
+    var list = document.querySelector('.manual-sidebar-list');
+    if (activeItem && list && list.scrollWidth > list.clientWidth) {
+        list.scrollTo({ left: activeItem.offsetLeft - (list.clientWidth - activeItem.offsetWidth) / 2, behavior: 'smooth' });
+    }
+    if (shouldScroll) {
+        window.requestAnimationFrame(function() {
+            document.getElementById('manual').scrollIntoView({ behavior: 'smooth', block: 'start' });
         });
-    }, { rootMargin: '-60px 0px -70% 0px' });
-    sections.forEach(function(s) { observer.observe(s); });
-})();
+    }
+}
 
-// Sidebar nav click
-document.querySelectorAll('.sidebar-nav-item').forEach(function(item) {
+manualItems.forEach(function(item) {
     item.addEventListener('click', function() {
-        var s = document.getElementById('section-' + item.dataset.section);
-        if (s) s.scrollIntoView({ behavior: 'smooth', block: 'start' });
-        document.querySelectorAll('.sidebar-nav-item').forEach(function(n) { n.classList.remove('active'); });
-        item.classList.add('active');
+        showManualSection(item.dataset.section, true);
+        history.replaceState(null, '', '#section-' + item.dataset.section);
+    });
+    item.addEventListener('keydown', function(event) {
+        if (event.key !== 'ArrowDown' && event.key !== 'ArrowUp' && event.key !== 'ArrowRight' && event.key !== 'ArrowLeft') return;
+        event.preventDefault();
+        var direction = event.key === 'ArrowDown' || event.key === 'ArrowRight' ? 1 : -1;
+        var nextIndex = (manualItems.indexOf(item) + direction + manualItems.length) % manualItems.length;
+        var nextItem = manualItems[nextIndex];
+        showManualSection(nextItem.dataset.section, false);
+        history.replaceState(null, '', '#section-' + nextItem.dataset.section);
+        nextItem.focus();
     });
 });
+
+var initialManualSection = location.hash.indexOf('#section-') === 0 ? location.hash.replace('#section-', '') : 'settings';
+showManualSection(initialManualSection, false);
 
 // Feature card click → jump to manual
 document.querySelectorAll('.glass-card[data-manual]').forEach(function(card) {
     card.addEventListener('click', function() {
-        var s = document.getElementById('section-' + card.dataset.manual);
-        if (s) s.scrollIntoView({ behavior: 'smooth', block: 'start' });
-        document.querySelectorAll('.sidebar-nav-item').forEach(function(n) {
-            n.classList.toggle('active', n.dataset.section === card.dataset.manual);
-        });
+        showManualSection(card.dataset.manual, true);
+        history.replaceState(null, '', '#section-' + card.dataset.manual);
     });
 });
 
