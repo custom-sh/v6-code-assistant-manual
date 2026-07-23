@@ -263,7 +263,6 @@ footer.border-gray-200 { border-color:rgba(0,0,0,0.08); }
 
 <nav class="fixed w-full z-50 glass-nav" role="navigation">
     <div class="max-w-7xl mx-auto px-6 h-12 flex items-center justify-between">
-        <button class="lang-toggle" id="langToggle" title="Switch to English" onclick="switchLang()"><svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5h12M9 3v2m1.048 9.5A18.022 18.022 0 016.412 9m6.088 9h2M11 21l5-10 5 10M12.751 5C11.783 10.77 8.07 15.61 3 18.129"/></svg><span id="langLabel">EN</span></button>
 	        <div class="flex items-center gap-6">
             <div class="flex items-center gap-2">
                 <div class="nav-logo-icon"><svg class="nav-logo-img" version="1.1" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 1587 1351">
@@ -400,6 +399,7 @@ footer.border-gray-200 { border-color:rgba(0,0,0,0.08); }
                 <a href="#manual" class="nav-link">操作手册</a>
                 <a href="#faq" class="nav-link">常见问题</a>
             </div>
+            <button class="lang-toggle" id="langToggle" title="Switch to English" onclick="switchLang()"><svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5h12M9 3v2m1.048 9.5A18.022 18.022 0 016.412 9m6.088 9h2M11 21l5-10 5 10M12.751 5C11.783 10.77 8.07 15.61 3 18.129"/></svg><span id="langLabel">EN</span></button>
         </div>
     </div>
 </nav>
@@ -1108,7 +1108,20 @@ const I18N_DICT={
 '配置面板会自动检测多端版本，不一致时弹出警告通知。你可以使用「升级版本」功能统一升级，或在「构建项目」时强制统一版本号。':'The configuration panel auto-detects version differences and shows a warning. Use the Upgrade Version feature to unify, or force version unification during Build Project.',
 '构建时 IDEA 卡死怎么办？':'What if IDEA freezes during build?',
 'IMS V6 Code Assistant 使用独立 cmd 窗口执行 make，不占用 IDEA 内存。如果仍然卡顿，请检查项目路径配置是否正确。':'IMS V6 Code Assistant uses independent cmd windows for make, not consuming IDEA memory. If you still experience lag, verify your project path configuration.',
-'回到顶部':'Back to Top'
+'回到顶部':'Back to Top',
+// Additional missing translations
+'使用说明':'User Guide',
+'集成统一配置面板':'Integrated Unified Config Panel','一键初始化':'One-Click Init','新项目初始化模板':'New Project Init Template','实时检测、快捷修复':'Real-Time Scan, Quick Fix','版本升级':'Version Upgrade','一键升级、自动备份':'One-Click Upgrade, Auto Backup','构建打包':'Build & Package','并行构建统一输出':'Parallel Build, Unified Output','表结构生成代码模板':'Generate Code from Table Structure',
+'面向 Pangus IMS V6 项目的 IntelliJ IDEA 插件，集成多个自动化功能，减少重复操作，提升开发效率。':'An IntelliJ IDEA plugin for Pangus IMS V6 projects, integrating multiple automated features to reduce repetitive operations and improve development efficiency.',
+'项目初始化、版本升级、项目构建打包、代码扫描、代码生成器……':'Project Init, Version Upgrade, Build & Package, Code Scanner, Code Generator...',
+'每个功能的详细操作步骤，帮助你快速上手':'Detailed steps for each feature to help you get started quickly',
+'IDEA内置配置统一集中面板，省去繁琐步骤，一次配置全局生效，多端路径、端口管理，版本不一致自动告警，自动初始化IMS V6模板工程':'Built-in unified configuration panel in IDEA, saving tedious steps. One-time config takes effect globally. Multi-end path and port management. Auto-alert on version mismatch. Auto-init IMS V6 template project.',
+'自动识别分类升级类型，升级前自动备份，支持多端独立升级。底部进度条实时显示操作状态，事务化暂存/回滚保障安全。':'Auto-detect upgrade type. Auto-backup before upgrade. Supports independent multi-end upgrades. Status bar shows real-time progress. Transactional staging/rollback ensures safety.',
+'选择模块、统一版本号，独立窗口并行 make 构建，自动打包 zip 到输出目录，版本号自动读取 Server 端并默认 +1，强制统一写入多端。':'Select modules, unify version numbers. Parallel make in independent windows. Auto-package zip to output directory. Version auto-reads from Server and increments by 1. Force-writes uniformly across all modules.',
+'基于 IMS V6 开发规范检查 Java 代码，支持实时检测、按文件/目录/项目扫描，并为部分问题提供快捷修复。':'Checks Java code against IMS V6 development standards. Supports real-time scanning by file/directory/project. Quick fixes available for certain issues.',
+'复制文档表结构，生成骨架代码，支持预览窗微调后直接写入文件，支持转义值常量命名':'Copy table structure from documentation to generate skeleton code. Supports preview fine-tuning before writing to file. Supports escaped constant naming.',
+'Java 常量一键同步至前端 JS（支持全量/增量/自定义字段），内置图标库支持中文关键词搜索，点击图标自动复制 pg-icon 代码到剪贴板。':'One-click sync Java constants to frontend JS (full/incremental/custom fields). Built-in icon library with Chinese keyword search. Click icon to auto-copy pg-icon code to clipboard.',
+'集中面板':'Centralized Panel','多端管理':'Multi-End Mgmt','自动配置':'Auto Config','自动备份':'Auto Backup','回滚保护':'Rollback Protection','分类升级':'Categorized Upgrade','自动打包':'Auto Package','统一输出':'Unified Output','规范检查':'Standards Check','实时检测':'Real-Time Detection','快捷修复':'Quick Fix','复刻平台':'Platform Replica','自动识别':'Auto Recognition','一键写入':'One-Click Write','中文搜索':'Chinese Search','一键复制':'One-Click Copy'
 };
 
 let CURRENT_LANG=localStorage.getItem('ims-manual-lang')||'zh';
