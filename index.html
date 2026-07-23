@@ -268,13 +268,25 @@ details[open] summary .group-open\:rotate-180 { transform:rotate(180deg); }
 .transition-transform { transition-property:transform; transition-duration:.15s; }
 footer.border-gray-200 { border-color:rgba(0,0,0,0.08); }
 @media (max-width: 700px) {
+    .manual-layout { flex-direction: column; gap: 12px; }
     .manual-sidebar {
         position: static !important; max-height: none !important;
-        width: 100% !important; display: flex !important;
-        flex-wrap: wrap; gap: 4px; padding-bottom: 10px;
-        border-bottom: 1px solid rgba(0,0,0,0.08); margin-bottom: 14px;
+        width: 100% !important; display: block !important;
+        flex-shrink: 1; overflow: visible; padding-bottom: 8px;
+        border-bottom: 1px solid rgba(0,0,0,0.08); margin-bottom: 0;
     }
-    .sidebar-nav-item { padding: 3px 6px; font-size: 11px; }
+    .manual-sidebar-list {
+        display: flex; gap: 4px; overflow-x: auto;
+        padding: 0 0 4px; scrollbar-width: none;
+        overscroll-behavior-x: contain;
+    }
+    .manual-sidebar-list::-webkit-scrollbar { display: none; }
+    .manual-sidebar-list > * + * { margin-top: 0; }
+    .manual-sidebar-list .sidebar-nav-item {
+        flex: 0 0 auto; padding: 5px 8px;
+        font-size: 11px; white-space: nowrap;
+    }
+    .manual-section { padding: 16px; border-radius: 8px; }
     .hero-title { font-size: 2rem; }
     .nav-product-name { display: none; }
 }
@@ -423,7 +435,7 @@ footer.border-gray-200 { border-color:rgba(0,0,0,0.08); }
                 <a href="#manual" class="nav-link">操作手册</a>
                 <a href="#faq" class="nav-link">常见问题</a>
             </div>
-            <a href="change-notes.html" class="nav-link changelog-link" data-i18n-zh="更新日志" data-i18n-en="Changelog">更新日志</a>
+            <a href="change-notes.html" class="nav-link changelog-link text-xs" data-i18n-zh="更新日志" data-i18n-en="Changelog">更新日志</a>
         </div>
             <button class="lang-toggle" id="langToggle" title="Switch to English" onclick="switchLang()"><svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5h12M9 3v2m1.048 9.5A18.022 18.022 0 016.412 9m6.088 9h2M11 21l5-10 5 10M12.751 5C11.783 10.77 8.07 15.61 3 18.129"/></svg><span id="langLabel">EN</span></button>    </div>
 </nav>
@@ -588,10 +600,10 @@ footer.border-gray-200 { border-color:rgba(0,0,0,0.08); }
 <section id="manual" class="py-12 scroll-mt-16">
     <h2 class="text-2xl font-bold mb-3 text-center" style="color:#1f2937">操作手册</h2>
     <p class="text-center mb-10 max-w-2xl mx-auto" style="color:#6b7280">每个功能的详细操作步骤，帮助你快速上手</p>
-    <div class="flex gap-5">
+    <div class="manual-layout flex gap-5">
         <div class="manual-sidebar w-48 flex-shrink-0 sticky top-14 max-h-[calc(100vh-4rem)] overflow-y-auto">
             <div class="text-2xs font-semibold uppercase tracking-wider mb-2 px-2" style="color:#6b7280">功能目录</div>
-            <div class="space-y-0.5"><div class="sidebar-nav-item flex items-center gap-2 px-2 py-1.5 rounded-lg cursor-pointer text-sm active" data-section="settings" style="color:#6b7280"><span class="nav-num">1</span><span>可视化配置</span></div><div class="sidebar-nav-item flex items-center gap-2 px-2 py-1.5 rounded-lg cursor-pointer text-sm" data-section="upgrade" style="color:#6b7280"><span class="nav-num">2</span><span>平台版本升级</span></div><div class="sidebar-nav-item flex items-center gap-2 px-2 py-1.5 rounded-lg cursor-pointer text-sm" data-section="build" style="color:#6b7280"><span class="nav-num">3</span><span>项目构建打包</span></div><div class="sidebar-nav-item flex items-center gap-2 px-2 py-1.5 rounded-lg cursor-pointer text-sm" data-section="scan" style="color:#6b7280"><span class="nav-num">4</span><span>代码扫描</span></div><div class="sidebar-nav-item flex items-center gap-2 px-2 py-1.5 rounded-lg cursor-pointer text-sm" data-section="codegen" style="color:#6b7280"><span class="nav-num">5</span><span>代码生成器</span></div><div class="sidebar-nav-item flex items-center gap-2 px-2 py-1.5 rounded-lg cursor-pointer text-sm" data-section="sync" style="color:#6b7280"><span class="nav-num">6</span><span>常量同步 & 图标库</span></div><div class="sidebar-nav-item flex items-center gap-2 px-2 py-1.5 rounded-lg cursor-pointer text-sm" data-section="server" style="color:#6b7280"><span class="nav-num">7</span><span>启动前端 & 切换数据库</span></div><div class="sidebar-nav-item flex items-center gap-2 px-2 py-1.5 rounded-lg cursor-pointer text-sm" data-section="ai" style="color:#6b7280"><span class="nav-num">8</span><span>开发手册问答</span></div></div>
+            <div class="manual-sidebar-list space-y-0.5"><div class="sidebar-nav-item flex items-center gap-2 px-2 py-1.5 rounded-lg cursor-pointer text-sm active" data-section="settings" style="color:#6b7280"><span class="nav-num">1</span><span>可视化配置</span></div><div class="sidebar-nav-item flex items-center gap-2 px-2 py-1.5 rounded-lg cursor-pointer text-sm" data-section="upgrade" style="color:#6b7280"><span class="nav-num">2</span><span>平台版本升级</span></div><div class="sidebar-nav-item flex items-center gap-2 px-2 py-1.5 rounded-lg cursor-pointer text-sm" data-section="build" style="color:#6b7280"><span class="nav-num">3</span><span>项目构建打包</span></div><div class="sidebar-nav-item flex items-center gap-2 px-2 py-1.5 rounded-lg cursor-pointer text-sm" data-section="scan" style="color:#6b7280"><span class="nav-num">4</span><span>代码扫描</span></div><div class="sidebar-nav-item flex items-center gap-2 px-2 py-1.5 rounded-lg cursor-pointer text-sm" data-section="codegen" style="color:#6b7280"><span class="nav-num">5</span><span>代码生成器</span></div><div class="sidebar-nav-item flex items-center gap-2 px-2 py-1.5 rounded-lg cursor-pointer text-sm" data-section="sync" style="color:#6b7280"><span class="nav-num">6</span><span>常量同步 & 图标库</span></div><div class="sidebar-nav-item flex items-center gap-2 px-2 py-1.5 rounded-lg cursor-pointer text-sm" data-section="server" style="color:#6b7280"><span class="nav-num">7</span><span>启动前端 & 切换数据库</span></div><div class="sidebar-nav-item flex items-center gap-2 px-2 py-1.5 rounded-lg cursor-pointer text-sm" data-section="ai" style="color:#6b7280"><span class="nav-num">8</span><span>开发手册问答</span></div></div>
         </div>
         <div class="flex-1 min-w-0"><div class="manual-section glass-card rounded-xl p-5 mb-5 scroll-mt-16" id="section-settings">
             <div class="flex items-center gap-2.5 mb-4">
@@ -1277,7 +1289,7 @@ document.querySelectorAll('.glass-card[data-manual]').forEach(function(card) {
 });
 
 // Nav link click
-document.querySelectorAll('.nav-link').forEach(function(link) {
+document.querySelectorAll('.nav-link[href^="#"]').forEach(function(link) {
     link.addEventListener('click', function(e) {
         e.preventDefault();
         var s = document.getElementById(link.getAttribute('href').replace('#',''));
