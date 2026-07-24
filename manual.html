@@ -215,7 +215,7 @@
             <span class="step-num">3</span>
             <div class="flex-1 min-w-0">
                 <p class="text-sm font-medium" style="color:#1f2937">执行代码扫描</p>
-                <p class="text-xs mt-1" style="color:#6b7280">右键 → IMS V6 Code Assistant → 代码扫描，系统仅执行当前已启用的 IMS V6 规则</p><div class="screenshot-wrapper mt-3"><img src="screenshots/s_scan_menu.png" alt="右键菜单 — 代码扫描" loading="lazy"></div>
+                <p class="text-xs mt-1" style="color:#6b7280">右键 → IMS V6 Code Assistant → 代码扫描，系统仅执行当前已启用的 IMS V6 规则</p><div class="screenshot-wrapper mt-3"><img src="screenshots/s_scan_menu.png" alt="右键菜单 - 代码扫描" loading="lazy"></div>
             </div>
         </li><li class="flex gap-3 items-start py-3 border-b border-gray-100 last:border-0">
             <span class="step-num">4</span>
@@ -250,7 +250,7 @@
             <span class="step-num">1</span>
             <div class="flex-1 min-w-0">
                 <p class="text-sm font-medium" style="color:#1f2937">打开代码生成器</p>
-                <p class="text-xs mt-1" style="color:#6b7280">右键 → IMS V6 Code Assistant → 代码生成器</p><div class="screenshot-wrapper mt-3"><img src="screenshots/s_gen_menu.png" alt="右键菜单 — 代码生成器" loading="lazy"></div>
+                <p class="text-xs mt-1" style="color:#6b7280">右键 → IMS V6 Code Assistant → 代码生成器</p><div class="screenshot-wrapper mt-3"><img src="screenshots/s_gen_menu.png" alt="右键菜单 - 代码生成器" loading="lazy"></div>
             </div>
         </li><li class="flex gap-3 items-start py-3 border-b border-gray-100 last:border-0">
             <span class="step-num">2</span>
@@ -354,7 +354,7 @@
             <span class="step-num">1</span>
             <div class="flex-1 min-w-0">
                 <p class="text-sm font-medium" style="color:#1f2937">选择前端模块</p>
-                <p class="text-xs mt-1" style="color:#6b7280">在项目视图中右键 → IMS V6 Code Assistant，选择需要启动的服务</p><div class="sub-step-bar pl-4 mt-2 space-y-0.5"><p class="text-xs" style="color:#6b7280"><strong style="color:#1f2937">Start Web Server：</strong>使用 VS Code 打开 Web 模块并启动开发服务</p><p class="text-xs" style="color:#6b7280"><strong style="color:#1f2937">Start PDA Server：</strong>使用 VS Code 打开 PDA 模块并启动开发服务</p><p class="text-xs" style="color:#6b7280"><strong style="color:#1f2937">VS Code 不可用：</strong>自动回退到独立 cmd 窗口执行启动命令</p></div><div class="screenshot-wrapper mt-3"><img src="screenshots/s_server_menu.png" alt="右键菜单 — 启动前端服务" loading="lazy"></div>
+                <p class="text-xs mt-1" style="color:#6b7280">在项目视图中右键 → IMS V6 Code Assistant，选择需要启动的服务</p><div class="sub-step-bar pl-4 mt-2 space-y-0.5"><p class="text-xs" style="color:#6b7280"><strong style="color:#1f2937">Start Web Server：</strong>使用 VS Code 打开 Web 模块并启动开发服务</p><p class="text-xs" style="color:#6b7280"><strong style="color:#1f2937">Start PDA Server：</strong>使用 VS Code 打开 PDA 模块并启动开发服务</p><p class="text-xs" style="color:#6b7280"><strong style="color:#1f2937">VS Code 不可用：</strong>自动回退到独立 cmd 窗口执行启动命令</p></div><div class="screenshot-wrapper mt-3"><img src="screenshots/s_server_menu.png" alt="右键菜单 - 启动前端服务" loading="lazy"></div>
             </div>
         </li><li class="flex gap-3 items-start py-3 border-b border-gray-100 last:border-0">
             <span class="step-num">2</span>
@@ -366,7 +366,7 @@
             <span class="step-num">3</span>
             <div class="flex-1 min-w-0">
                 <p class="text-sm font-medium" style="color:#1f2937">等待自动任务启动</p>
-                <p class="text-xs mt-1" style="color:#6b7280">授权后 VS Code 会读取插件生成的 .vscode/tasks.json，并在终端自动执行任务。没有 node_modules 时先运行 npm install，再执行 npm run serve；已有依赖时直接启动服务</p><div class="screenshot-wrapper mt-3"><img src="screenshots/s_server_terminal.png" alt="VS Code 终端 — 前端服务启动" loading="lazy"></div>
+                <p class="text-xs mt-1" style="color:#6b7280">授权后 VS Code 会读取插件生成的 .vscode/tasks.json，并在终端自动执行任务。没有 node_modules 时先运行 npm install，再执行 npm run serve；已有依赖时直接启动服务</p><div class="screenshot-wrapper mt-3"><img src="screenshots/s_server_terminal.png" alt="VS Code 终端 - 前端服务启动" loading="lazy"></div>
             </div>
         </li><li class="flex gap-3 items-start py-3 border-b border-gray-100 last:border-0">
             <span class="step-num">4</span>
@@ -437,10 +437,16 @@
     <div class="max-w-6xl mx-auto px-4 flex flex-col items-center justify-center text-center">
         <p class="text-xs" style="color:#6b7280">© 2026 IMS V6 Code Assistant. All rights reserved.</p>
         <script src="//cdn.busuanzi.cc/busuanzi/3.6.9/busuanzi.min.js" defer></script>
-        <div class="text-xs" style="margin-top:8px;color:#6b7280">
-            今日总访问量 <span id="busuanzi_today_pv">加载中...</span> 次&nbsp;&nbsp;
-            本站总访问量 <span id="busuanzi_site_pv">加载中...</span> 次
-        </div>
+        <dl class="visit-stats">
+            <div class="visit-stat">
+                <dt class="visit-stat-label" data-zh="今日访问" data-en="Today">今日访问</dt>
+                <dd class="visit-stat-reading"><span class="visit-stat-value" id="busuanzi_today_pv">--</span><span class="visit-stat-unit" data-zh="次" data-en="views">次</span></dd>
+            </div>
+            <div class="visit-stat">
+                <dt class="visit-stat-label" data-zh="累计访问" data-en="All time">累计访问</dt>
+                <dd class="visit-stat-reading"><span class="visit-stat-value" id="busuanzi_site_pv">--</span><span class="visit-stat-unit" data-zh="次" data-en="views">次</span></dd>
+            </div>
+        </dl>
     </div>
 </footer>
 

@@ -38,7 +38,7 @@ const I18N_DICT={
 '窗口行为：':'Window behavior: ','构建成功时 cmd 窗口自动关闭；失败/异常时窗口停留保留 pause 供查看错误':'Cmd windows auto-close on success; stay open with pause on failure for error inspection.',
 '打包输出：':'Package output: ','仅 make 成功的模块才打包。Server → lib.zip，Web → web.zip，PDA → pda.zip':'Only successfully built modules are packaged. Server → lib.zip, Web → web.zip, PDA → pda.zip.',
 '通知链接：':'Notification link: ','通知中提供「打开输出目录」可点击链接；全部成功时自动用资源管理器打开':'Notifications include a clickable "Open output directory" link; auto-opens in Explorer when all succeed.',
-'字段去重：':'Field dedup: ','自动识别已激活 DB 连接读取库表字段，同时扫描既有 *ColumnDescDef.java，双重跳过':'Auto-identifies activated DB connections to read table columns, while scanning existing *ColumnDescDef.java — dual skip.',
+'字段去重：':'Field dedup: ','自动识别已激活 DB 连接读取库表字段，同时扫描既有 *ColumnDescDef.java，双重跳过':'Auto-identifies activated DB connections to read table columns, while scanning existing *ColumnDescDef.java - dual skip.',
 'STAT 翻译：':'STAT Translation: ','先查项目内 *ColumnType.java + 平台内置字典；未命中走 AI 批量翻译并缓存预翻译表':'First checks project *ColumnType.java + platform built-in dictionary; falls back to AI batch translation and caches pre-translation table.',
 '占位常量名：':'Placeholder constant: ','AI 仍未命中则回填「字段编码_STAT_序号」，预览窗黄色高亮提示':'If AI still misses, falls back to "fieldCode_STAT_seq", highlighted in yellow in the preview.',
 'ColumnType 同步：':'ColumnType Sync: ','右键 → Sync ColumnType to Frontend，将常量同步至前端 columnType.js':'Right-click → Sync ColumnType to Frontend, syncs constants to frontend columnType.js.',
@@ -111,6 +111,7 @@ const I18N_DICT={
 'IMS V6 Code Assistant 使用独立 cmd 窗口执行 make，不占用 IDEA 内存。如果仍然卡顿，请检查项目路径配置是否正确。':'IMS V6 Code Assistant uses independent cmd windows for make, not consuming IDEA memory. If you still experience lag, verify your project path configuration.',
 '回到顶部':'Back to Top',
 // Additional missing translations
+'今日访问':'Today','累计访问':'All time','次':'views',
 '使用说明':'User Guide',
 '快速上手视频':'Quick Start Video','用一段完整演示了解插件配置与使用步骤':'See plugin configuration and usage steps in one complete walkthrough.','您的浏览器不支持视频播放。':'Your browser does not support video playback.',
 '集成统一配置面板':'Integrated Unified Config Panel','一键初始化':'One-Click Init','新项目初始化模板':'New Project Init Template','实时检测、快捷修复':'Real-Time Scan, Quick Fix','版本升级':'Version Upgrade','一键升级、自动备份':'One-Click Upgrade, Auto Backup','构建打包':'Build & Package','并行构建统一输出':'Parallel Build, Unified Output','表结构生成代码模板':'Generate Code from Table Structure',
