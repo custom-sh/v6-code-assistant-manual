@@ -159,12 +159,63 @@ code { padding: 2px 5px; border: 1px solid #e5e7eb; border-radius: 4px; color: #
     h1 { font-size: 32px; }
     .page-header { margin-bottom: 28px; }
     .notes-layout { display: block; }
-    .version-nav { top: 56px; z-index: 20; margin: 0 -16px 14px; padding: 8px 16px; border-bottom: 1px solid var(--line); background: rgba(248,250,252,0.94); backdrop-filter: blur(12px); }
+    .version-nav { position: sticky; top: 56px; z-index: 20; margin: 0 -16px 14px; padding: 8px 16px; border-bottom: 1px solid var(--line); background: rgba(248,250,252,0.94); backdrop-filter: blur(12px); }
+    .version-nav::after {
+        content: "";
+        position: absolute;
+        z-index: 2;
+        top: 0;
+        right: 16px;
+        bottom: 1px;
+        width: 38px;
+        pointer-events: none;
+        background: linear-gradient(to right, rgba(248,250,252,0), rgba(248,250,252,0.98) 78%);
+        opacity: 0;
+        transition: opacity 180ms ease;
+    }
+    .version-nav::before {
+        content: "";
+        position: absolute;
+        z-index: 3;
+        top: 50%;
+        right: 22px;
+        width: 7px;
+        height: 7px;
+        border-top: 2px solid var(--blue);
+        border-right: 2px solid var(--blue);
+        pointer-events: none;
+        transform: translateY(-50%) rotate(45deg);
+        opacity: 0;
+        transition: opacity 180ms ease;
+    }
+    .version-nav.has-overflow::before,
+    .version-nav.has-overflow::after { opacity: 1; }
     .version-nav-label { display: none; }
-    .version-links { display: flex; gap: 4px; overflow-x: auto; scrollbar-width: none; }
+    .version-links {
+        display: flex;
+        gap: 8px;
+        overflow-x: auto;
+        padding-right: 30px;
+        scrollbar-width: none;
+        scroll-padding-inline: 16px;
+        scroll-snap-type: x proximity;
+        touch-action: pan-x;
+        -webkit-overflow-scrolling: touch;
+        overscroll-behavior-x: contain;
+        cursor: grab;
+    }
+    .version-links:active { cursor: grabbing; }
     .version-links::before { display: none; }
     .version-links::-webkit-scrollbar { display: none; }
-    .version-link { flex: 0 0 auto; }
+    .version-link {
+        flex: 0 0 104px;
+        width: 104px;
+        min-height: 40px;
+        grid-template-columns: 20px minmax(0, 1fr);
+        gap: 6px;
+        padding: 0 10px;
+        scroll-snap-align: start;
+    }
     .version-link:first-child::after { display: none; }
     .release-card { padding: 20px 18px; }
 }
@@ -530,6 +581,17 @@ code { padding: 2px 5px; border: 1px solid #e5e7eb; border-radius: 4px; color: #
     });
 
     const allLinks = Array.from(links.querySelectorAll('.version-link'));
+    const versionNav = links.closest('.version-nav');
+    function updateVersionScrollHint() {
+        if (!versionNav) return;
+        const canScroll = links.scrollWidth > links.clientWidth + 1;
+        const isAtEnd = links.scrollLeft + links.clientWidth >= links.scrollWidth - 2;
+        versionNav.classList.toggle('has-overflow', canScroll && !isAtEnd);
+    }
+
+    links.addEventListener('scroll', updateVersionScrollHint, { passive: true });
+    window.addEventListener('resize', updateVersionScrollHint);
+
     function showVersion(activeIndex, updateUrl) {
         if (activeIndex < 0 || activeIndex >= cards.length) activeIndex = 0;
         cards.forEach(function (card, index) {
@@ -549,6 +611,7 @@ code { padding: 2px 5px; border: 1px solid #e5e7eb; border-radius: 4px; color: #
             const targetLeft = activeLink.offsetLeft - (links.clientWidth - activeLink.offsetWidth) / 2;
             links.scrollTo({ left: targetLeft, behavior: 'auto' });
         }
+        updateVersionScrollHint();
         if (updateUrl) history.replaceState(null, '', '#' + cards[activeIndex].id);
     }
 
