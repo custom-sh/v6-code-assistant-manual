@@ -228,7 +228,7 @@ code { padding: 2px 5px; border: 1px solid #e5e7eb; border-radius: 4px; color: #
 
 <main class="page-shell">
     <header class="page-header">
-        <div class="eyebrow"><span class="eyebrow-dot"></span><span data-zh="当前插件版本 v1.1.7" data-en="Current plugin version v1.1.7">当前插件版本 v1.1.7</span></div>
+        <div class="eyebrow"><span class="eyebrow-dot"></span><span data-zh="当前插件版本 v1.1.8" data-en="Current plugin version v1.1.8">当前插件版本 v1.1.8</span></div>
         <h1 data-zh="更新日志" data-en="Changelog">更新日志</h1>
     </header>
     <div class="notes-layout">
@@ -237,6 +237,19 @@ code { padding: 2px 5px; border: 1px solid #e5e7eb; border-radius: 4px; color: #
             <nav class="version-links" id="versionLinks" role="tablist" aria-label="版本记录"></nav>
         </aside>
         <section class="release-list" id="rawNotes" aria-label="Release notes">
+<h3>Version 1.1.8</h3>
+<h4>Added</h4>
+<ul>
+    <li>代码生成器通过粘贴文本解析为可编辑表格。</li>
+    <li>将字段编码是否以项目编码为前缀检测提前到表设计器。</li>
+</ul>
+<h4>Changed</h4>
+<ul>
+    <li>右键-系统图标 改为从当前项目web路径下加载。</li>
+    <li>右键-插件手册 改为通过系统浏览器打开在线页面。</li>
+</ul>
+
+<hr/>
 <h3>Version 1.1.7</h3>
 <h4>Added</h4>
 <ul>
@@ -430,6 +443,12 @@ code { padding: 2px 5px; border: 1px solid #e5e7eb; border-radius: 4px; color: #
         'Fixed': 'Fixed'
     };
     const releaseTranslations = {
+        '1.1.8': [
+            'The code generator now parses pasted text into an editable table.',
+            'Moves validation of whether field codes use the project code as a prefix to the table designer.',
+            'The context-menu System Icons action now loads icons from the current project\'s web path.',
+            'The context-menu Plugin Manual action now opens the online page in the system browser.'
+        ],
         '1.1.7': [
             'Adds a Quick Fix for the Table class naming rule. IDEA Rename refactoring updates the class name, constructors, file name, and code references together.',
             'Adds a Quick Fix for the Model class naming rule. IDEA Rename refactoring updates the class name, constructors, file name, and code references together.',
