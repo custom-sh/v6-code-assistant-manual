@@ -228,7 +228,7 @@ code { padding: 2px 5px; border: 1px solid #e5e7eb; border-radius: 4px; color: #
 
 <main class="page-shell">
     <header class="page-header">
-        <div class="eyebrow"><span class="eyebrow-dot"></span><span data-zh="当前插件版本 v1.1.8" data-en="Current plugin version v1.1.8">当前插件版本 v1.1.8</span></div>
+        <div class="eyebrow"><span class="eyebrow-dot"></span><span data-zh="当前插件版本 v1.1.9" data-en="Current plugin version v1.1.9">当前插件版本 v1.1.9</span></div>
         <h1 data-zh="更新日志" data-en="Changelog">更新日志</h1>
     </header>
     <div class="notes-layout">
@@ -237,6 +237,23 @@ code { padding: 2px 5px; border: 1px solid #e5e7eb; border-radius: 4px; color: #
             <nav class="version-links" id="versionLinks" role="tablist" aria-label="版本记录"></nav>
         </aside>
         <section class="release-list" id="rawNotes" aria-label="Release notes">
+<h3>Version 1.1.9</h3>
+<h4>Added</h4>
+<ul>
+    <li>支持主表与子表一起粘贴、解析、生成</li>
+</ul>
+<h4>Changed</h4>
+<ul>
+    <li>优化 ColumnDescDef 常量时生成引用不明确的问题；按父接口声明顺序选择并生成限定引用。</li>
+</ul>
+<h4>Fixed</h4>
+<ul>
+    <li>修复构建时中文路径构建失败问题。</li>
+    <li>修复数据库配置与代码生成器界面部分状态未及时同步的问题。</li>
+    <li>修复其它问题。</li>
+</ul>
+
+<hr/>
 <h3>Version 1.1.8</h3>
 <h4>Added</h4>
 <ul>
@@ -443,6 +460,13 @@ code { padding: 2px 5px; border: 1px solid #e5e7eb; border-radius: 4px; color: #
         'Fixed': 'Fixed'
     };
     const releaseTranslations = {
+        '1.1.9': [
+            'Supports pasting, parsing, and generating primary and child tables together.',
+            'Fixes ambiguous references generated for ColumnDescDef constants by selecting according to parent-interface declaration order and generating qualified references.',
+            'Fixes build failures when paths contain Chinese characters.',
+            'Fixes delayed state synchronization in parts of the database configuration and code generator interfaces.',
+            'Fixes other issues.'
+        ],
         '1.1.8': [
             'The code generator now parses pasted text into an editable table.',
             'Moves validation of whether field codes use the project code as a prefix to the table designer.',
