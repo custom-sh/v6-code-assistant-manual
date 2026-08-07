@@ -252,9 +252,11 @@ code { padding: 2px 5px; border: 1px solid #e5e7eb; border-radius: 4px; color: #
 </ul>
 <h4>Changed</h4>
 <ul>
-    <li>代码扫描项目模式：关闭后，版权注释中创建日期早于 <code>2026-05-25</code> 的文件跳过类名检查及
-        PDA 表单 <code>FormComponentHandler.build()</code> 后冗余调用检查，同时停用“栏位编码须以项目编码开头”规则。
+    <li>代码扫描历史代码豁免（截止日期暂定 <code>2026-05-25</code>）：关闭项目模式后，版权注释中创建日期早于截止日期的文件，
+        跳过类名规范、主键/唯一约束/普通索引命名、复合索引 <code>org_code</code> 末位检查，以及 PDA 表单
+        <code>FormComponentHandler.build()</code> 链式调用中冗余的 <code>setLabel()</code>/<code>setName()</code> 检查。
     </li>
+    <li>代码扫描规则：关闭项目模式后跳过“栏位编码须以项目编码开头”规则。</li>
     <li>代码扫描规则：标准 Java <code>public static void main(String[]/String...)</code> 入口方法允许使用
         <code>System.out/err</code> 输出；非标准 <code>main</code> 及其他普通方法仍正常检查。
     </li>
