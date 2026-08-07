@@ -228,7 +228,7 @@ code { padding: 2px 5px; border: 1px solid #e5e7eb; border-radius: 4px; color: #
 
 <main class="page-shell">
     <header class="page-header">
-        <div class="eyebrow"><span class="eyebrow-dot"></span><span data-zh="当前插件版本 v1.2" data-en="Current plugin version v1.2">当前插件版本 v1.2</span></div>
+        <div class="eyebrow"><span class="eyebrow-dot"></span><span data-zh="当前插件版本 v1.2.0" data-en="Current plugin version v1.2.0">当前插件版本 v1.2.0</span></div>
         <h1 data-zh="更新日志" data-en="Changelog">更新日志</h1>
     </header>
     <div class="notes-layout">
@@ -237,25 +237,30 @@ code { padding: 2px 5px; border: 1px solid #e5e7eb; border-radius: 4px; color: #
             <nav class="version-links" id="versionLinks" role="tablist" aria-label="版本记录"></nav>
         </aside>
         <section class="release-list" id="rawNotes" aria-label="Release notes">
-<h3>Version 1.2</h3>
+<h3>Version 1.2.0</h3>
 <h4>Added</h4>
 <ul>
-    <li>代码扫描器：支持按代码创建者扫描。</li>
+    <li>代码扫描器：支持按代码创建者扫描</li>
     <li>初始化模板支持 CS 端项目；平台升级和项目构建暂不包含 <code>ims_client</code>（CS 端）。</li>
-    <li>新增 AI 配置界面，提供 OpenAI、Anthropic、DeepSeek 及常用兼容供应商预设。转义字段翻译命名、手册问答统一接入 AI 配置中的供应商。</li>
+    <li>转义字段翻译命名、内置手册问答 统一接入 AI配置中供应商；重构 AI 配置界面，提供 OpenAI、Anthropic、DeepSeek 及常用兼容供应商预设。</li>
 </ul>
 <h4>Changed</h4>
 <ul>
-    <li>代码扫描项目模式：关闭后，版权注释中创建日期早于 <code>2026-05-25</code> 的文件跳过类名检查及 PDA 表单 <code>FormComponentHandler.build()</code> 后冗余调用检查，同时停用“栏位编码须以项目编码开头”规则。</li>
-    <li>代码扫描规则：标准 Java <code>public static void main(String[]/String...)</code> 入口方法允许使用 <code>System.out/err</code> 输出；非标准 <code>main</code> 及其他普通方法仍正常检查。</li>
-    <li>代码扫描规则：继承 <code>Table</code> 的 <code>abstract class XxxTable</code> 可以不添加 <code>@DbMetaData</code>。</li>
-    <li>代码扫描规则：实现类中的方法可以不添加 <code>@Override</code>。</li>
-    <li>代码扫描规则：版权声明中的日期范围调整为 2021 年至今。</li>
+    <li>代码扫描项目模式：关闭后，版权注释中创建日期早于 <code>2026-05-25</code> 的文件跳过类名检查及
+        PDA 表单 <code>FormComponentHandler.build()</code> 后冗余调用检查，同时停用“栏位编码须以项目编码开头”规则。
+    </li>
+    <li>代码扫描规则：标准 Java <code>public static void main(String[]/String...)</code> 入口方法允许使用
+        <code>System.out/err</code> 输出；非标准 <code>main</code> 及其他普通方法仍正常检查。
+    </li>
+    <li>代码扫描规则：类名为 <code>ImsSelectorDml</code> 的类跳过“多行 SQL 必须存在 <code>@formatter</code> 标识”检查。</li>
+    <li>代码扫描规则：<code>abstract class</code> XxxTable extends Table 可以不加 @DbMetaData </li>
+    <li>代码扫描规则：实现类中方法 可以不加 @Override </li>
+    <li>代码扫描规则：版权声明中日期范围调整：2021-至今 </li>
 </ul>
 <h4>Fixed</h4>
 <ul>
     <li>代码扫描规则：修复“集合初始化需指定容量”规则误报 <code>LinkedList</code> 无参构造的问题。</li>
-    <li>代码扫描规则：修复 foreach 遍历某对象的集合字段时，向其他对象的同名集合字段执行修改的误报。</li>
+    <li>代码扫描规则：修复 foreach 遍历某对象的集合字段时，向其他对象的同名集合字段执行修改的误报  </li>
     <li>代码扫描规则：修复非项目模式下，从基础 <code>ColumnDescDef</code> 继承的列描述常量被误报为变量的问题。</li>
     <li>代码生成器：修复向 <code>ImsSelectorDml</code> 追加选择器时缺少块间空行、表名注释缩进丢失及 CRLF 文件出现混合换行的问题。</li>
 </ul>
@@ -484,12 +489,13 @@ code { padding: 2px 5px; border: 1px solid #e5e7eb; border-radius: 4px; color: #
         'Fixed': 'Fixed'
     };
     const releaseTranslations = {
-        '1.2': [
+        '1.2.0': [
             'The code scanner now supports scanning by code creator.',
             'Initialization templates now support CS projects. Platform upgrades and project builds do not currently include <code>ims_client</code> (CS).',
-            'Adds an AI settings interface with presets for OpenAI, Anthropic, DeepSeek, and commonly used compatible providers. Escaped-field translation naming and manual Q&amp;A now use the providers configured in AI settings.',
+            'Escaped-field translation naming and built-in manual Q&amp;A now use providers configured in AI settings. The AI settings interface has been refactored with presets for OpenAI, Anthropic, DeepSeek, and commonly used compatible providers.',
             'When Project Mode is disabled, files whose copyright comments have a creation date earlier than <code>2026-05-25</code> skip class-name checks and redundant-call checks after PDA form <code>FormComponentHandler.build()</code>. The rule requiring field codes to start with the project code is also disabled.',
             'Standard Java <code>public static void main(String[]/String...)</code> entry methods may use <code>System.out/err</code> for output. Non-standard <code>main</code> methods and other regular methods are still checked.',
+            'Classes named <code>ImsSelectorDml</code> now skip the check requiring multiline SQL to include an <code>@formatter</code> marker.',
             'An <code>abstract class XxxTable</code> that extends <code>Table</code> no longer requires <code>@DbMetaData</code>.',
             'Methods in implementation classes no longer require <code>@Override</code>.',
             'The date range in copyright notices is updated to 2021 through the present.',
