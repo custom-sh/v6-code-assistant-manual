@@ -121,14 +121,17 @@ h1 { margin: 0; font-size: 40px; line-height: 1.15; letter-spacing: 0; }
 .release-list { min-width: 0; display: grid; gap: 16px; }
 .release-card {
     min-width: 0;
-    display: none;
     padding: 24px 28px;
     border: 1px solid rgba(0,0,0,0.06);
     border-radius: 8px;
     background: var(--surface);
     box-shadow: 0 8px 25px rgba(0,0,0,0.06);
+    scroll-margin-top: 88px;
 }
-.release-card.is-active { display: block; border-color: rgba(37,99,235,0.2); box-shadow: 0 12px 32px rgba(37,99,235,0.09); }
+.release-card.is-active {
+    border-color: rgba(37,99,235,0.2);
+    box-shadow: 0 12px 32px rgba(37,99,235,0.09);
+}
 .release-card h3 { margin: 0 0 20px; font-size: 24px; line-height: 1.2; }
 .release-card h4 {
     display: flex;
@@ -217,7 +220,10 @@ code { padding: 2px 5px; border: 1px solid #e5e7eb; border-radius: 4px; color: #
         scroll-snap-align: start;
     }
     .version-link:first-child::after { display: none; }
-    .release-card { padding: 20px 18px; }
+    .release-card { padding: 20px 18px; scroll-margin-top: 118px; }
+}
+@media (prefers-reduced-motion: reduce) {
+    html { scroll-behavior: auto; }
 }
 </style>
 <link rel="stylesheet" href="shared-nav.css">
@@ -234,7 +240,7 @@ code { padding: 2px 5px; border: 1px solid #e5e7eb; border-radius: 4px; color: #
     <div class="notes-layout">
         <aside class="version-nav" aria-label="Version navigation">
             <p class="version-nav-label" data-zh="版本记录" data-en="Versions">版本记录</p>
-            <nav class="version-links" id="versionLinks" role="tablist" aria-label="版本记录"></nav>
+            <nav class="version-links" id="versionLinks" aria-label="版本记录"></nav>
         </aside>
         <section class="release-list" id="rawNotes" aria-label="Release notes">
 <h3>Version 1.2.0</h3>
@@ -647,14 +653,12 @@ code { padding: 2px 5px; border: 1px solid #e5e7eb; border-radius: 4px; color: #
 
     const links = document.getElementById('versionLinks');
     cards.forEach(function (card, index) {
-        const link = document.createElement('button');
+        const link = document.createElement('a');
         const marker = document.createElement('span');
         const label = document.createElement('span');
         link.className = 'version-link';
-        link.type = 'button';
         link.id = 'version-tab-' + index;
-        link.setAttribute('role', 'tab');
-        link.setAttribute('aria-controls', card.id);
+        link.href = '#' + card.id;
         marker.className = 'version-marker';
         marker.setAttribute('aria-hidden', 'true');
         label.className = 'version-text';
@@ -663,7 +667,6 @@ code { padding: 2px 5px; border: 1px solid #e5e7eb; border-radius: 4px; color: #
         link.appendChild(label);
         if (index === 0) link.dataset.latest = 'Latest';
         links.appendChild(link);
-        card.setAttribute('role', 'tabpanel');
         card.setAttribute('aria-labelledby', link.id);
     });
 
@@ -679,19 +682,23 @@ code { padding: 2px 5px; border: 1px solid #e5e7eb; border-radius: 4px; color: #
     links.addEventListener('scroll', updateVersionScrollHint, { passive: true });
     window.addEventListener('resize', updateVersionScrollHint);
 
-    function showVersion(activeIndex, updateUrl) {
+    let currentIndex = -1;
+    function setActiveVersion(activeIndex, updateUrl) {
         if (activeIndex < 0 || activeIndex >= cards.length) activeIndex = 0;
+        if (activeIndex === currentIndex) {
+            if (updateUrl) history.replaceState(null, '', '#' + cards[activeIndex].id);
+            return;
+        }
+        currentIndex = activeIndex;
         cards.forEach(function (card, index) {
             const isActive = index === activeIndex;
             card.classList.toggle('is-active', isActive);
-            card.hidden = !isActive;
-            card.setAttribute('aria-hidden', isActive ? 'false' : 'true');
         });
         allLinks.forEach(function (link, index) {
             const isActive = index === activeIndex;
             link.classList.toggle('active', isActive);
-            link.setAttribute('aria-selected', isActive ? 'true' : 'false');
-            link.tabIndex = isActive ? 0 : -1;
+            if (isActive) link.setAttribute('aria-current', 'true');
+            else link.removeAttribute('aria-current');
         });
         const activeLink = allLinks[activeIndex];
         if (activeLink && links.scrollWidth > links.clientWidth) {
@@ -702,9 +709,27 @@ code { padding: 2px 5px; border: 1px solid #e5e7eb; border-radius: 4px; color: #
         if (updateUrl) history.replaceState(null, '', '#' + cards[activeIndex].id);
     }
 
+    let navigationTarget = -1;
+    let navigationFallback = 0;
+    function goToVersion(index, focusLink) {
+        navigationTarget = index;
+        window.clearTimeout(navigationFallback);
+        setActiveVersion(index, true);
+        cards[index].scrollIntoView({
+            behavior: window.matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth',
+            block: 'start'
+        });
+        navigationFallback = window.setTimeout(function () {
+            navigationTarget = -1;
+            syncActiveVersion();
+        }, 1800);
+        if (focusLink) allLinks[index].focus();
+    }
+
     allLinks.forEach(function (link, index) {
-        link.addEventListener('click', function () {
-            showVersion(index, true);
+        link.addEventListener('click', function (event) {
+            event.preventDefault();
+            goToVersion(index, false);
         });
         link.addEventListener('keydown', function (event) {
             const keys = ['ArrowDown', 'ArrowUp', 'ArrowRight', 'ArrowLeft', 'Home', 'End'];
@@ -715,15 +740,44 @@ code { padding: 2px 5px; border: 1px solid #e5e7eb; border-radius: 4px; color: #
             else if (event.key === 'End') nextIndex = allLinks.length - 1;
             else if (event.key === 'ArrowDown' || event.key === 'ArrowRight') nextIndex = (index + 1) % allLinks.length;
             else nextIndex = (index - 1 + allLinks.length) % allLinks.length;
-            showVersion(nextIndex, true);
-            allLinks[nextIndex].focus();
+            goToVersion(nextIndex, true);
         });
     });
 
     const initialIndex = Math.max(0, cards.findIndex(function (card) {
         return '#' + card.id === location.hash;
     }));
-    showVersion(initialIndex, false);
+    setActiveVersion(initialIndex, false);
+    if (location.hash && cards[initialIndex]) {
+        requestAnimationFrame(function () {
+            cards[initialIndex].scrollIntoView({ behavior: 'instant', block: 'start' });
+        });
+    }
+
+    let scrollFrame = 0;
+    function syncActiveVersion() {
+        scrollFrame = 0;
+        if (navigationTarget >= 0) return;
+        const offset = window.innerWidth <= 760 ? 126 : 96;
+        let activeIndex = 0;
+        cards.forEach(function (card, index) {
+            if (card.getBoundingClientRect().top <= offset) activeIndex = index;
+        });
+        if (window.scrollY + window.innerHeight >= document.documentElement.scrollHeight - 2) {
+            activeIndex = cards.length - 1;
+        }
+        setActiveVersion(activeIndex, false);
+    }
+
+    window.addEventListener('scroll', function () {
+        if (!scrollFrame) scrollFrame = requestAnimationFrame(syncActiveVersion);
+    }, { passive: true });
+    window.addEventListener('scrollend', function () {
+        if (navigationTarget < 0) return;
+        navigationTarget = -1;
+        window.clearTimeout(navigationFallback);
+        syncActiveVersion();
+    });
 
     function applyLanguage(lang) {
         document.documentElement.lang = lang === 'zh' ? 'zh-CN' : 'en';
