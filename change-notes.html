@@ -234,7 +234,7 @@ code { padding: 2px 5px; border: 1px solid #e5e7eb; border-radius: 4px; color: #
 
 <main class="page-shell">
     <header class="page-header">
-        <div class="eyebrow"><span class="eyebrow-dot"></span><span data-zh="当前插件版本 v1.2.0" data-en="Current plugin version v1.2.0">当前插件版本 v1.2.0</span></div>
+        <div class="eyebrow"><span class="eyebrow-dot"></span><span data-zh="当前插件版本 v1.2.1" data-en="Current plugin version v1.2.1">当前插件版本 v1.2.1</span></div>
         <h1 data-zh="更新日志" data-en="Changelog">更新日志</h1>
     </header>
     <div class="notes-layout">
@@ -243,6 +243,28 @@ code { padding: 2px 5px; border: 1px solid #e5e7eb; border-radius: 4px; color: #
             <nav class="version-links" id="versionLinks" aria-label="版本记录"></nav>
         </aside>
         <section class="release-list" id="rawNotes" aria-label="Release notes">
+<h3>Version 1.2.1</h3>
+<h4>Added</h4>
+<ul>
+    <li>* 新增“二开菜单列表”：支持查询、转换并导入，自动处理菜单、URL、注册等项目要求。（当前仅支持标准Model功能，即前端菜单能看到源码的菜单）</li>
+    <li>* 项目配置新增“平台源码库（可选SVN二开源码库）”，自动解析结果并入“二开菜单列表” 。</li>
+    <li>* 代码扫描新增“仅扫描当前 SVN 用户修改的行”范围，支持确认项目 SVN 账号并根据行级修改人过滤扫描结果。</li>
+    <li>* 支持选择代码基于开发手册进行问答，解释代码。</li>
+</ul>
+<h4>Changed</h4>
+<ul>
+    <li>重构开发手册问答，中文问题或流式回答出现乱码的问题；支持代码解释、关联代码</li>
+    <li>扩展版权注释创建者解析，兼容创建日期与“创建”之间无空格、连接符数量不同的格式。</li>
+    <li>扩展事务注解扫描规则：业务事务要求使用 <code>@MasterTransactional</code>，查询库事务允许显式指定
+        <code>queryTransactionManager</code>。</li>
+    <li>设置窗口最小宽度根据项目配置页面所需宽度自动调整，避免路径、端口和版本信息被挤压。</li>
+</ul>
+<h4>Fixed</h4>
+<ul>
+    <li>修复“构建项目”在中文路径下通过临时批处理和多层 CMD 启动时出现路径乱码的问题。</li>
+</ul>
+
+<hr/>
 <h3>Version 1.2.0</h3>
 <h4>Added</h4>
 <ul>
@@ -501,6 +523,17 @@ code { padding: 2px 5px; border: 1px solid #e5e7eb; border-radius: 4px; color: #
         'Fixed': 'Fixed'
     };
     const releaseTranslations = {
+        '1.2.1': [
+            'Adds a secondary-development menu list that supports querying, converting, and importing menus while automatically handling menu, URL, registration, and other project requirements. Standard Model features are currently supported only, meaning menus whose source is visible in the frontend.',
+            'Adds an optional platform source repository (SVN secondary-development source repository) to project settings; parsed results are automatically included in the secondary-development menu list.',
+            'Adds a code-scan scope that scans only lines modified by the current SVN user, with project SVN account confirmation and filtering by line-level author.',
+            'Allows selected code to be used for Q&amp;A based on the development manual and code explanation.',
+            'Refactors development-manual Q&amp;A to fix garbled Chinese questions and streaming answers, and adds code explanation and related-code support.',
+            'Expands copyright-comment creator parsing to support formats with no space between the creation date and “Created”, as well as varying numbers of separators.',
+            'Expands transaction-annotation scanning: business transactions must use <code>@MasterTransactional</code>, while query-database transactions may explicitly specify <code>queryTransactionManager</code>.',
+            'Automatically adjusts the settings window minimum width to the width required by the project settings page, preventing paths, ports, and version information from being compressed.',
+            'Fixes garbled paths when “Build Project” starts through a temporary batch file and multiple layers of CMD under Chinese paths.'
+        ],
         '1.2.0': [
             'The code scanner now supports scanning by code creator.',
             'Initialization templates now support CS projects. Platform upgrades and project builds do not currently include <code>ims_client</code> (CS).',
