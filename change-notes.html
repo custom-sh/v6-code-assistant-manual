@@ -234,7 +234,7 @@ code { padding: 2px 5px; border: 1px solid #e5e7eb; border-radius: 4px; color: #
 
 <main class="page-shell">
     <header class="page-header">
-        <div class="eyebrow"><span class="eyebrow-dot"></span><span data-zh="当前插件版本 v1.2.1" data-en="Current plugin version v1.2.1">当前插件版本 v1.2.1</span></div>
+        <div class="eyebrow"><span class="eyebrow-dot"></span><span data-zh="当前插件版本 v1.2.2" data-en="Current plugin version v1.2.2">当前插件版本 v1.2.2</span></div>
         <h1 data-zh="更新日志" data-en="Changelog">更新日志</h1>
     </header>
     <div class="notes-layout">
@@ -243,6 +243,27 @@ code { padding: 2px 5px; border: 1px solid #e5e7eb; border-radius: 4px; color: #
             <nav class="version-links" id="versionLinks" aria-label="版本记录"></nav>
         </aside>
         <section class="release-list" id="rawNotes" aria-label="Release notes">
+<h3>Version 1.2.2</h3>
+<h4>Added</h4>
+<ul>
+    <li>AI 助手支持通过自然语言查询平台二开功能，可按功能名称或菜单编码匹配并展示候选菜单。</li>
+    <li>AI 对话新增当前项目源码上下文，可自动检索相关代码片段。</li>
+    <li>二开菜单列表支持识别 <code>Web、PDA、PAD</code> 端类型；可导入功能支持预览转换，不可导入功能支持查看完整平台源码。</li>
+    <li>平台源码库支持扫描自定义源码根目录，并自动解析其中的二开功能。（一般配置为对应版本的二开源码包路径：<code>E:\svn\publish-source\v6.8.0</code>）</li>
+    <li>一键二开扩展支持标准 Model Web、无 Model Web 和 PDA 功能，自动转换相关 Model、Controller、Service、Vue、菜单及运行注册代码。</li>
+    <li>一键二开支持创建或加载 <code>ImsMenuScript.java</code>，通过 AI 追加平台禁用菜单编码；AI 不可用时提示人工处理。</li>
+    <li>二开菜单导入预览新增源码变更行标记：新增行显示绿色标记，修改行显示蓝色标记；已有目标文件可使用 IDEA 原生差异窗口查看修改。</li>
+</ul>
+<h4>Changed</h4>
+<ul>
+    <li>功能包外平台组件统一通过 <code>ims-web</code> 的 <code>systempartMap</code> 引用，并合并重复导入。</li>
+</ul>
+<h4>Fixed</h4>
+<ul>
+    <li>修复 PDA 菜单二开时菜单类型字面量 <code>"i"</code> 未转换为 <code>CoreColumnType.MenuType.MENU_ITEM</code> 的问题。</li>
+</ul>
+
+<hr/>
 <h3>Version 1.2.1</h3>
 <h4>Added</h4>
 <ul>
@@ -523,6 +544,17 @@ code { padding: 2px 5px; border: 1px solid #e5e7eb; border-radius: 4px; color: #
         'Fixed': 'Fixed'
     };
     const releaseTranslations = {
+        '1.2.2': [
+            'The AI assistant now supports natural-language queries for platform secondary-development features, matching by feature name or menu code and displaying candidate menus.',
+            'AI conversations now include source context from the current project and can automatically retrieve relevant code snippets.',
+            'The secondary-development menu list now recognizes <code>Web, PDA, and PAD</code> client types. Importable features support conversion previews, while non-importable features allow viewing the complete platform source.',
+            'The platform source repository can now scan a custom source root and automatically parse secondary-development features within it. This is typically configured to the source-package path for the corresponding version, such as <code>E:\\svn\\publish-source\\v6.8.0</code>.',
+            'One-click secondary-development extension now supports standard Model Web, model-less Web, and PDA features, automatically converting related Model, Controller, Service, Vue, menu, and runtime-registration code.',
+            'One-click secondary development can now create or load <code>ImsMenuScript.java</code> and use AI to append disabled platform menu codes. When AI is unavailable, it prompts for manual handling.',
+            'The secondary-development menu import preview now marks changed source lines: added lines use green markers and modified lines use blue markers. Existing target files can be reviewed in IDEA\'s native diff window.',
+            'Platform components outside the feature package are now consistently referenced through <code>ims-web</code>\'s <code>systempartMap</code>, with duplicate imports merged.',
+            'Fixes the PDA menu type literal <code>"i"</code> not being converted to <code>CoreColumnType.MenuType.MENU_ITEM</code> during secondary development.'
+        ],
         '1.2.1': [
             'Adds a secondary-development menu list that supports querying, converting, and importing menus while automatically handling menu, URL, registration, and other project requirements. Standard Model features are currently supported only, meaning menus whose source is visible in the frontend.',
             'Adds an optional platform source repository (SVN secondary-development source repository) to project settings; parsed results are automatically included in the secondary-development menu list.',
