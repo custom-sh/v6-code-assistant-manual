@@ -542,10 +542,10 @@ body {
 .hero-signals {
     position: relative;
     z-index: 1;
-    width: min(100%, 1040px);
+    width: min(100%, 1200px);
     max-width: 100%;
     display: grid;
-    grid-template-columns: repeat(4, minmax(0, 1fr));
+    grid-template-columns: repeat(6, minmax(0, 1fr));
     margin: 8px 0 0;
     padding: 0;
     border: 1px solid rgba(23, 24, 29, 0.1);
@@ -596,6 +596,8 @@ body {
 .hero-signals li:nth-child(2) .hero-signal-icon { color: #d75d2d; background: rgba(233, 99, 46, 0.1); }
 .hero-signals li:nth-child(3) .hero-signal-icon { color: #8050c6; background: rgba(128, 80, 198, 0.1); }
 .hero-signals li:nth-child(4) .hero-signal-icon { color: #098b80; background: rgba(22, 168, 156, 0.1); }
+.hero-signals li:nth-child(5) .hero-signal-icon { color: #c23d87; background: rgba(198, 83, 163, 0.1); }
+.hero-signals li:nth-child(6) .hero-signal-icon { color: #4f6ed7; background: rgba(79, 110, 215, 0.1); }
 .hero-signal-icon svg { width: 19px; height: 19px; }
 
 .hero-signal-copy {
@@ -797,6 +799,13 @@ footer { background: #f0f1f4; }
     .home-feature-grid { grid-template-columns: repeat(5, minmax(0, 1fr)); }
 }
 
+@media (max-width: 1050px) {
+    .hero-signals { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+    .hero-signals li { border-top: 0; border-left: 0; }
+    .hero-signals li:not(:nth-child(3n + 1)) { border-left: 1px solid rgba(23,24,29,0.09); }
+    .hero-signals li:nth-child(n + 4) { border-top: 1px solid rgba(23,24,29,0.09); }
+}
+
 @media (max-width: 760px) {
     .home-hero {
         width: calc(100vw - 48px);
@@ -828,8 +837,9 @@ footer { background: #f0f1f4; }
         width: 100%;
         grid-template-columns: repeat(2, minmax(0, 1fr));
     }
-    .hero-signals li:nth-child(3) { border-left: 0; border-top: 1px solid rgba(23,24,29,0.09); }
-    .hero-signals li:nth-child(4) { border-top: 1px solid rgba(23,24,29,0.09); }
+    .hero-signals li { border-top: 0; border-left: 0; }
+    .hero-signals li:nth-child(even) { border-left: 1px solid rgba(23,24,29,0.09); }
+    .hero-signals li:nth-child(n + 3) { border-top: 1px solid rgba(23,24,29,0.09); }
     .video-showcase { padding: 58px 16px 64px; }
     .video-title { font-size: 26px; }
     #features { padding: 64px 0 72px; }
