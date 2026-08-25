@@ -11,13 +11,13 @@
 <style>
 :root {
     color-scheme: light;
-    --text: #1f2937;
-    --muted: #6b7280;
-    --line: rgba(15,23,42,0.09);
-    --blue: #2563eb;
-    --blue-soft: #eff6ff;
-    --orange: #d55c28;
-    --surface: rgba(255,255,255,0.88);
+    --text: #17181d;
+    --muted: #676e7c;
+    --line: rgba(23,24,29,0.1);
+    --blue: #315cf4;
+    --blue-soft: #eef1ff;
+    --orange: #e9632e;
+    --surface: #ffffff;
 }
 * { box-sizing: border-box; }
 html { scroll-behavior: smooth; scrollbar-gutter: stable; }
@@ -26,7 +26,7 @@ body {
     min-height: 100vh;
     overflow-x: hidden;
     color: var(--text);
-    background: linear-gradient(135deg, #f8fafc 0%, #f1f5f9 52%, #faf5ff 100%);
+    background: #f6f7f9;
     font-family: system-ui, -apple-system, "Segoe UI", sans-serif;
     -webkit-font-smoothing: antialiased;
 }
@@ -35,18 +35,31 @@ a { color: inherit; }
 ::-webkit-scrollbar-track { background: transparent; }
 ::-webkit-scrollbar-thumb { background: rgba(0,0,0,0.08); border-radius: 3px; }
 ::-webkit-scrollbar-thumb:hover { background: rgba(59,130,246,0.2); }
-.page-shell { width: min(100% - 48px, 1120px); margin: 0 auto; padding: 112px 0 72px; }
-.page-header { max-width: 720px; margin-bottom: 44px; }
+.page-shell { position: relative; width: min(100% - 48px, 1120px); margin: 0 auto; padding: 124px 0 80px; }
+.page-shell::before {
+    content: "";
+    position: absolute;
+    z-index: -1;
+    top: 38px;
+    left: 50%;
+    width: 100vw;
+    height: 300px;
+    background: conic-gradient(from 222deg at 52% 44%, rgba(233,99,46,0.19), rgba(198,83,163,0.16), rgba(49,92,244,0.15), rgba(22,168,156,0.12), transparent 72%);
+    filter: blur(52px);
+    transform: translateX(-50%) skewY(-4deg);
+    pointer-events: none;
+}
+.page-header { max-width: 720px; margin-bottom: 48px; }
 .eyebrow {
     display: inline-flex;
     align-items: center;
     gap: 7px;
     margin-bottom: 14px;
-    color: var(--blue);
+    color: var(--orange);
     font-size: 13px;
     font-weight: 700;
 }
-.eyebrow-dot { width: 7px; height: 7px; border-radius: 50%; background: #22c55e; box-shadow: 0 0 0 4px rgba(34,197,94,0.11); }
+.eyebrow-dot { width: 7px; height: 7px; border-radius: 2px; background: var(--orange); box-shadow: 0 0 0 4px rgba(233,99,46,0.11); }
 h1 { margin: 0; font-size: 40px; line-height: 1.15; letter-spacing: 0; }
 .notes-layout { display: grid; grid-template-columns: 168px minmax(0,1fr); gap: 36px; align-items: start; }
 .version-nav { position: sticky; top: 72px; }
@@ -83,7 +96,7 @@ h1 { margin: 0; font-size: 40px; line-height: 1.15; letter-spacing: 0; }
     text-decoration: none;
     cursor: pointer;
 }
-.version-link:hover, .version-link.active { color: var(--blue); background: rgba(37,99,235,0.08); }
+.version-link:hover, .version-link.active { color: #24262f; background: rgba(255,255,255,0.7); }
 .version-link:focus-visible { outline: 2px solid var(--blue); outline-offset: 2px; }
 .version-marker {
     position: relative;
@@ -107,8 +120,8 @@ h1 { margin: 0; font-size: 40px; line-height: 1.15; letter-spacing: 0; }
 .version-link.active .version-marker::before {
     width: 10px;
     height: 10px;
-    background: var(--blue);
-    box-shadow: 0 0 0 3px #dbeafe, 0 1px 4px rgba(37,99,235,0.28);
+    background: var(--orange);
+    box-shadow: 0 0 0 3px #ffeadf, 0 1px 4px rgba(233,99,46,0.25);
 }
 .version-link:first-child::after {
     content: attr(data-latest);
@@ -129,8 +142,8 @@ h1 { margin: 0; font-size: 40px; line-height: 1.15; letter-spacing: 0; }
     scroll-margin-top: 88px;
 }
 .release-card.is-active {
-    border-color: rgba(37,99,235,0.2);
-    box-shadow: 0 12px 32px rgba(37,99,235,0.09);
+    border-color: rgba(49,92,244,0.18);
+    box-shadow: 0 12px 32px rgba(23,24,29,0.07);
 }
 .release-card h3 { margin: 0 0 20px; font-size: 24px; line-height: 1.2; }
 .release-card h4 {
@@ -162,7 +175,7 @@ code { padding: 2px 5px; border: 1px solid #e5e7eb; border-radius: 4px; color: #
     h1 { font-size: 32px; }
     .page-header { margin-bottom: 28px; }
     .notes-layout { display: block; }
-    .version-nav { position: sticky; top: 56px; z-index: 20; margin: 0 -16px 14px; padding: 8px 16px; border-bottom: 1px solid var(--line); background: rgba(248,250,252,0.94); backdrop-filter: blur(12px); }
+    .version-nav { position: sticky; top: 60px; z-index: 20; margin: 0 -16px 14px; padding: 8px 16px; border-bottom: 1px solid var(--line); background: rgba(246,247,249,0.94); backdrop-filter: blur(16px); }
     .version-nav::after {
         content: "";
         position: absolute;
@@ -172,7 +185,7 @@ code { padding: 2px 5px; border: 1px solid #e5e7eb; border-radius: 4px; color: #
         bottom: 1px;
         width: 38px;
         pointer-events: none;
-        background: linear-gradient(to right, rgba(248,250,252,0), rgba(248,250,252,0.98) 78%);
+        background: linear-gradient(to right, rgba(246,247,249,0), rgba(246,247,249,0.98) 78%);
         opacity: 0;
         transition: opacity 180ms ease;
     }
@@ -243,6 +256,20 @@ code { padding: 2px 5px; border: 1px solid #e5e7eb; border-radius: 4px; color: #
             <nav class="version-links" id="versionLinks" aria-label="版本记录"></nav>
         </aside>
         <section class="release-list" id="rawNotes" aria-label="Release notes">
+<h3>Version 1.2.4</h3>
+<h4>Fixed</h4>
+<ul>
+    <li>优化一些问题。</li>
+</ul>
+
+<hr/>
+<h3>Version 1.2.3</h3>
+<h4>Fixed</h4>
+<ul>
+    <li>修复一键二开代码相关转换问题。</li>
+</ul>
+
+<hr/>
 <h3>Version 1.2.2</h3>
 <h4>Added</h4>
 <ul>
@@ -544,6 +571,12 @@ code { padding: 2px 5px; border: 1px solid #e5e7eb; border-radius: 4px; color: #
         'Fixed': 'Fixed'
     };
     const releaseTranslations = {
+        '1.2.4': [
+            'Optimizes several issues.'
+        ],
+        '1.2.3': [
+            'Fixes code conversion issues in one-click secondary development.'
+        ],
         '1.2.2': [
             'The AI assistant now supports natural-language queries for platform secondary-development features, matching by feature name or menu code and displaying candidate menus.',
             'AI conversations now include source context from the current project and can automatically retrieve relevant code snippets.',

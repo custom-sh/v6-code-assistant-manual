@@ -5,35 +5,32 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='6' fill='%23D55C28'/%3E%3Ctext x='16' y='22' text-anchor='middle' font-family='system-ui,sans-serif' font-weight='bold' font-size='18' fill='%23FDEFD8'%3EV6%3C/text%3E%3C/svg%3E">
 	<title>IMS V6 Code Assistant</title>
-<meta name="description" content="面向 Pangus IMS V6 项目的 IntelliJ IDEA 插件，集成多个自动化功能，减少重复操作，提升开发效率。">
+<meta name="description" content="面向 Pangus IMS V6 项目的 IntelliJ IDEA 插件，内置多项自动化能力，减少重复操作、提升开发效率">
 <link rel="canonical" href="https://custom-sh.github.io/v6-code-assistant-manual/">
 <meta property="og:type" content="website">
 <meta property="og:title" content="IMS V6 Code Assistant">
-<meta property="og:description" content="面向 Pangus IMS V6 项目的 IntelliJ IDEA 插件，集成多个自动化功能，减少重复操作，提升开发效率。">
+<meta property="og:description" content="面向 Pangus IMS V6 项目的 IntelliJ IDEA 插件，内置多项自动化能力，减少重复操作、提升开发效率">
 <meta property="og:url" content="https://custom-sh.github.io/v6-code-assistant-manual/">
-<meta property="og:image" content="https://custom-sh.github.io/v6-code-assistant-manual/share-preview.png">
+<meta property="og:image" content="https://custom-sh.github.io/v6-code-assistant-manual/share-preview-v2.png">
 <meta property="og:image:type" content="image/png">
-<meta property="og:image:width" content="1705">
-<meta property="og:image:height" content="988">
+<meta property="og:image:width" content="1669">
+<meta property="og:image:height" content="833">
 <meta property="og:image:alt" content="IMS V6 Code Assistant">
-<link rel="image_src" href="https://custom-sh.github.io/v6-code-assistant-manual/share-preview.png">
-<meta name="twitter:card" content="summary">
+<link rel="image_src" href="https://custom-sh.github.io/v6-code-assistant-manual/share-preview-v2.png">
+<meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="IMS V6 Code Assistant">
-<meta name="twitter:description" content="面向 Pangus IMS V6 项目的 IntelliJ IDEA 插件，集成多个自动化功能，减少重复操作，提升开发效率。">
-<meta name="twitter:image" content="https://custom-sh.github.io/v6-code-assistant-manual/share-preview.png">
+<meta name="twitter:description" content="面向 Pangus IMS V6 项目的 IntelliJ IDEA 插件，内置多项自动化能力，减少重复操作、提升开发效率">
+<meta name="twitter:image" content="https://custom-sh.github.io/v6-code-assistant-manual/share-preview-v2.png">
 <link rel="stylesheet" href="site.css">
 <link rel="stylesheet" href="shared-nav.css">
 <script src="shared-nav.js"></script>
 </head>
 <body class="antialiased">
-<div class="bg-orb bg-orb-1"></div>
-<div class="bg-orb bg-orb-2"></div>
-
 <shared-nav current-page="home"></shared-nav>
 
 <main class="shared-nav-offset"><div class="max-w-7xl mx-auto px-6">
 
-<section class="home-hero text-center">
+<section class="home-hero text-center" aria-labelledby="home-title">
     <div class="hero-badge mb-6">
         <svg class="hero-badge-icon" width="64px" height="64px" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
 
@@ -43,14 +40,15 @@
 
 <g id="SVGRepo_iconCarrier"> <g clip-path="url(#clip0_87_8173)"> <path d="M8.09095 24.9598L0.365234 18.8341L4.20523 11.7026L15.2224 15.9998L8.09095 24.9598Z" fill="url(#paint0_linear_87_8173)"/> <path d="M32.0003 8.54864L31.406 27.0629L19.1088 32.0001L11.7031 27.2458L22.5374 16.0001L17.7831 5.62293L22.0346 0.50293L32.0003 8.54864Z" fill="url(#paint1_linear_87_8173)"/> <path d="M32.0003 8.54864L22.2632 20.0686L17.7832 5.62293L22.0346 0.50293L32.0003 8.54864Z" fill="url(#paint2_linear_87_8173)"/> <path d="M15.4057 26.56L2.56 31.2229L4.61714 24L7.31429 15.1314L0 12.6629L4.61714 0L14.6743 1.23429L24.5486 12.5257L15.4057 26.56Z" fill="url(#paint3_linear_87_8173)"/> <path d="M6.2627 6.17139H26.0113V25.92H6.2627V6.17139Z" fill="#000000"/> <path d="M8.0918 22.2173H15.4975V23.4516H8.0918V22.2173Z" fill="white"/> <path d="M13.4395 10.24V8.73145H9.3252V10.24H10.5138V15.4057H9.3252V16.9143H13.4395V15.4057H12.2966V10.24H13.4395Z" fill="white"/> <path d="M17.3712 17.0514C16.7312 17.0514 16.1826 16.9143 15.7712 16.6857C15.3597 16.4572 14.994 16.1372 14.7197 15.8172L15.8626 14.5372C16.0912 14.8114 16.3197 14.9943 16.5483 15.1314C16.7769 15.2686 17.0512 15.36 17.3254 15.36C17.6454 15.36 17.9197 15.2686 18.1483 15.04C18.3312 14.8114 18.4226 14.4914 18.4226 13.9886V8.73145H20.2512V14.08C20.2512 14.5829 20.2054 14.9943 20.0683 15.36C19.9312 15.7257 19.7483 16 19.474 16.2743C19.2454 16.5029 18.9254 16.7314 18.5597 16.8229C18.194 16.96 17.8283 17.0514 17.3712 17.0514Z" fill="white"/> </g> <defs> <linearGradient id="paint0_linear_87_8173" x1="0.360663" y1="18.3262" x2="15.2301" y2="18.3262" gradientUnits="userSpaceOnUse"> <stop offset="0.258" stop-color="#F97A12"/> <stop offset="0.459" stop-color="#B07B58"/> <stop offset="0.724" stop-color="#577BAE"/> <stop offset="0.91" stop-color="#1E7CE5"/> <stop offset="1" stop-color="#087CFA"/> </linearGradient> <linearGradient id="paint1_linear_87_8173" x1="11.7795" y1="11.3738" x2="36.3084" y2="24.9464" gradientUnits="userSpaceOnUse"> <stop stop-color="#F97A12"/> <stop offset="0.072" stop-color="#CB7A3E"/> <stop offset="0.154" stop-color="#9E7B6A"/> <stop offset="0.242" stop-color="#757B91"/> <stop offset="0.334" stop-color="#537BB1"/> <stop offset="0.432" stop-color="#387CCC"/> <stop offset="0.538" stop-color="#237CE0"/> <stop offset="0.655" stop-color="#147CEF"/> <stop offset="0.792" stop-color="#0B7CF7"/> <stop offset="1" stop-color="#087CFA"/> </linearGradient> <linearGradient id="paint2_linear_87_8173" x1="28.9046" y1="19.6184" x2="22.0758" y2="-0.785756" gradientUnits="userSpaceOnUse"> <stop stop-color="#FE315D"/> <stop offset="0.078" stop-color="#CB417E"/> <stop offset="0.16" stop-color="#9E4E9B"/> <stop offset="0.247" stop-color="#755BB4"/> <stop offset="0.339" stop-color="#5365CA"/> <stop offset="0.436" stop-color="#386DDB"/> <stop offset="0.541" stop-color="#2374E9"/> <stop offset="0.658" stop-color="#1478F3"/> <stop offset="0.794" stop-color="#0B7BF8"/> <stop offset="1" stop-color="#087CFA"/> </linearGradient> <linearGradient id="paint3_linear_87_8173" x1="4.90057" y1="7.53051" x2="25.3824" y2="41.408" gradientUnits="userSpaceOnUse"> <stop stop-color="#FE315D"/> <stop offset="0.04" stop-color="#F63462"/> <stop offset="0.104" stop-color="#DF3A71"/> <stop offset="0.167" stop-color="#C24383"/> <stop offset="0.291" stop-color="#AD4A91"/> <stop offset="0.55" stop-color="#755BB4"/> <stop offset="0.917" stop-color="#1D76ED"/> <stop offset="1" stop-color="#087CFA"/> </linearGradient> <clipPath id="clip0_87_8173"> <rect width="32" height="32" fill="white"/> </clipPath> </defs> </g>
 
-</svg><span>IntelliJ IDEA Plugin · IMS V6 Code Assistant</span>
+</svg><span class="hero-badge-text">IntelliJ IDEA Plugin · Pangus IMS V6</span>
     </div>
-    <h1 class="hero-title mb-4" style="color:#1f2937"><span id="typewriterTarget" class="text-gradient"></span><span class="typewriter-cursor"></span></h1>
-    <p class="hero-desc mx-auto mb-8" style="color:#6b7280">面向 Pangus IMS V6 项目的 IntelliJ IDEA 插件，集成多个自动化功能，减少重复操作，提升开发效率。</p>
-    <div class="flex flex-wrap justify-center gap-3 mb-10">
+    <h1 id="home-title" class="hero-title mb-4"><span class="text-gradient">IMS V6 Code Assistant</span></h1>
+    <p class="hero-desc mx-auto mb-8">面向 Pangus IMS V6 项目的 IntelliJ IDEA 插件，内置多项自动化能力，减少重复操作、提升开发效率</p>
+    <div class="hero-actions flex flex-wrap justify-center gap-3 mb-10">
         <a href="manual.html" class="btn-hero-primary"><svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h12"/><path d="M18 15l3 3-3 3"/></svg><span>使用说明</span></a>
+        <a href="#features" class="btn-hero-secondary"><span>查看核心能力</span><svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m6 9 6 6 6-6"/></svg></a>
     </div>
-    <div class="flex justify-center gap-3 max-w-3xl mx-auto flex-wrap">
+    <div class="hero-achievements flex justify-center gap-3 max-w-3xl mx-auto flex-wrap" aria-hidden="true">
         <div class="achievement-item"><div class="achievement-icon achievement-blue animate-float" style="animation-delay:0.0s"><svg class="icon-inline" height="13px" width="13px" version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 511.986 511.986" xml:space="preserve" fill="#000000">
 <g id="SVGRepo_bgCarrier" stroke-width="0"/>
 <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"/>
@@ -70,13 +68,40 @@
 </g>
 </svg></div><h3>代码生成器</h3><p>表结构生成代码模板</p></div>
     </div>
+    <ul class="hero-signals" aria-label="核心能力">
+        <li>
+            <a class="hero-signal-item" href="manual.html#section-knowledge-qa">
+                <span class="hero-signal-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a4 4 0 0 1-4 4H8l-5 3V7a4 4 0 0 1 4-4h10a4 4 0 0 1 4 4z"/><path d="M9.5 9a2.5 2.5 0 0 1 4.7 1.2c0 1.8-2.2 2-2.2 3.3M12 16.5h.01"/></svg></span>
+                <span class="hero-signal-copy"><strong>智能问答</strong><small>本地手册检索</small></span>
+            </a>
+        </li>
+        <li>
+            <a class="hero-signal-item" href="manual.html#section-customization">
+                <span class="hero-signal-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4.5 16.5c-1.5 1.26-2 5-2 5s3.74-.5 5-2c.71-.84.7-2.13-.09-2.91a2.18 2.18 0 0 0-2.91-.09z"/><path d="m12 15-3-3a22 22 0 0 1 2-3.95A12.87 12.87 0 0 1 22 2c0 2.72-.78 7.5-6.05 11A22.35 22.35 0 0 1 12 15z"/><path d="M9 12H4s.55-3.03 2-4c1.62-1.08 5 0 5 0M12 15v5s3.03-.55 4-2c1.08-1.62 0-5 0-5"/><circle cx="16" cy="8" r="1"/></svg></span>
+                <span class="hero-signal-copy"><strong>一键二开</strong><small>平台源码快速复用</small></span>
+            </a>
+        </li>
+        <li>
+            <a class="hero-signal-item" href="manual.html#section-diff-preview">
+                <span class="hero-signal-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M8 3H5a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h3M16 3h3a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2h-3M12 2v20"/><path d="m8 9-2 3 2 3M16 9l2 3-2 3"/></svg></span>
+                <span class="hero-signal-copy"><strong>差异预览</strong><small>逐文件确认变更</small></span>
+            </a>
+        </li>
+        <li>
+            <a class="hero-signal-item" href="manual.html#section-scan">
+                <span class="hero-signal-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 7V5a2 2 0 0 1 2-2h2M17 3h2a2 2 0 0 1 2 2v2M21 17v2a2 2 0 0 1-2 2h-2M7 21H5a2 2 0 0 1-2-2v-2"/><circle cx="11" cy="11" r="4"/><path d="m14 14 3 3"/></svg></span>
+                <span class="hero-signal-copy"><strong>代码扫描</strong><small>实时检查与快捷修复</small></span>
+            </a>
+        </li>
+    </ul>
 </section>
 
 <section class="video-showcase" aria-labelledby="video-title">
     <div class="video-showcase-inner">
         <div class="text-center">
+            <p class="section-kicker">产品实演</p>
             <h2 id="video-title" class="video-title">快速上手视频</h2>
-            <p class="video-desc">用一段完整视频演示了解插件配置与使用步骤</p>
+            <p class="video-desc">从项目配置到代码生成，完整查看插件在 IDEA 内的实际工作流</p>
         </div>
         <div class="video-frame">
             <video controls playsinline preload="auto" aria-label="IMS V6 Code Assistant 快速上手视频">
@@ -90,7 +115,7 @@
 <section id="features" class="py-12 scroll-mt-16">
     <h2 class="text-2xl font-bold mb-3 text-center" style="color:#1f2937">核心功能</h2>
     <p class="text-center mb-10 max-w-2xl mx-auto" style="color:#6b7280">项目初始化、版本升级、项目构建打包、代码扫描、代码生成器……</p>
-    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-3">
+    <div class="home-feature-grid grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-3">
         <div class="glass-card rounded-xl p-4 cursor-pointer group" data-manual="settings">
             <div class="flex items-center gap-2.5 mb-2.5">
                 <div class="feature-icon-wrap"><svg class="icon-inline" height="13px" width="13px" version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 511.986 511.986" xml:space="preserve" fill="#000000">
@@ -162,28 +187,31 @@
   </g>
  </g>
 </svg></div>
-                <h3 class="font-semibold text-sm group-hover:text-blue-600 transition-colors" style="color:#1f2937">常量同步 & 图标库</h3>
+                <h3 class="font-semibold text-sm group-hover:text-blue-600 transition-colors" style="color:#1f2937">开发辅助工具</h3>
             </div>
-            <p class="text-xs mb-2.5 whitespace-pre-line" style="color:#6b7280">Java 常量一键同步至前端 JS（支持全量/增量/自定义字段），内置图标库支持中文关键词搜索，点击图标自动复制 pg-icon 代码到剪贴板。</p>
-            <div class="flex flex-wrap gap-1"><span class="pill-badge px-2 py-0.5 rounded-full text-2xs">增量同步</span><span class="pill-badge px-2 py-0.5 rounded-full text-2xs">中文搜索</span><span class="pill-badge px-2 py-0.5 rounded-full text-2xs">一键复制</span></div>
-        </div><div class="glass-card rounded-xl p-4 cursor-pointer group" data-manual="server">
-            <div class="flex items-center gap-2.5 mb-2.5">
-                <div class="feature-icon-wrap"><svg class="icon-inline" width="14px" height="14px" viewBox="-0.5 0 257 257" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" preserveAspectRatio="xMidYMid" fill="#000000">
-<g id="SVGRepo_bgCarrier" stroke-width="0"/>
-<g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"/>
-<g id="SVGRepo_iconCarrier"> <defs> <linearGradient x1="49.9976632%" y1="0.70578635%" x2="49.9976632%" y2="96.9898739%" id="linearGradient-1"> <stop stop-color="#86BBE5" offset="0%"> </stop> <stop stop-color="#1072BA" offset="100%"> </stop> </linearGradient> </defs> <g> <path d="M127.788721,0.035213205 C127.788721,0.035213205 203.109766,-3.34525447 243.041541,72.3631362 L121.379917,72.3631362 C121.379917,72.3631362 98.4209078,71.6236589 78.8071527,99.477304 C73.1730399,111.168088 67.1163686,123.211004 73.9125172,146.944704 C64.1232462,130.359285 21.9378267,56.9045392 21.9378267,56.9045392 C21.9378267,56.9045392 51.6929849,3.02833563 127.788721,0.035213205 L127.788721,0.035213205 Z" fill="#EF3F36"> </path> <path d="M239.132875,192.228886 C239.132875,192.228886 204.377442,259.169188 118.87978,255.859147 C129.443741,237.583494 179.728198,150.501238 179.728198,150.501238 C179.728198,150.501238 191.876754,130.993122 177.544979,100.075928 C170.255846,89.335901 162.82586,78.1028886 138.88088,72.1166437 C158.142503,71.9405777 242.830261,72.1166437 242.830261,72.1166437 C242.830261,72.1166437 274.557359,124.830812 239.132875,192.228886 L239.132875,192.228886 Z" fill="#FCD900"> </path> <path d="M16.9727648,192.757084 C16.9727648,192.757084 -23.6280605,129.197249 22.0082531,56.7988996 C32.5370014,75.074553 82.821458,162.156809 82.821458,162.156809 C82.821458,162.156809 93.6671252,182.439615 127.577442,185.46795 C140.500688,184.517194 153.952132,183.70729 171.136176,165.995048 C161.663824,182.756534 119.161486,256 119.161486,256 C119.161486,256 57.6088033,257.126823 16.9727648,192.757084 L16.9727648,192.757084 Z" fill="#61BC5B"> </path> <path d="M118.844567,256.492985 L135.958184,185.080605 C135.958184,185.080605 154.762036,183.601651 170.537552,166.311967 C160.748281,183.531224 118.844567,256.492985 118.844567,256.492985 L118.844567,256.492985 Z" fill="#5AB055"> </path> <path d="M70.4616231,129.056396 C70.4616231,97.5757909 95.9911967,72.0462173 127.471802,72.0462173 C158.952407,72.0462173 184.481981,97.5757909 184.481981,129.056396 C184.481981,160.537001 158.952407,186.066575 127.471802,186.066575 C95.9911967,186.031362 70.4616231,160.537001 70.4616231,129.056396 L70.4616231,129.056396 Z" fill="#FFFFFF"> </path> <path d="M80.0044017,129.056396 C80.0044017,102.857772 101.237964,81.5889959 127.471802,81.5889959 C153.670426,81.5889959 174.939202,102.822558 174.939202,129.056396 C174.939202,155.255021 153.70564,176.523796 127.471802,176.523796 C101.273177,176.523796 80.0044017,155.255021 80.0044017,129.056396 L80.0044017,129.056396 Z" fill="url(#linearGradient-1)"> </path> <path d="M242.795048,72.1518569 L172.333425,92.8220083 C172.333425,92.8220083 161.699037,77.2225585 138.845667,72.1518569 C158.670702,72.0462173 242.795048,72.1518569 242.795048,72.1518569 L242.795048,72.1518569 Z" fill="#EACA05"> </path> <path d="M72.5392022,144.338927 C62.6442916,127.190096 21.9378267,56.9045392 21.9378267,56.9045392 L74.1237964,108.527098 C74.1237964,108.527098 68.7713893,119.548831 70.778542,135.324347 L72.5392022,144.338927 L72.5392022,144.338927 Z" fill="#DF3A32"> </path> </g> </g>
-</svg></div>
-                <h3 class="font-semibold text-sm group-hover:text-blue-600 transition-colors" style="color:#1f2937">启动前端 & 切换数据库</h3>
-            </div>
-            <p class="text-xs mb-2.5 whitespace-pre-line" style="color:#6b7280">右键菜单即可切换数据库，并通过 VS Code 启动 Web 或 PDA 开发服务器，自动安装依赖并运行 npm run serve。</p>
-            <div class="flex flex-wrap gap-1"><span class="pill-badge px-2 py-0.5 rounded-full text-2xs">VS Code 启动</span><span class="pill-badge px-2 py-0.5 rounded-full text-2xs">自动安装</span><span class="pill-badge px-2 py-0.5 rounded-full text-2xs">自动任务</span></div>
-        </div><div class="glass-card rounded-xl p-4 cursor-pointer group" data-manual="ai">
+            <p class="text-xs mb-2.5 whitespace-pre-line" style="color:#6b7280">常量一键同步至前端，内置图标库支持搜索与复制；还可通过右键菜单启动前端服务、切换数据库。</p>
+            <div class="flex flex-wrap gap-1"><span class="pill-badge px-2 py-0.5 rounded-full text-2xs">常量同步</span><span class="pill-badge px-2 py-0.5 rounded-full text-2xs">图标库</span><span class="pill-badge px-2 py-0.5 rounded-full text-2xs">启动前端</span><span class="pill-badge px-2 py-0.5 rounded-full text-2xs">切换数据库</span></div>
+        </div><div class="glass-card rounded-xl p-4 cursor-pointer group" data-manual="knowledge-qa">
             <div class="flex items-center gap-2.5 mb-2.5">
                 <div class="feature-icon-wrap"><svg class="icon-inline" width="16px" height="16px" viewBox="0 -77.5 1179 1179" class="icon"  version="1.1" xmlns="http://www.w3.org/2000/svg"><path d="M597.215632 994.574713h403.714943s43.549425-8.945287 43.549425-114.64092 94.16092-577.677241-459.976092-577.677241-457.151264 541.425287-457.151264 541.425287-25.423448 160.77977 54.848735 157.013333 415.014253-6.12046 415.014253-6.120459z" fill="#FFFFFF" /><path d="M1071.786667 712.798161h72.503908v136.297931h-72.503908zM36.016552 712.798161h72.503908v136.297931H36.016552z" fill="#EA5D5C" /><path d="M305.68366 559.40926l556.254412-1.165018 0.398364 190.20464-556.254412 1.165018-0.398364-190.20464Z" fill="#4C66AF" /><path d="M1129.931034 680.312644h-59.556781c-3.295632-152.069885-67.56046-258.942529-172.079081-324.384368l115.347127-238.462529a47.08046 47.08046 0 1 0-42.372414-20.48l-114.640919 236.57931a625.934713 625.934713 0 0 0-269.30023-53.200919 625.228506 625.228506 0 0 0-270.006437 54.848736l-115.817931-235.402299a47.08046 47.08046 0 1 0-42.372414 20.715402l117.701149 238.462529c-103.812414 65.441839-167.135632 173.02069-169.960459 324.61977H47.786667a47.08046 47.08046 0 0 0-47.08046 47.08046v117.701149a47.08046 47.08046 0 0 0 47.08046 47.08046h58.615172v57.908965a70.62069 70.62069 0 0 0 70.62069 70.62069l823.908046-1.647816a70.62069 70.62069 0 0 0 70.620689-70.62069v-57.908965h59.085977a47.08046 47.08046 0 0 0 47.08046-47.08046v-117.701149A47.08046 47.08046 0 0 0 1129.931034 680.312644zM94.16092 847.212874H47.08046v-117.70115h47.08046v117.70115z m929.83908 103.106206a23.54023 23.54023 0 0 1-23.54023 23.54023l-823.908046 1.647816a23.54023 23.54023 0 0 1-23.54023-23.540229v-258.942529c0-329.563218 303.668966-365.57977 434.788046-365.815173s435.494253 34.604138 436.20046 363.931954z m105.46023-105.224827h-47.08046v-117.70115h47.08046v117.70115z" fill="#3F4651" /><path d="M464.684138 135.827126l22.363218-19.53839 40.018391 62.381609a30.131494 30.131494 0 0 0 25.423448 13.888735h2.824828a30.131494 30.131494 0 0 0 25.188046-19.067586l20.715402-79.095172 21.186207 74.387126v2.118621a30.366897 30.366897 0 0 0 52.494713 6.826667l30.366896-57.202759 13.182529 12.947126a30.131494 30.131494 0 0 0 21.186207 8.709886h57.673563a23.54023 23.54023 0 0 0 23.54023-23.54023 23.54023 23.54023 0 0 0-23.54023-23.54023h-50.140689l-23.54023-23.54023a30.366897 30.366897 0 0 0-45.668046 3.766437l-21.42161 40.01839L629.465747 19.302989a30.131494 30.131494 0 0 0-28.012873-19.067587 30.131494 30.131494 0 0 0-28.012874 19.067587l-26.60046 101.693793-29.660689-47.08046a30.366897 30.366897 0 0 0-20.48-13.653333 30.837701 30.837701 0 0 0-23.54023 6.826666l-32.250115 28.248276h-60.027586a23.54023 23.54023 0 0 0-23.54023 23.54023 23.54023 23.54023 0 0 0 23.54023 23.54023h66.148046a31.308506 31.308506 0 0 0 17.655172-6.591265zM776.121379 532.950805H404.421149A121.232184 121.232184 0 0 0 282.482759 639.352644a117.701149 117.701149 0 0 0 117.701149 129.000459h371.70023a121.232184 121.232184 0 0 0 121.938391-106.401839 117.701149 117.701149 0 0 0-117.70115-129.000459z m0 188.321839H402.302529a72.503908 72.503908 0 0 1-72.268506-56.496552 70.62069 70.62069 0 0 1 68.972874-84.744828h373.81885a72.503908 72.503908 0 0 1 72.268506 56.496552 70.62069 70.62069 0 0 1-68.502069 84.744828z" fill="#3F4651" /></svg></div>
-                <h3 class="font-semibold text-sm group-hover:text-blue-600 transition-colors" style="color:#1f2937">开发手册问答</h3>
+                <h3 class="font-semibold text-sm group-hover:text-blue-600 transition-colors" style="color:#1f2937">AI 开发助手</h3>
             </div>
-            <p class="text-xs mb-2.5 whitespace-pre-line" style="color:#6b7280">基于二次开发手册文档本地检索、流式对话，回答语言跟随插件设置</p>
-            <div class="flex flex-wrap gap-1"><span class="pill-badge px-2 py-0.5 rounded-full text-2xs">本地检索</span><span class="pill-badge px-2 py-0.5 rounded-full text-2xs">流式对话</span></div>
+            <p class="text-xs mb-2.5 whitespace-pre-line" style="color:#6b7280">基于开发手册本地检索开展智能问答，并支持在 IDEA 内进行流式 AI 会话，回答语言跟随插件设置。</p>
+            <div class="flex flex-wrap gap-1"><span class="pill-badge px-2 py-0.5 rounded-full text-2xs">本地检索</span><span class="pill-badge px-2 py-0.5 rounded-full text-2xs">手册问答</span><span class="pill-badge px-2 py-0.5 rounded-full text-2xs">语言跟随</span></div>
+        </div><div class="glass-card rounded-xl p-4 cursor-pointer group" data-manual="customization">
+            <div class="flex items-center gap-2.5 mb-2.5">
+                <div class="feature-icon-wrap"><svg viewBox="0 0 24 24" fill="none" stroke="#ea7527" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4.5 16.5c-1.5 1.26-2 5-2 5s3.74-.5 5-2c.71-.84.7-2.13-.09-2.91a2.18 2.18 0 0 0-2.91-.09z"/><path d="m12 15-3-3a22 22 0 0 1 2-3.95A12.87 12.87 0 0 1 22 2c0 2.72-.78 7.5-6.05 11A22.35 22.35 0 0 1 12 15z"/><path d="M9 12H4s.55-3.03 2-4c1.62-1.08 5 0 5 0M12 15v5s3.03-.55 4-2c1.08-1.62 0-5 0-5"/><circle cx="16" cy="8" r="1"/></svg></div>
+                <h3 class="font-semibold text-sm group-hover:text-blue-600 transition-colors" style="color:#1f2937">一键二开</h3>
+            </div>
+            <p class="text-xs mb-2.5 whitespace-pre-line" style="color:#6b7280">按菜单名称或编码检索平台功能，预览相关源码并选择导入，自动完成项目化转换。</p>
+            <div class="flex flex-wrap gap-1"><span class="pill-badge px-2 py-0.5 rounded-full text-2xs">菜单检索</span><span class="pill-badge px-2 py-0.5 rounded-full text-2xs">源码预览</span><span class="pill-badge px-2 py-0.5 rounded-full text-2xs">选择导入</span></div>
+        </div><div class="glass-card rounded-xl p-4 cursor-pointer group" data-manual="diff-preview">
+            <div class="flex items-center gap-2.5 mb-2.5">
+                <div class="feature-icon-wrap"><svg viewBox="0 0 24 24" fill="none" stroke="#3b82f6" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M8 3H5a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h3M16 3h3a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2h-3M12 2v20"/><path d="m8 9-2 3 2 3M16 9l2 3-2 3"/></svg></div>
+                <h3 class="font-semibold text-sm group-hover:text-blue-600 transition-colors" style="color:#1f2937">源码差异预览</h3>
+            </div>
+            <p class="text-xs mb-2.5 whitespace-pre-line" style="color:#6b7280">导入前逐文件确认新增与修改内容，已有文件可进入 IDEA 原生差异窗口核对后再应用。</p>
+            <div class="flex flex-wrap gap-1"><span class="pill-badge px-2 py-0.5 rounded-full text-2xs">变更标记</span><span class="pill-badge px-2 py-0.5 rounded-full text-2xs">原生 Diff</span><span class="pill-badge px-2 py-0.5 rounded-full text-2xs">手动调整</span></div>
         </div>
     </div>
 </section>

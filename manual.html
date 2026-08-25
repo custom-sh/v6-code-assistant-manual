@@ -11,8 +11,6 @@
 <script src="shared-nav.js"></script>
 </head>
 <body class="antialiased">
-<div class="bg-orb bg-orb-1"></div>
-<div class="bg-orb bg-orb-2"></div>
 <shared-nav current-page="manual"></shared-nav>
 <main class="shared-nav-offset"><div class="max-w-7xl mx-auto px-6">
 <section id="manual" class="py-12 scroll-mt-16">
@@ -29,7 +27,10 @@
                 <button class="sidebar-nav-item flex items-center gap-2 text-sm" id="manual-tab-codegen" type="button" role="tab" aria-selected="false" aria-controls="section-codegen" data-section="codegen"><span class="nav-num">5</span><span>代码生成器</span></button>
                 <button class="sidebar-nav-item flex items-center gap-2 text-sm" id="manual-tab-sync" type="button" role="tab" aria-selected="false" aria-controls="section-sync" data-section="sync"><span class="nav-num">6</span><span>常量同步 & 图标库</span></button>
                 <button class="sidebar-nav-item flex items-center gap-2 text-sm" id="manual-tab-server" type="button" role="tab" aria-selected="false" aria-controls="section-server" data-section="server"><span class="nav-num">7</span><span>启动前端 & 切换数据库</span></button>
-                <button class="sidebar-nav-item flex items-center gap-2 text-sm" id="manual-tab-ai" type="button" role="tab" aria-selected="false" aria-controls="section-ai" data-section="ai"><span class="nav-num">8</span><span>开发手册问答</span></button>
+                <button class="sidebar-nav-item flex items-center gap-2 text-sm" id="manual-tab-knowledge-qa" type="button" role="tab" aria-selected="false" aria-controls="section-knowledge-qa" data-section="knowledge-qa"><span class="nav-num">8</span><span>开发手册问答</span></button>
+                <button class="sidebar-nav-item flex items-center gap-2 text-sm" id="manual-tab-ai" type="button" role="tab" aria-selected="false" aria-controls="section-ai" data-section="ai"><span class="nav-num">9</span><span>AI 会话</span></button>
+                <button class="sidebar-nav-item flex items-center gap-2 text-sm" id="manual-tab-customization" type="button" role="tab" aria-selected="false" aria-controls="section-customization" data-section="customization"><span class="nav-num">10</span><span>一键二开</span></button>
+                <button class="sidebar-nav-item flex items-center gap-2 text-sm" id="manual-tab-diff-preview" type="button" role="tab" aria-selected="false" aria-controls="section-diff-preview" data-section="diff-preview"><span class="nav-num">11</span><span>源码差异预览</span></button>
             </div>
         </div>
         <div class="manual-content"><div class="manual-section glass-card rounded-xl p-5 scroll-mt-16 is-active" id="section-settings" role="tabpanel" aria-labelledby="manual-tab-settings">
@@ -393,10 +394,26 @@
                 <p class="text-xs mt-1" style="color:#6b7280">右键 → IMS V6 Code Assistant → Switch Database ▶，展开子菜单查看所有已配置连接。当前激活连接以 🟢 绿色圆点标识，选中即切换并写入 server/application.properties</p><div class="screenshot-wrapper mt-3"><img src="screenshots/s9.png" alt="Switch Database 级联菜单" loading="lazy"></div>
             </div>
         </li></ol>
-        </div><div class="manual-section glass-card rounded-xl p-5 mb-5 scroll-mt-16" id="section-ai">
+        </div><div class="manual-section glass-card rounded-xl p-5 mb-5 scroll-mt-16" id="section-knowledge-qa" role="tabpanel" aria-labelledby="manual-tab-knowledge-qa">
+            <div class="flex items-center gap-2.5 mb-4">
+                <div class="feature-icon-wrap"><svg viewBox="0 0 24 24" fill="none" stroke="#315cf4" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 5h16v12H4z"/><path d="M8 21h8M12 17v4M8 9h8M8 12h5"/></svg></div>
+                <h3 class="text-base font-semibold" style="color:#1f2937">开发手册问答</h3>
+            </div>
+            <ol class="space-y-0"><li class="flex gap-3 items-start py-3 border-b border-gray-100 last:border-0">
+                <span class="step-num">1</span><div class="flex-1 min-w-0"><p class="text-sm font-medium" style="color:#1f2937">配置 AI 模型</p><p class="text-xs mt-1" style="color:#6b7280">在配置面板的「AI 模型配置」区域设置 Provider、Model、API Key 和 Endpoint。支持 OpenAI、Claude、DeepSeek 和自定义兼容 API</p></div>
+            </li><li class="flex gap-3 items-start py-3 border-b border-gray-100 last:border-0">
+                <span class="step-num">2</span><div class="flex-1 min-w-0"><p class="text-sm font-medium" style="color:#1f2937">配置知识库目录</p><p class="text-xs mt-1" style="color:#6b7280">在「知识库文档目录」中设置文档路径。支持 Markdown、Java、JS、SQL、XML 等多种格式</p></div>
+            </li><li class="flex gap-3 items-start py-3 border-b border-gray-100 last:border-0">
+                <span class="step-num">3</span><div class="flex-1 min-w-0"><p class="text-sm font-medium" style="color:#1f2937">打开问答窗口</p><p class="text-xs mt-1" style="color:#6b7280">右键 → IMS V6 Code Assistant → AI知识库(beta)，或点击右侧边栏的 V6 Knowledge QA</p></div>
+            </li><li class="flex gap-3 items-start py-3 border-b border-gray-100 last:border-0">
+                <span class="step-num">4</span><div class="flex-1 min-w-0"><p class="text-sm font-medium" style="color:#1f2937">开始提问</p><p class="text-xs mt-1" style="color:#6b7280">在输入框中输入问题，按 Enter 发送。Enter 发送，Shift+Enter 换行。AI 会基于知识库文档进行回答</p></div>
+            </li><li class="flex gap-3 items-start py-3 border-b border-gray-100 last:border-0">
+                <span class="step-num">5</span><div class="flex-1 min-w-0"><p class="text-sm font-medium" style="color:#1f2937">管理对话</p><p class="text-xs mt-1" style="color:#6b7280">使用工具栏按钮清空对话历史或停止生成。AI 回复语言会跟随插件的语言设置自动切换</p></div>
+            </li></ol>
+        </div><div class="manual-section glass-card rounded-xl p-5 mb-5 scroll-mt-16" id="section-ai" role="tabpanel" aria-labelledby="manual-tab-ai">
             <div class="flex items-center gap-2.5 mb-4">
                 <div class="feature-icon-wrap"><svg class="icon-inline" width="16px" height="16px" viewBox="0 -77.5 1179 1179" class="icon"  version="1.1" xmlns="http://www.w3.org/2000/svg"><path d="M597.215632 994.574713h403.714943s43.549425-8.945287 43.549425-114.64092 94.16092-577.677241-459.976092-577.677241-457.151264 541.425287-457.151264 541.425287-25.423448 160.77977 54.848735 157.013333 415.014253-6.12046 415.014253-6.120459z" fill="#FFFFFF" /><path d="M1071.786667 712.798161h72.503908v136.297931h-72.503908zM36.016552 712.798161h72.503908v136.297931H36.016552z" fill="#EA5D5C" /><path d="M305.68366 559.40926l556.254412-1.165018 0.398364 190.20464-556.254412 1.165018-0.398364-190.20464Z" fill="#4C66AF" /><path d="M1129.931034 680.312644h-59.556781c-3.295632-152.069885-67.56046-258.942529-172.079081-324.384368l115.347127-238.462529a47.08046 47.08046 0 1 0-42.372414-20.48l-114.640919 236.57931a625.934713 625.934713 0 0 0-269.30023-53.200919 625.228506 625.228506 0 0 0-270.006437 54.848736l-115.817931-235.402299a47.08046 47.08046 0 1 0-42.372414 20.715402l117.701149 238.462529c-103.812414 65.441839-167.135632 173.02069-169.960459 324.61977H47.786667a47.08046 47.08046 0 0 0-47.08046 47.08046v117.701149a47.08046 47.08046 0 0 0 47.08046 47.08046h58.615172v57.908965a70.62069 70.62069 0 0 0 70.62069 70.62069l823.908046-1.647816a70.62069 70.62069 0 0 0 70.620689-70.62069v-57.908965h59.085977a47.08046 47.08046 0 0 0 47.08046-47.08046v-117.701149A47.08046 47.08046 0 0 0 1129.931034 680.312644zM94.16092 847.212874H47.08046v-117.70115h47.08046v117.70115z m929.83908 103.106206a23.54023 23.54023 0 0 1-23.54023 23.54023l-823.908046 1.647816a23.54023 23.54023 0 0 1-23.54023-23.540229v-258.942529c0-329.563218 303.668966-365.57977 434.788046-365.815173s435.494253 34.604138 436.20046 363.931954z m105.46023-105.224827h-47.08046v-117.70115h47.08046v117.70115z" fill="#3F4651" /><path d="M464.684138 135.827126l22.363218-19.53839 40.018391 62.381609a30.131494 30.131494 0 0 0 25.423448 13.888735h2.824828a30.131494 30.131494 0 0 0 25.188046-19.067586l20.715402-79.095172 21.186207 74.387126v2.118621a30.366897 30.366897 0 0 0 52.494713 6.826667l30.366896-57.202759 13.182529 12.947126a30.131494 30.131494 0 0 0 21.186207 8.709886h57.673563a23.54023 23.54023 0 0 0 23.54023-23.54023 23.54023 23.54023 0 0 0-23.54023-23.54023h-50.140689l-23.54023-23.54023a30.366897 30.366897 0 0 0-45.668046 3.766437l-21.42161 40.01839L629.465747 19.302989a30.131494 30.131494 0 0 0-28.012873-19.067587 30.131494 30.131494 0 0 0-28.012874 19.067587l-26.60046 101.693793-29.660689-47.08046a30.366897 30.366897 0 0 0-20.48-13.653333 30.837701 30.837701 0 0 0-23.54023 6.826666l-32.250115 28.248276h-60.027586a23.54023 23.54023 0 0 0-23.54023 23.54023 23.54023 23.54023 0 0 0 23.54023 23.54023h66.148046a31.308506 31.308506 0 0 0 17.655172-6.591265zM776.121379 532.950805H404.421149A121.232184 121.232184 0 0 0 282.482759 639.352644a117.701149 117.701149 0 0 0 117.701149 129.000459h371.70023a121.232184 121.232184 0 0 0 121.938391-106.401839 117.701149 117.701149 0 0 0-117.70115-129.000459z m0 188.321839H402.302529a72.503908 72.503908 0 0 1-72.268506-56.496552 70.62069 70.62069 0 0 1 68.972874-84.744828h373.81885a72.503908 72.503908 0 0 1 72.268506 56.496552 70.62069 70.62069 0 0 1-68.502069 84.744828z" fill="#3F4651" /></svg></div>
-                <h3 class="text-base font-semibold" style="color:#1f2937">开发手册问答</h3>
+                <h3 class="text-base font-semibold" style="color:#1f2937">AI 会话</h3>
             </div>
             <ol class="space-y-0"><li class="flex gap-3 items-start py-3 border-b border-gray-100 last:border-0">
             <span class="step-num">1</span>
@@ -407,28 +424,68 @@
         </li><li class="flex gap-3 items-start py-3 border-b border-gray-100 last:border-0">
             <span class="step-num">2</span>
             <div class="flex-1 min-w-0">
-                <p class="text-sm font-medium" style="color:#1f2937">配置知识库目录</p>
-                <p class="text-xs mt-1" style="color:#6b7280">在「知识库文档目录」中设置文档路径。支持 Markdown、Java、JS、SQL、XML 等多种格式</p>
+                <p class="text-sm font-medium" style="color:#1f2937">配置本地知识库目录</p>
+                <p class="text-xs mt-1" style="color:#6b7280">如需基于开发文档问答，可在「知识库文档目录」中设置本地文档路径。支持 Markdown、Java、JS、SQL、XML 等多种格式</p>
             </div>
         </li><li class="flex gap-3 items-start py-3 border-b border-gray-100 last:border-0">
             <span class="step-num">3</span>
             <div class="flex-1 min-w-0">
-                <p class="text-sm font-medium" style="color:#1f2937">打开问答窗口</p>
-                <p class="text-xs mt-1" style="color:#6b7280">右键 → IMS V6 Code Assistant → AI知识库(beta)，或点击右侧边栏的 V6 Knowledge QA</p>
+                <p class="text-sm font-medium" style="color:#1f2937">打开 AI 会话</p>
+                <p class="text-xs mt-1" style="color:#6b7280">在编辑器中右键 → IMS V6 Code Assistant → 开发手册AI问答 → 打开对话，也可以从 IDEA 侧边栏进入会话窗口</p>
             </div>
         </li><li class="flex gap-3 items-start py-3 border-b border-gray-100 last:border-0">
             <span class="step-num">4</span>
             <div class="flex-1 min-w-0">
-                <p class="text-sm font-medium" style="color:#1f2937">开始提问</p>
-                <p class="text-xs mt-1" style="color:#6b7280">在输入框中输入问题，按 Enter 发送。Enter 发送，Shift+Enter 换行。AI 会基于知识库文档进行回答</p>
+                <p class="text-sm font-medium" style="color:#1f2937">添加代码上下文</p>
+                <p class="text-xs mt-1" style="color:#6b7280">在编辑器中选择代码，通过右键菜单添加到对话；会话顶部会显示文件名和代码行范围，可在发送前移除不需要的上下文</p>
             </div>
         </li><li class="flex gap-3 items-start py-3 border-b border-gray-100 last:border-0">
             <span class="step-num">5</span>
             <div class="flex-1 min-w-0">
+                <p class="text-sm font-medium" style="color:#1f2937">使用代码操作</p>
+                <p class="text-xs mt-1" style="color:#6b7280">选中代码后可直接执行解释、审查或修复；也可以在会话中切换「智能问答 / 代码生成」模式，再输入具体需求</p>
+            </div>
+        </li><li class="flex gap-3 items-start py-3 border-b border-gray-100 last:border-0">
+            <span class="step-num">6</span>
+            <div class="flex-1 min-w-0">
                 <p class="text-sm font-medium" style="color:#1f2937">管理对话</p>
-                <p class="text-xs mt-1" style="color:#6b7280">使用工具栏按钮清空对话历史或停止生成。AI 回复语言会跟随插件的语言设置自动切换</p>
+                <p class="text-xs mt-1" style="color:#6b7280">使用工具栏新建会话、停止生成或清空历史。Enter 发送，Shift+Enter 换行，回复语言跟随插件语言设置</p>
             </div>
         </li></ol>
+        </div><div class="manual-section glass-card rounded-xl p-5 mb-5 scroll-mt-16" id="section-customization" role="tabpanel" aria-labelledby="manual-tab-customization">
+            <div class="flex items-center gap-2.5 mb-4">
+                <div class="feature-icon-wrap"><svg viewBox="0 0 24 24" fill="none" stroke="#ea7527" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3v18M3 12h18"/><path d="m5 5 14 14M19 5 5 19"/><circle cx="12" cy="12" r="8"/></svg></div>
+                <h3 class="text-base font-semibold" style="color:#1f2937">一键二开</h3>
+            </div>
+            <ol class="space-y-0"><li class="flex gap-3 items-start py-3 border-b border-gray-100 last:border-0">
+                <span class="step-num">1</span><div class="flex-1 min-w-0"><p class="text-sm font-medium" style="color:#1f2937">配置平台源码库</p><p class="text-xs mt-1" style="color:#6b7280">在插件项目配置中填写当前平台版本对应的源码目录。插件首次使用时会解析菜单及关联源码，后续直接复用索引</p></div>
+            </li><li class="flex gap-3 items-start py-3 border-b border-gray-100 last:border-0">
+                <span class="step-num">2</span><div class="flex-1 min-w-0"><p class="text-sm font-medium" style="color:#1f2937">打开二开菜单列表</p><p class="text-xs mt-1" style="color:#6b7280">右键 → IMS V6 Code Assistant → 二开菜单列表；也可以在 AI 会话中按菜单名称或菜单编码发起查询</p></div>
+            </li><li class="flex gap-3 items-start py-3 border-b border-gray-100 last:border-0">
+                <span class="step-num">3</span><div class="flex-1 min-w-0"><p class="text-sm font-medium" style="color:#1f2937">检索平台功能</p><p class="text-xs mt-1" style="color:#6b7280">输入菜单名称或编码筛选候选项。列表会标识 Web、PDA、PAD、CS 等终端类型；支持二开的功能可继续预览导入，其他功能可查看完整平台源码</p></div>
+            </li><li class="flex gap-3 items-start py-3 border-b border-gray-100 last:border-0">
+                <span class="step-num">4</span><div class="flex-1 min-w-0"><p class="text-sm font-medium" style="color:#1f2937">预览并选择源码</p><p class="text-xs mt-1" style="color:#6b7280">打开目标菜单后查看关联文件和转换结果，按需勾选准备导入的源码文件</p></div>
+            </li><li class="flex gap-3 items-start py-3 border-b border-gray-100 last:border-0">
+                <span class="step-num">5</span><div class="flex-1 min-w-0"><p class="text-sm font-medium" style="color:#1f2937">确认菜单处理</p><p class="text-xs mt-1" style="color:#6b7280">检查菜单编码、URL、注册代码及旧菜单禁用脚本。自动处理失败的文件会明确标记，需要完成手动调整后才能导入</p></div>
+            </li><li class="flex gap-3 items-start py-3 border-b border-gray-100 last:border-0">
+                <span class="step-num">6</span><div class="flex-1 min-w-0"><p class="text-sm font-medium" style="color:#1f2937">执行导入</p><p class="text-xs mt-1" style="color:#6b7280">确认目标路径与选中文件后执行导入。新文件将直接创建，已有文件会在确认差异后应用修改</p></div>
+            </li></ol>
+        </div><div class="manual-section glass-card rounded-xl p-5 mb-5 scroll-mt-16" id="section-diff-preview" role="tabpanel" aria-labelledby="manual-tab-diff-preview">
+            <div class="flex items-center gap-2.5 mb-4">
+                <div class="feature-icon-wrap"><svg viewBox="0 0 24 24" fill="none" stroke="#3b82f6" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M8 3H5a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h3M16 3h3a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2h-3M12 2v20"/><path d="m8 9-2 3 2 3M16 9l2 3-2 3"/></svg></div>
+                <h3 class="text-base font-semibold" style="color:#1f2937">源码差异预览</h3>
+            </div>
+            <ol class="space-y-0"><li class="flex gap-3 items-start py-3 border-b border-gray-100 last:border-0">
+                <span class="step-num">1</span><div class="flex-1 min-w-0"><p class="text-sm font-medium" style="color:#1f2937">进入导入预览</p><p class="text-xs mt-1" style="color:#6b7280">从二开菜单列表选择可导入功能，转换完成后进入源码预览窗口</p></div>
+            </li><li class="flex gap-3 items-start py-3 border-b border-gray-100 last:border-0">
+                <span class="step-num">2</span><div class="flex-1 min-w-0"><p class="text-sm font-medium" style="color:#1f2937">识别变更类型</p><p class="text-xs mt-1" style="color:#6b7280">文件列表区分新建与修改；编辑器中的新增行显示绿色标记，修改行显示蓝色标记</p></div>
+            </li><li class="flex gap-3 items-start py-3 border-b border-gray-100 last:border-0">
+                <span class="step-num">3</span><div class="flex-1 min-w-0"><p class="text-sm font-medium" style="color:#1f2937">查看原生差异</p><p class="text-xs mt-1" style="color:#6b7280">目标项目中已存在的文件可打开 IDEA 原生差异窗口，对照当前内容与待导入结果</p></div>
+            </li><li class="flex gap-3 items-start py-3 border-b border-gray-100 last:border-0">
+                <span class="step-num">4</span><div class="flex-1 min-w-0"><p class="text-sm font-medium" style="color:#1f2937">处理手动调整项</p><p class="text-xs mt-1" style="color:#6b7280">文件名后的「!」表示菜单源码未能自动转换。请直接修改预览代码，确认原始菜单初始化逻辑已完成项目化调整</p></div>
+            </li><li class="flex gap-3 items-start py-3 border-b border-gray-100 last:border-0">
+                <span class="step-num">5</span><div class="flex-1 min-w-0"><p class="text-sm font-medium" style="color:#1f2937">选择并应用</p><p class="text-xs mt-1" style="color:#6b7280">取消不需要的文件，只对已核对的变更执行导入；关闭或取消预览不会修改项目文件</p></div>
+            </li></ol>
         </div></div>
     </div>
 </section>

@@ -1,11 +1,11 @@
 // ===== i18n Language System =====
 const I18N_DICT={
-'更新日志':'Changelog',
+'更新日志':'Changelog','IntelliJ IDEA Plugin · Pangus IMS V6':'IntelliJ IDEA Plugin · Pangus IMS V6',
 '首页':'Home','功能介绍':'Features','操作手册':'Manual','常见问题':'FAQ',
 '插件手册 - IMS V6 Code Assistant':'Plugin Manual - IMS V6 Code Assistant',
 '一体化智能开发助手，覆盖项目初始化、版本升级、构建打包、代码扫描、代码生成、开发手册知识库问答等全流程功能':'An all-in-one intelligent development assistant covering project initialization, version upgrades, build packaging, code scanning, code generation, and knowledge base Q&A.',
 '查看功能介绍 ↓':'Explore Features ↓',
-'可视化配置':'Visual Config','平台版本升级':'Platform Upgrade','项目构建打包':'Build & Package','代码扫描':'Code Scanner','代码生成器':'Code Generator','常量同步 & 图标库':'Sync & Icons','启动前端 & 切换数据库':'Launch & DB Switch','开发手册问答':'Manual Q&A',
+ '可视化配置':'Visual Config','平台版本升级':'Platform Upgrade','项目构建打包':'Build & Package','代码扫描':'Code Scanner','代码生成器':'Code Generator','开发辅助工具':'Development Utilities','AI 开发助手':'AI Development Assistant','开发手册问答':'Manual Q&A','AI 会话':'AI Chat','一键二开':'One-Click Customization','源码差异预览':'Source Diff Preview',
 '核心功能':'Core Features',
 '从项目初始化到代码生成，覆盖 IMS V6 开发全流程':'From project initialization to code generation, covering the entire IMS V6 development lifecycle.',
 '可视化配置页面，集中管理项目编码、多端路径、数据库连接与 AI 模型参数':'Visual configuration panel for managing project code, multi-end paths, database connections, and AI model parameters.',
@@ -13,10 +13,10 @@ const I18N_DICT={
 '并行构建 Server / Web / PDA 三端，版本号自动递增与强制统一':'Parallel build of Server/Web/PDA with auto-increment and forced version unification.',
 '自定义扫描规则，支持实时扫描与 IDEA Code Inspection 结果集成':'Customizable scanning rules with real-time scanning and IDEA Code Inspection integration.',
 '粘贴设计文档 TSV 即生成 Selector / Table / Model / Vue 等 6 个产物':'Paste design doc TSV to generate 6 artifacts: Selector, Table, Model, Vue, and more.',
-'ColumnType / CheckType 常量一键同步至前端，内置图标库搜索':'One-click sync of ColumnType/CheckType constants to frontend; built-in icon library search.',
-'右键菜单即可切换数据库，并通过 VS Code 启动 Web 或 PDA 开发服务器，自动安装依赖并运行 npm run serve。':'Right-click to switch database and launch Web or PDA dev server via VS Code with auto dependency install and npm run serve.',
+'常量一键同步至前端，内置图标库支持搜索与复制；还可通过右键菜单启动前端服务、切换数据库。':'Sync constants to the frontend, search and copy from the built-in icon library, launch frontend services, and switch databases from the context menu.',
 '基于二次开发手册文档本地检索、流式对话，回答语言跟随插件设置':'Local retrieval and streaming chat based on dev manual docs; response language follows plugin settings.',
-'可视化编辑':'Visual Editor','自动备份恢复':'Auto Backup','并行构建':'Parallel Build','版本统一':'Version Sync','自定义规则':'Custom Rules','实时检查':'Live Check','TSV 粘贴':'TSV Paste','一键生成':'One-Click Gen','增量同步':'Incremental Sync','内置图标库':'Icon Library','VS Code 启动':'VS Code Launch','自动安装':'Auto Install','自动任务':'Auto Tasks','本地检索':'Local Search','流式对话':'Streaming Chat',
+'基于开发手册本地检索开展智能问答，并支持在 IDEA 内进行流式 AI 会话，回答语言跟随插件设置。':'Use local manual retrieval for intelligent Q&A and streaming AI chat in IDEA, with responses following the plugin language.',
+ '可视化编辑':'Visual Editor','自动备份恢复':'Auto Backup','并行构建':'Parallel Build','版本统一':'Version Sync','自定义规则':'Custom Rules','实时检查':'Live Check','TSV 粘贴':'TSV Paste','一键生成':'One-Click Gen','常量同步':'Constant Sync','图标库':'Icon Library','启动前端':'Launch Frontend','切换数据库':'Switch Database','本地检索':'Local Search','手册问答':'Manual Q&A','语言跟随':'Language Aware','流式对话':'Streaming Chat','代码上下文':'Code Context','代码生成':'Code Generation','菜单检索':'Menu Search','源码预览':'Source Preview','选择导入':'Selective Import','变更标记':'Change Markers','原生 Diff':'Native Diff','手动调整':'Manual Edit',
 '功能目录':'Contents',
 '打开配置面板':'Open Configuration Panel','常规设置':'General Settings','填写项目信息':'Enter Project Information','配置多端路径与端口':'Configure Multi-End Paths & Ports','查看版本信息':'View Version Information','配置数据库连接（可选）':'Configure Database Connection (Optional)','点击「一键初始化模板」':'Click "One-Click Init Template"','确认初始化操作':'Confirm Initialization','等待完成':'Wait for Completion',
 '打开升级对话框':'Open Upgrade Dialog','选择新版本模板目录':'Select New Version Template Directory','查看升级类型':'View Upgrade Type','选择升级模块':'Select Upgrade Modules','预览升级步骤':'Preview Upgrade Steps','确认执行升级':'Confirm Upgrade Execution','查看升级进度':'View Upgrade Progress',
@@ -25,7 +25,9 @@ const I18N_DICT={
 '打开代码生成器':'Open Code Generator','粘贴表结构 TSV':'Paste Table Structure TSV','核对索引与操作':'Verify Indexes & Operations','点「确定」触发后台生成':'Click "OK" to Trigger Background Generation','预览窗微调':'Fine-Tune in Preview','确认写盘':'Confirm Write to Disk',
 '打开 Java 常量文件':'Open Java Constant File','选择同步方式':'Choose Sync Method','确认同步':'Confirm Sync','打开图标库':'Open Icon Library','搜索图标':'Search Icons','一键复制代码':'One-Click Copy Code',
 '选择前端模块':'Select Frontend Module','信任 VS Code 工作区':'Trust VS Code Workspace','等待自动任务启动':'Wait for Auto Task Launch','未自动启动时手动运行':'Manual Launch if Auto Task Fails','查看启动结果':'View Launch Result','配置数据库连接':'Configure Database Connection','切换数据库':'Switch Database',
-'配置 AI 模型':'Configure AI Model','配置知识库目录':'Configure Knowledge Base Directory','打开问答窗口':'Open Q&A Window','开始提问':'Start Asking Questions','管理对话':'Manage Conversations',
+ '配置 AI 模型':'Configure AI Model','配置知识库目录':'Configure Knowledge Base Directory','配置本地知识库目录':'Configure Local Knowledge Directory','打开问答窗口':'Open Q&A Window','开始提问':'Start Asking Questions','打开 AI 会话':'Open AI Chat','添加代码上下文':'Add Code Context','使用代码操作':'Use Code Actions','管理对话':'Manage Conversations',
+ '配置平台源码库':'Configure Platform Source Library','打开二开菜单列表':'Open Customization Menu List','检索平台功能':'Search Platform Features','预览并选择源码':'Preview and Select Source','确认菜单处理':'Verify Menu Conversion','执行导入':'Run Import',
+ '进入导入预览':'Open Import Preview','识别变更类型':'Identify Change Types','查看原生差异':'View Native Diff','处理手动调整项':'Handle Manual Changes','选择并应用':'Select and Apply',
 '语言：':'Language: ','切换插件显示语言（中文 / English / 跟随IDE）':'Switch plugin display language (Chinese / English / Follow IDE)',
 '编码：':'Encoding: ','设置项目文件编码':'Set project file encoding',
 '项目 SDK：':'Project SDK: ','选择项目使用的 JDK 版本':'Select the JDK version used by the project',
@@ -115,7 +117,7 @@ const I18N_DICT={
 '使用说明':'User Guide',
 '快速上手视频':'Quick Start Video','用一段完整演示了解插件配置与使用步骤':'See plugin configuration and usage steps in one complete walkthrough.','您的浏览器不支持视频播放。':'Your browser does not support video playback.',
 '集成统一配置面板':'Integrated Unified Config Panel','一键初始化':'One-Click Init','新项目初始化模板':'New Project Init Template','实时检测、快捷修复':'Real-Time Scan, Quick Fix','版本升级':'Version Upgrade','一键升级、自动备份':'One-Click Upgrade, Auto Backup','构建打包':'Build & Package','并行构建统一输出':'Parallel Build, Unified Output','表结构生成代码模板':'Generate Code from Table Structure',
-'面向 Pangus IMS V6 项目的 IntelliJ IDEA 插件，集成多个自动化功能，减少重复操作，提升开发效率。':'An IntelliJ IDEA plugin for Pangus IMS V6 projects, integrating multiple automated features to reduce repetitive operations and improve development efficiency.',
+'面向 Pangus IMS V6 项目的 IntelliJ IDEA 插件，内置多项自动化能力，减少重复操作、提升开发效率':'An IntelliJ IDEA plugin for Pangus IMS V6 projects with built-in automation that reduces repetitive work and improves development efficiency.',
 '项目初始化、版本升级、项目构建打包、代码扫描、代码生成器……':'Project Init, Version Upgrade, Build & Package, Code Scanner, Code Generator...',
 '每个功能的详细操作步骤，帮助你快速上手':'Detailed steps for each feature to help you get started quickly',
 'IDEA内置配置统一集中面板，省去繁琐步骤，一次配置全局生效，多端路径、端口管理，版本不一致自动告警，自动初始化IMS V6模板工程':'Built-in unified configuration panel in IDEA, saving tedious steps. One-time config takes effect globally. Multi-end path and port management. Auto-alert on version mismatch. Auto-init IMS V6 template project.',
@@ -124,7 +126,31 @@ const I18N_DICT={
 '基于 IMS V6 开发规范检查 Java 代码，支持实时检测、按文件/目录/项目扫描，并为部分问题提供快捷修复。':'Checks Java code against IMS V6 development standards. Supports real-time scanning by file/directory/project. Quick fixes available for certain issues.',
 '复制文档表结构，生成骨架代码，支持预览窗微调后直接写入文件，支持转义值常量命名':'Copy table structure from documentation to generate skeleton code. Supports preview fine-tuning before writing to file. Supports escaped constant naming.',
 'Java 常量一键同步至前端 JS（支持全量/增量/自定义字段），内置图标库支持中文关键词搜索，点击图标自动复制 pg-icon 代码到剪贴板。':'One-click sync Java constants to frontend JS (full/incremental/custom fields). Built-in icon library with Chinese keyword search. Click icon to auto-copy pg-icon code to clipboard.',
-'集中面板':'Centralized Panel','多端管理':'Multi-End Mgmt','自动配置':'Auto Config','自动备份':'Auto Backup','回滚保护':'Rollback Protection','分类升级':'Categorized Upgrade','自动打包':'Auto Package','统一输出':'Unified Output','规范检查':'Standards Check','实时检测':'Real-Time Detection','快捷修复':'Quick Fix','复刻平台':'Platform Replica','自动识别':'Auto Recognition','一键写入':'One-Click Write','中文搜索':'Chinese Search','一键复制':'One-Click Copy'
+ '集中面板':'Centralized Panel','多端管理':'Multi-End Mgmt','自动配置':'Auto Config','自动备份':'Auto Backup','回滚保护':'Rollback Protection','分类升级':'Categorized Upgrade','自动打包':'Auto Package','统一输出':'Unified Output','规范检查':'Standards Check','实时检测':'Real-Time Detection','快捷修复':'Quick Fix','复刻平台':'Platform Replica','自动识别':'Auto Recognition','一键写入':'One-Click Write','中文搜索':'Chinese Search','一键复制':'One-Click Copy',
+ '从项目工程化到 AI 会话与一键二开，覆盖 IMS V6 开发核心流程':'From project engineering to AI chat and one-click customization, covering the core IMS V6 development workflow.',
+ '在 IDEA 内发起流式会话，添加选中代码作为上下文，支持解释、审查、修复与代码生成。':'Start streaming chats inside IDEA, attach selected code as context, and explain, review, fix, or generate code.',
+ '按菜单名称或编码检索平台功能，预览相关源码并选择导入，自动完成项目化转换。':'Find platform features by menu name or code, preview related source files, and selectively import the converted result.',
+ '导入前逐文件确认新增与修改内容，已有文件可进入 IDEA 原生差异窗口核对后再应用。':'Review new and modified content file by file before import, using IDEA native diff for existing files before applying changes.',
+ '如需基于开发文档问答，可在「知识库文档目录」中设置本地文档路径。支持 Markdown、Java、JS、SQL、XML 等多种格式':'To answer questions from development documents, set a local path under Knowledge Base Directory. Markdown, Java, JS, SQL, XML, and other formats are supported.',
+ '在编辑器中右键 → IMS V6 Code Assistant → 开发手册AI问答 → 打开对话，也可以从 IDEA 侧边栏进入会话窗口':'In the editor, right-click → IMS V6 Code Assistant → Manual AI Q&A → Open Chat, or open the chat from the IDEA sidebar.',
+ '在编辑器中选择代码，通过右键菜单添加到对话；会话顶部会显示文件名和代码行范围，可在发送前移除不需要的上下文':'Select code in the editor and add it to the chat from the context menu. The chat shows the file and line range, and unwanted context can be removed before sending.',
+ '选中代码后可直接执行解释、审查或修复；也可以在会话中切换「智能问答 / 代码生成」模式，再输入具体需求':'After selecting code, run Explain, Review, or Fix directly, or switch between Ask and Code Generation modes in the chat before entering a request.',
+ '使用工具栏新建会话、停止生成或清空历史。Enter 发送，Shift+Enter 换行，回复语言跟随插件语言设置':'Use the toolbar to start a new chat, stop generation, or clear history. Enter sends, Shift+Enter inserts a line break, and replies follow the plugin language.',
+ '在插件项目配置中填写当前平台版本对应的源码目录。插件首次使用时会解析菜单及关联源码，后续直接复用索引':'Set the source directory for the current platform version in project settings. On first use, the plugin indexes menus and related source files, then reuses the index.',
+ '右键 → IMS V6 Code Assistant → 二开菜单列表；也可以在 AI 会话中按菜单名称或菜单编码发起查询':'Right-click → IMS V6 Code Assistant → Customization Menu List, or search by menu name or code in AI Chat.',
+ '输入菜单名称或编码筛选候选项。列表会标识 Web、PDA、PAD、CS 等终端类型；支持二开的功能可继续预览导入，其他功能可查看完整平台源码':'Filter candidates by menu name or code. The list identifies Web, PDA, PAD, CS, and other client types. Importable features can be previewed, while other features allow full source viewing.',
+ '打开目标菜单后查看关联文件和转换结果，按需勾选准备导入的源码文件':'Open a target menu to review related files and converted output, then select the source files to import.',
+ '检查菜单编码、URL、注册代码及旧菜单禁用脚本。自动处理失败的文件会明确标记，需要完成手动调整后才能导入':'Check menu codes, URLs, registration code, and the legacy-menu disable script. Files that cannot be converted automatically are marked and must be edited before import.',
+ '确认目标路径与选中文件后执行导入。新文件将直接创建，已有文件会在确认差异后应用修改':'Confirm target paths and selected files before importing. New files are created directly, while existing files are modified only after diff review.',
+ '从二开菜单列表选择可导入功能，转换完成后进入源码预览窗口':'Choose an importable feature from the customization menu list and open the source preview after conversion.',
+ '文件列表区分新建与修改；编辑器中的新增行显示绿色标记，修改行显示蓝色标记':'The file list distinguishes new and modified files. Added lines use green markers, while modified lines use blue markers.',
+ '目标项目中已存在的文件可打开 IDEA 原生差异窗口，对照当前内容与待导入结果':'For files already in the target project, open IDEA native diff to compare current content with the pending import.',
+ '文件名后的「!」表示菜单源码未能自动转换。请直接修改预览代码，确认原始菜单初始化逻辑已完成项目化调整':'An exclamation mark after a file name means menu source conversion failed. Edit the preview and make sure the original menu initialization has been adapted to the project.',
+ '取消不需要的文件，只对已核对的变更执行导入；关闭或取消预览不会修改项目文件':'Deselect unwanted files and import only reviewed changes. Closing or canceling the preview does not modify project files.'
+ ,'连接平台源码、项目上下文与开发规范，在 IDEA 内完成 AI 会话、一键二开、代码生成和质量检查。':'Connect platform source, project context, and development standards to handle AI chat, one-click customization, code generation, and quality checks inside IDEA.'
+ ,'查看核心能力':'Explore Capabilities','上下文会话':'Context Chat','变更确认':'Change Review','规范检查':'Inspections','智能问答':'Intelligent Q&A','本地手册检索':'Local Manual Search','平台源码快速复用':'Reuse Platform Source','差异预览':'Diff Preview','逐文件确认变更':'Review Changes by File','实时检查与快捷修复':'Live Checks & Quick Fixes'
+ ,'产品实演':'Product Tour','能力矩阵':'Capability Matrix'
+ ,'从项目配置到代码生成，完整查看插件在 IDEA 内的实际工作流':'See the complete in-IDEA workflow, from project setup to code generation.'
 };
 
 let CURRENT_LANG=localStorage.getItem('ims-manual-lang')||'zh';
@@ -143,7 +169,6 @@ if(!p)continue;
 const t=p.tagName;
 if(t==='SCRIPT'||t==='STYLE'||t==='SVG'||t==='TITLE'||t==='G'||t==='PATH'||t==='POLYGON'||t==='CIRCLE'||t==='RECT'||t==='ELLIPSE'||t==='LINE'||t==='DEFS'||t==='STOP'||t==='LINEARGRADIENT')continue;
 if(p.closest('svg'))continue;
-if(p.id==='typewriterTarget')continue;
 if(p.closest('#langToggle'))continue;
 const s=n.textContent.trim();
 if(lang==='zh'){
@@ -171,35 +196,47 @@ const langToggle=document.getElementById('langToggle');
 if(langToggle)langToggle.addEventListener('click',switchLang);
 })();
 
-// Typewriter
+// Subtle pointer response for the full-bleed Aurora scene.
 (function() {
-    var phrases = ['IMS V6 Code Assistant','IMS V6 IDEA Plugin'];
-    var target = document.getElementById('typewriterTarget');
-    if (!target) return;
-    var phraseIdx = 0, charIdx = 0, deleting = false, timer = null;
-    function tick() {
-        var current = phrases[phraseIdx];
-        if (!deleting) {
-            charIdx++;
-            target.textContent = current.slice(0, charIdx);
-            if (charIdx === current.length) {
-                if (phraseIdx === phrases.length - 1) return;
-                timer = setTimeout(function() { deleting = true; tick(); }, 2200);
-                return;
-            }
-            timer = setTimeout(tick, 80);
+    var hero = document.querySelector('.home-hero');
+    if (!hero || window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+    var frame = 0;
+    var currentX = 0;
+    var currentY = 0;
+    var targetX = 0;
+    var targetY = 0;
+
+    function renderAuroraPosition() {
+        currentX += (targetX - currentX) * 0.1;
+        currentY += (targetY - currentY) * 0.1;
+        hero.style.setProperty('--aurora-x', currentX.toFixed(2) + 'px');
+        hero.style.setProperty('--aurora-y', currentY.toFixed(2) + 'px');
+        if (Math.abs(targetX - currentX) > 0.04 || Math.abs(targetY - currentY) > 0.04) {
+            frame = requestAnimationFrame(renderAuroraPosition);
         } else {
-            charIdx--;
-            target.textContent = current.slice(0, charIdx);
-            if (charIdx === 0) {
-                deleting = false; phraseIdx++;
-                timer = setTimeout(tick, 400);
-                return;
-            }
-            timer = setTimeout(tick, 35);
+            currentX = targetX;
+            currentY = targetY;
+            hero.style.setProperty('--aurora-x', currentX.toFixed(2) + 'px');
+            hero.style.setProperty('--aurora-y', currentY.toFixed(2) + 'px');
+            frame = 0;
         }
     }
-    tick();
+
+    function startAuroraMotion() {
+        if (!frame) frame = requestAnimationFrame(renderAuroraPosition);
+    }
+
+    hero.addEventListener('pointermove', function(event) {
+        var bounds = hero.getBoundingClientRect();
+        targetX = ((event.clientX - bounds.left) / bounds.width - 0.5) * 12;
+        targetY = ((event.clientY - bounds.top) / bounds.height - 0.5) * 8;
+        startAuroraMotion();
+    });
+    hero.addEventListener('pointerleave', function() {
+        targetX = 0;
+        targetY = 0;
+        startAuroraMotion();
+    });
 })();
 
 // Manual feature tabs
@@ -256,7 +293,14 @@ showManualSection(initialManualSection, false);
 
 // Feature cards open the matching chapter on the standalone manual page.
 document.querySelectorAll('.glass-card[data-manual]').forEach(function(card) {
+    card.tabIndex = 0;
+    card.setAttribute('role', 'link');
     card.addEventListener('click', function() {
+        window.location.href = 'manual.html#section-' + card.dataset.manual;
+    });
+    card.addEventListener('keydown', function(event) {
+        if (event.key !== 'Enter' && event.key !== ' ') return;
+        event.preventDefault();
         window.location.href = 'manual.html#section-' + card.dataset.manual;
     });
 });
