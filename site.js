@@ -153,7 +153,18 @@ const I18N_DICT={
  ,'从项目配置到代码生成，完整查看插件在 IDEA 内的实际工作流':'See the complete in-IDEA workflow, from project setup to code generation.'
 };
 
-let CURRENT_LANG=localStorage.getItem('ims-manual-lang')||'zh';
+function detectInitialLanguage(){
+const storedLanguage=localStorage.getItem('ims-manual-lang');
+if(storedLanguage==='zh'||storedLanguage==='en')return storedLanguage;
+const browserLanguages=navigator.languages&&navigator.languages.length?navigator.languages:[navigator.language];
+for(const browserLanguage of browserLanguages){
+const language=String(browserLanguage||'').toLowerCase();
+if(language==='zh'||language.startsWith('zh-'))return 'zh';
+if(language==='en'||language.startsWith('en-'))return 'en';
+}
+return 'zh';
+}
+let CURRENT_LANG=detectInitialLanguage();
 function switchLang(){
 CURRENT_LANG=CURRENT_LANG==='zh'?'en':'zh';
 localStorage.setItem('ims-manual-lang',CURRENT_LANG);
