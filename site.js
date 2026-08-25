@@ -148,7 +148,7 @@ const I18N_DICT={
  '文件名后的「!」表示菜单源码未能自动转换。请直接修改预览代码，确认原始菜单初始化逻辑已完成项目化调整':'An exclamation mark after a file name means menu source conversion failed. Edit the preview and make sure the original menu initialization has been adapted to the project.',
  '取消不需要的文件，只对已核对的变更执行导入；关闭或取消预览不会修改项目文件':'Deselect unwanted files and import only reviewed changes. Closing or canceling the preview does not modify project files.'
  ,'连接平台源码、项目上下文与开发规范，在 IDEA 内完成 AI 会话、一键二开、代码生成和质量检查。':'Connect platform source, project context, and development standards to handle AI chat, one-click customization, code generation, and quality checks inside IDEA.'
- ,'查看核心能力':'Explore Capabilities','上下文会话':'Context Chat','变更确认':'Change Review','规范检查':'Inspections','一键配置':'One-Click Setup','项目初始化与集中设置':'Project Init & Central Setup','升级构建':'Upgrade & Build','版本升级与多端打包':'Upgrade & Multi-End Package','快速二开':'Rapid Customization','平台源码快速复用':'Reuse Platform Source','开发问答':'Developer Q&A','本地手册智能问答':'Local Manual Q&A','持续更新':'Continuous Updates','插件版本持续维护':'Ongoing Plugin Maintenance','实时检查与快捷修复':'Live Checks & Quick Fixes'
+ ,'查看核心能力':'Explore Capabilities','上下文会话':'Context Chat','变更确认':'Change Review','规范检查':'Inspections','一键配置':'One-Click Setup','工程初始化与集中设置':'Project Init & Central Setup','版本升级':'Platform Upgrade','自动备份与安全回滚':'Backup & Safe Rollback','构建打包':'Build & Package','多端构建与统一输出':'Multi-End Build & Output','一键二开':'One-Click Customization','平台源码检索与快速导入':'Source Search & Quick Import','差异预览':'Diff Preview','导入前逐文件确认变更':'Review Files Before Import','代码扫描':'Code Scanner','规范检查与快捷修复':'Inspections & Quick Fixes','代码生成':'Code Generation','表结构生成代码骨架':'Table-to-Code Skeletons','开发问答':'Developer Q&A','本地手册智能检索':'Local Manual Search','持续更新':'Continuous Updates','功能迭代与问题修复':'Feature Updates & Bug Fixes'
  ,'产品实演':'Product Tour','能力矩阵':'Capability Matrix'
  ,'从项目配置到代码生成，完整查看插件在 IDEA 内的实际工作流':'See the complete in-IDEA workflow, from project setup to code generation.'
 };
@@ -194,6 +194,21 @@ updateLangUI();
 if(CURRENT_LANG==='en')setTimeout(function(){applyLang('en');},150);
 const langToggle=document.getElementById('langToggle');
 if(langToggle)langToggle.addEventListener('click',switchLang);
+})();
+
+// Duplicate the capability strip once for a seamless, Stripe-style marquee.
+(function() {
+    var track = document.querySelector('.hero-signals-track');
+    var signals = track && track.querySelector('.hero-signals');
+    if (!track || !signals) return;
+    var duplicate = signals.cloneNode(true);
+    duplicate.setAttribute('aria-hidden', 'true');
+    duplicate.removeAttribute('aria-label');
+    duplicate.querySelectorAll('a').forEach(function(link) {
+        link.tabIndex = -1;
+    });
+    track.appendChild(duplicate);
+    track.classList.add('is-ready');
 })();
 
 // Subtle pointer response for the full-bleed Aurora scene.
