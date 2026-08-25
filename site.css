@@ -801,7 +801,8 @@ footer { background: #f0f1f4; }
     .home-hero {
         width: calc(100vw - 48px);
         max-width: calc(100vw - 48px);
-        min-height: 0;
+        min-height: calc(100vh - 60px);
+        min-height: calc(100svh - 60px);
         align-items: center;
         padding: 48px 0 24px;
         text-align: center;
@@ -843,7 +844,11 @@ footer { background: #f0f1f4; }
 }
 
 @media (max-width: 480px) {
-    .home-hero { min-height: 0; padding-top: 40px; }
+    .home-hero {
+        min-height: calc(100vh - 60px);
+        min-height: calc(100svh - 60px);
+        padding-top: 40px;
+    }
     .hero-badge { max-width: 100%; padding-inline: 11px; font-size: 11px; }
     .hero-title { font-size: 34px; }
     .hero-desc {
