@@ -247,7 +247,7 @@ code { padding: 2px 5px; border: 1px solid #e5e7eb; border-radius: 4px; color: #
 
 <main class="page-shell">
     <header class="page-header">
-        <div class="eyebrow"><span class="eyebrow-dot"></span><span data-zh="当前插件版本 v1.2.4" data-en="Current plugin version v1.2.4">当前插件版本 v1.2.4</span></div>
+        <div class="eyebrow"><span class="eyebrow-dot"></span><span data-zh="当前插件版本 v1.2.6" data-en="Current plugin version v1.2.6">当前插件版本 v1.2.6</span></div>
         <h1 data-zh="更新日志" data-en="Changelog">更新日志</h1>
     </header>
     <div class="notes-layout">
@@ -256,6 +256,25 @@ code { padding: 2px 5px; border: 1px solid #e5e7eb; border-radius: 4px; color: #
             <nav class="version-links" id="versionLinks" aria-label="版本记录"></nav>
         </aside>
         <section class="release-list" id="rawNotes" aria-label="Release notes">
+<h3>Version 1.2.6</h3>
+<h4>Added</h4>
+<ul>
+    <li>项目配置新增可选「PAD（平板端）」模块：支持配置项目路径与应用端口，并显示平台/项目版本标签；PAD 为可选端，留空不影响配置、初始化、升级和构建。</li>
+    <li>「一键初始模板」支持 PAD 端：重命名 demo 视图目录为项目编码、执行 npm install 并替换残留 demo 占位符。</li>
+    <li>「升级版本」支持 PAD 端：修订版本升级替换平台包并更新 <code>package.json</code>，大版本升级全量替换且支持勾选备份保留二开目录。</li>
+    <li>「构建项目」支持 PAD 端：构建后打包 <code>dist</code> 为 <code>pad.zip</code>，项目版本号统一写入包含 PAD 在内的各端。</li>
+    <li>版本一致性检查纳入 PAD 端：跨端平台/项目版本对比，以及 PAD 内部平台包版本一致性检查。</li>
+</ul>
+
+<hr/>
+<h3>Version 1.2.5</h3>
+<h4>Changed</h4>
+<ul>
+    <li>优化V6开发手册AI问答。</li>
+    <li>二开菜单导入改为幂等处理 <code>XxRun.java</code> 注册：已注册时不再阻止导入，并在预览中显示“已注册，无需修改”。</li>
+</ul>
+
+<hr/>
 <h3>Version 1.2.4</h3>
 <h4>Fixed</h4>
 <ul>
@@ -571,6 +590,17 @@ code { padding: 2px 5px; border: 1px solid #e5e7eb; border-radius: 4px; color: #
         'Fixed': 'Fixed'
     };
     const releaseTranslations = {
+        '1.2.6': [
+            'Project settings now include an optional PAD (tablet) module. You can configure its project path and application port, and view platform and project version labels. Leaving PAD blank does not affect configuration, initialization, upgrades, or builds.',
+            'One-Click Template Initialization now supports PAD: it renames the demo view directory to the project code, runs <code>npm install</code>, and replaces remaining demo placeholders.',
+            'Version Upgrade now supports PAD. Patch upgrades replace platform packages and update <code>package.json</code>; major upgrades perform a full replacement and can back up and preserve selected secondary-development directories.',
+            'Build Project now supports PAD. After building, it packages <code>dist</code> as <code>pad.zip</code> and writes a unified project version to every client, including PAD.',
+            'Version consistency checks now include PAD, covering cross-client platform and project version comparisons as well as consistency among PAD platform package versions.'
+        ],
+        '1.2.5': [
+            'Improves AI Q&amp;A for the V6 development manual.',
+            'Secondary-development menu import now handles <code>XxRun.java</code> registration idempotently. Existing registrations no longer block imports, and the preview displays “Already registered; no changes required.”'
+        ],
         '1.2.4': [
             'Optimizes several issues.'
         ],
