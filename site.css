@@ -848,7 +848,8 @@ footer { background: #f0f1f4; }
         min-height: calc(100vh - 60px);
         min-height: calc(100svh - 60px);
         align-items: center;
-        padding: 48px 0 24px;
+        justify-content: flex-start;
+        padding: 48px 0 16px;
         text-align: center;
     }
     .home-hero::before {
@@ -868,7 +869,11 @@ footer { background: #f0f1f4; }
         line-height: 1.68;
     }
     .hero-actions { justify-content: center !important; }
-    .hero-signals-viewport { width: calc(100vw - 48px); }
+    .hero-signals-viewport {
+        width: calc(100vw - 48px);
+        margin-top: auto;
+        padding-top: 16px;
+    }
     .hero-signals-track--reverse {
         display: flex;
         margin-top: 6px;
@@ -894,6 +899,7 @@ footer { background: #f0f1f4; }
         min-height: calc(100vh - 60px);
         min-height: calc(100svh - 60px);
         padding-top: 40px;
+        padding-bottom: 12px;
     }
     .hero-badge { max-width: 100%; padding-inline: 11px; font-size: 11px; }
     .hero-title { font-size: 34px; }
