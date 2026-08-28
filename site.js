@@ -207,19 +207,38 @@ const langToggle=document.getElementById('langToggle');
 if(langToggle)langToggle.addEventListener('click',switchLang);
 })();
 
-// Duplicate the capability strip once for a seamless, Stripe-style marquee.
+// Duplicate the capability strip for seamless scrolling and add a staggered
+// reverse row that is shown on mobile.
 (function() {
     var track = document.querySelector('.hero-signals-track');
     var signals = track && track.querySelector('.hero-signals');
     if (!track || !signals) return;
+
+    function makeDecorative(list) {
+        list.setAttribute('aria-hidden', 'true');
+        list.removeAttribute('aria-label');
+        list.querySelectorAll('a').forEach(function(link) {
+            link.tabIndex = -1;
+        });
+        return list;
+    }
+
     var duplicate = signals.cloneNode(true);
-    duplicate.setAttribute('aria-hidden', 'true');
-    duplicate.removeAttribute('aria-label');
-    duplicate.querySelectorAll('a').forEach(function(link) {
-        link.tabIndex = -1;
-    });
-    track.appendChild(duplicate);
+    track.appendChild(makeDecorative(duplicate));
     track.classList.add('is-ready');
+
+    var reverseSignals = makeDecorative(signals.cloneNode(true));
+    var stagger = Math.floor(reverseSignals.children.length / 2);
+    for (var i = 0; i < stagger; i++) {
+        reverseSignals.appendChild(reverseSignals.firstElementChild);
+    }
+
+    var reverseTrack = document.createElement('div');
+    reverseTrack.className = 'hero-signals-track hero-signals-track--reverse is-ready';
+    reverseTrack.setAttribute('aria-hidden', 'true');
+    reverseTrack.appendChild(reverseSignals);
+    reverseTrack.appendChild(reverseSignals.cloneNode(true));
+    track.parentNode.appendChild(reverseTrack);
 })();
 
 // Subtle pointer response for the full-bleed Aurora scene.

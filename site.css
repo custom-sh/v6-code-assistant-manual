@@ -556,6 +556,10 @@ body {
     will-change: transform;
 }
 
+.hero-signals-track--reverse {
+    display: none;
+}
+
 .hero-signals-track.is-ready {
     animation: hero-signals-marquee 45s linear infinite;
 }
@@ -567,6 +571,11 @@ body {
 
 @keyframes hero-signals-marquee {
     to { transform: translateX(-50%); }
+}
+
+@keyframes hero-signals-marquee-reverse {
+    from { transform: translateX(-50%); }
+    to { transform: translateX(0); }
 }
 
 .hero-signals {
@@ -860,6 +869,13 @@ footer { background: #f0f1f4; }
     }
     .hero-actions { justify-content: center !important; }
     .hero-signals-viewport { width: calc(100vw - 48px); }
+    .hero-signals-track--reverse {
+        display: flex;
+        margin-top: 6px;
+    }
+    .hero-signals-track--reverse.is-ready {
+        animation: hero-signals-marquee-reverse 49s linear infinite;
+    }
     .video-showcase { padding: 58px 16px 64px; }
     .video-title { font-size: 26px; }
     #features { padding: 64px 0 72px; }
