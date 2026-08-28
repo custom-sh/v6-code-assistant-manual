@@ -752,6 +752,7 @@ code { padding: 2px 5px; border: 1px solid #e5e7eb; border-radius: 4px; color: #
             'Improves internationalization (i18n) support.'
         ]
     };
+    const MAX_VISIBLE_RELEASES = 10;
     const root = document.getElementById('rawNotes');
     const cards = [];
     let currentCard = null;
@@ -769,6 +770,11 @@ code { padding: 2px 5px; border: 1px solid #e5e7eb; border-radius: 4px; color: #
             currentCard.appendChild(node);
         }
     });
+
+    cards.slice(MAX_VISIBLE_RELEASES).forEach(function (card) {
+        card.remove();
+    });
+    cards.length = Math.min(cards.length, MAX_VISIBLE_RELEASES);
 
     cards.forEach(function (card) {
         const versionHeading = card.querySelector('h3');
